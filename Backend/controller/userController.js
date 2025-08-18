@@ -59,7 +59,7 @@ export const signUp = async (req, res) => {
     });
 
     // Send response (without password)
-    const { password: pwd, ...userData } = newUser._doc; 
+    const { password: pwd, ...userData } = newUser._doc;
     res.status(201).json({
       success: true,
       user: userData,
@@ -71,4 +71,42 @@ export const signUp = async (req, res) => {
 };
 
 // Function to log in an existing user
-export const login = async (req, res) => {};
+export const login = async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const user = await userModel.findOne({ email });
+    if (!user || user.length === 0) {
+      return res.status(400).json({ message: "User not found" });
+    }
+
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!isPasswordValid) {
+      return res.status(400).json({ message: "Invalid password" });
+    }
+    // Generate JWT token
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
+      expiresIn: "1d",
+    });
+
+    // Send token as cookie
+    res.cookie("jwt", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+      maxAge: 24 * 60 * 60 * 1000,
+    });
+
+    // Send response (without password)
+    const { password: pwd, ...userData } = user._doc; 
+    res.status(200).json({
+      success: true,
+      user: userData,
+    });
+  } catch (error) {
+    console.error("Error in login:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
+// Function to log out an existing user
+
