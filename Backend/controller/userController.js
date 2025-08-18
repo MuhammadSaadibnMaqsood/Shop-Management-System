@@ -110,3 +110,30 @@ export const login = async (req, res) => {
 
 // Function to log out an existing user
 
+export const logout = (req, res) => {
+  try {
+
+    res.clearCookie("jwt", {
+      httpOnly:true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+    })
+    
+    res.status(200).json({ message: "Logged out successfully" });
+  } catch (error) {
+    console.log("Error in logout:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+}
+
+
+// function to fetch user 
+
+export const getUser = async (req, res) => {
+  try {
+    return res.status(200).json({ user: req.user });
+  } catch (error) {
+    console.error("Error in getUser:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+}
