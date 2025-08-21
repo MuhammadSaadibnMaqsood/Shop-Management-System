@@ -36,3 +36,19 @@ export async function createShop(req, res) {
     return res.status(500).json({ message: "Internal Server Error" });
   }
 }
+
+export async function getShop(req, res) {
+
+    try {
+        const shopOwner = req.user._id;
+        const shop = await shopModel.findOne({ shopOwner}).populate("shopOwner", "userName email");
+        if (!shop) {
+            return res.status(404).json({ message: "Shop not found" });
+        }
+        return res.status(200).json({ shop });
+    } catch (error) {
+        console.log("Error fetching shop:", error);
+        return res.status(500).json({ message: "Internal Server Error" });
+        
+    }
+}
