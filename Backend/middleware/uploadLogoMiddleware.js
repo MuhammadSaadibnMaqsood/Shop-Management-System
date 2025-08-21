@@ -5,7 +5,7 @@ import cloudinary from "../config/cloudinary.js";
 const storage = new CloudinaryStorage({
   cloudinary,
   params: {
-    folder: "shop_logos", // Cloudinary folder name
+    folder: "shop_logos", 
     allowed_formats: ["jpg", "png", "jpeg"],
   },
 });

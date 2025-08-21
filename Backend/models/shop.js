@@ -1,11 +1,8 @@
 import mongoose from "mongoose";
 
 const shopSchema = new mongoose.Schema({
-  _id: {
-    type: mongoose.Schema.Types.ObjectId,
-  },
   shopOwner: {
-    typeof: mongoose.Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: "User",
     required: true,
   },
@@ -14,7 +11,7 @@ const shopSchema = new mongoose.Schema({
     required: true,
   },
   logo: {
-    typeof: String,
+    type: String,
   },
   address: {
     type: String,

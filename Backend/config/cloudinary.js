@@ -9,8 +9,6 @@ const clodinary = async ()=> {
             api_secret: process.env.CLOUDINARY_API_SECRET 
         });
 
-        console.log("Cloudinary configured successfully");
-        
     } catch (error) {
         console.error("Cloudinary configuration error:", error);
         throw new Error("Failed to configure Cloudinary");
