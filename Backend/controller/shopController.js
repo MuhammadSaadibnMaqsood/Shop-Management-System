@@ -16,7 +16,9 @@ export async function createShop(req, res) {
     if (existingShop) {
       return res.status(400).json({ message: "Shop already exists" });
     }
-    const logo = req.file?.path || '';
+
+    const avatar = "https://avatar.iran.liara.run/public/2.png";
+    const logo = req.file?.path || avatar;
 
     const newShop = new shopModel({
       shopOwner,
@@ -38,17 +40,17 @@ export async function createShop(req, res) {
 }
 
 export async function getShop(req, res) {
-
-    try {
-        const shopOwner = req.user._id;
-        const shop = await shopModel.findOne({ shopOwner}).populate("shopOwner", "userName email");
-        if (!shop) {
-            return res.status(404).json({ message: "Shop not found" });
-        }
-        return res.status(200).json({ shop });
-    } catch (error) {
-        console.log("Error fetching shop:", error);
-        return res.status(500).json({ message: "Internal Server Error" });
-        
+  try {
+    const shopOwner = req.user._id;
+    const shop = await shopModel
+      .findOne({ shopOwner })
+      .populate("shopOwner", "userName email");
+    if (!shop) {
+      return res.status(404).json({ message: "Shop not found" });
     }
+    return res.status(200).json({ shop });
+  } catch (error) {
+    console.log("Error fetching shop:", error);
+    return res.status(500).json({ message: "Internal Server Error" });
+  }
 }
