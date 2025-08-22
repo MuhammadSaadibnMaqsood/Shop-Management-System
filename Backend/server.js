@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser';
 import userRouter from './routes/userRoutes.js';
 import clodinary from './config/cloudinary.js';
 import shopRouter from './routes/shopRouter.js';
+import productRouter from './routes/productRoutes.js';
 
 dotenv.config();
 const PORT = process.env.PORT ||3000;
@@ -24,6 +25,7 @@ app.use(cookieParser());
 
 app.use('/api/user',userRouter);
 app.use('/api/shop',shopRouter);
+app.use('/api/product',productRouter);
 
 app.get('/', (req, res) => {
   res.send('Hello World');

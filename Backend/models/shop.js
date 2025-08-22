@@ -25,7 +25,7 @@ const shopSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-});
+},{timestamps: true});
 
 const shopModel = mongoose.model("Shop", shopSchema);
 
