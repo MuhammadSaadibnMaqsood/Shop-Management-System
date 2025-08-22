@@ -1,5 +1,6 @@
 import express from "express";
 import shopModel from "../models/shop.js";
+import userModel from "../models/user.js";
 
 export async function createShop(req, res) {
   try {
@@ -10,6 +11,10 @@ export async function createShop(req, res) {
       return res.status(400).json({ message: "All fields are required" });
     }
 
+    const user = await userModel.findById(shopOwner);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
     // Check if the shop already exists
     const existingShop = await shopModel.findOne({ shopOwner });
 
@@ -30,6 +35,10 @@ export async function createShop(req, res) {
     });
 
     await newShop.save();
+
+    user.role = "shopowner";
+    await user.save();
+
     return res
       .status(201)
       .json({ message: "Shop created successfully", shop: newShop });
