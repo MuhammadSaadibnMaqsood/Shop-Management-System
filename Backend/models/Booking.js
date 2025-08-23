@@ -18,6 +18,7 @@ const bookingSchema = new mongoose.Schema({
     },
     warrantyExpiry: { 
         type: Date,
+        required: true,
     },
     qrCode: { 
         type: String,
