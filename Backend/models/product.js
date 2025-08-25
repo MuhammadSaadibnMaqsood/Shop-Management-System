@@ -32,6 +32,11 @@ const productSchema = new mongoose.Schema(
       min: 0,
       default: 0,
     },
+    totalSell: {
+      type: Number,
+      default: 0,
+      min: 0,
+    },
     brand: {
       type: String,
       trim: true,

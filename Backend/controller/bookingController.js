@@ -1,6 +1,7 @@
+import QRCode from "qrcode";
 import productModel from "../models/product.js";
 import bookingModel from "../models/booking.js";
-import QRCode from "qrcode";
+
 
 //FUNCTION TO CREATE A NEW BOOKING
 export async function createBooking(req, res) {
@@ -55,6 +56,9 @@ export async function createBooking(req, res) {
     await newBooking.save();
     // Decrease product stock by 1
     product.stock -= 1;
+    await product.save();
+    // Increase product totalSell by 1
+    product.totalSell += 1;
     await product.save();
 
     return res

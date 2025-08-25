@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import connectDB from './config/db.js';
+import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import userRouter from './routes/userRoutes.js';
 import clodinary from './config/cloudinary.js';
@@ -21,7 +22,10 @@ const app = express();
 // middlewares
 app.use(express.json());
 app.use(cookieParser());
-
+app.use(cors({
+    origin: "http://localhost:5173", // frontend ka port
+    credentials: true// cookie/session allow
+}));
 // routes
 
 app.use('/api/user',userRouter);
