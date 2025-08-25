@@ -1,5 +1,5 @@
-import productModel from "../models/productModel.js";
-import bookingModel from "../models/Booking.js";
+import productModel from "../models/product.js";
+import bookingModel from "../models/booking.js";
 import QRCode from "qrcode";
 
 //FUNCTION TO CREATE A NEW BOOKING
