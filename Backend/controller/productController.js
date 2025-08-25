@@ -5,7 +5,7 @@ import productModel from "../models/product.js";
 // FUNCTION TO CREATE PRODUCT
 export async function createProduct(req, res) {
   try {
-    const { productName, price, description, category, stock, brand } =
+    const { productName, price, description, category,warranty, stock, brand } =
       req.body;
 
     if (
@@ -40,6 +40,7 @@ export async function createProduct(req, res) {
       price,
       description,
       category,
+      warranty,
       stock,
       brand,
       images,

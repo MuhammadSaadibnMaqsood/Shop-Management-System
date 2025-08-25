@@ -22,6 +22,10 @@ const productSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
+    warranty: {
+      type: Number,
+      default: 0,
+    },
     stock: {
       type: Number,
       required: true,

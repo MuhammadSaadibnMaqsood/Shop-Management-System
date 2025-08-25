@@ -16,6 +16,21 @@ const bookingSchema = new mongoose.Schema({
         ref: "Product",
         required: true,
     },
+    address:{
+        type: String,
+        required: true,
+    },
+    paymentType:{
+        type: String,
+        enum: ["COD", "ONLINE"],
+        default: "COD",
+        required: true,
+    },
+    paymentStatus:{
+        type: String,
+        enum: ["PENDING", "COMPLETED"],
+        default: "PENDING",
+    },
     warrantyExpiry: { 
         type: Date,
         required: true,
