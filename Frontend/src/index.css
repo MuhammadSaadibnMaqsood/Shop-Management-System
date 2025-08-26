@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Tektur:wght@400..900&display=swap');
 @import "tailwindcss";
 
 .bebasFont{
@@ -6,4 +6,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Bebas Neue', cursive;
+}
+.tekturFont{
+    font-family: 'Tektur', cursive;
 }
