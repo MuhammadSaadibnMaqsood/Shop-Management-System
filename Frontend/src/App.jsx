@@ -5,12 +5,13 @@ import useAuthUser from "./hooks/useAuthUser";
 import Login from "./components/Login";
 import Navbar from "./components/Navbar";
 import Home from "../Pages/Home";
+import Loading from "./components/loading";
 
 function App() {
   const { isLoading, user, isError, error } = useAuthUser();
   const role = user?.role;
 
-  if (isLoading) return <h1>Loading...</h1>;
+  if (isLoading) return <Loading/>;
 
   return (
     <>

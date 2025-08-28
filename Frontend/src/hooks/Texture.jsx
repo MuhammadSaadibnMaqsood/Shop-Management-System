@@ -1,19 +1,18 @@
-import React from "react";
+import React, { useRef } from "react";
 import * as THREE from "three";
 import { useTexture } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
 
 const Texture = () => {
-  const tex = useTexture(
-    "https://png.pngtree.com/png-vector/20231230/ourmid/pngtree-dropshipping-men-hole-sole-jogging-shoes-png-image_11389148.png"
-  );
-
+  const tex = useTexture("./3d-img.jpeg");
+  let cyl = useRef(null);
+  useFrame((state, delta) => {
+    cyl.current.rotation.y += delta;
+  });
   return (
-    <mesh>
-      <cylinderGeometry args={[1, 1, 1, 30, 30, true]} />
-      <meshStandardMaterial 
-        map={tex} 
-        side={THREE.DoubleSide} 
-      />
+    <mesh ref={cyl} rotation={[0, 1.4, 0.2]}>
+      <cylinderGeometry args={[1, 1, 1, 60, 60, true]} />
+      <meshStandardMaterial transparent map={tex} side={THREE.DoubleSide} />
     </mesh>
   );
 };
