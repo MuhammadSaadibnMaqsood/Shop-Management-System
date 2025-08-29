@@ -20,8 +20,10 @@ export const Login = async (loginData) => {
     return response?.data;
   } catch (error) {
     if (err.response?.status === 401) {
-      return null; // unauthorized → user not logged in
+      return null;
     }
+    console.log(error);
+    
     throw err;
   }
 };

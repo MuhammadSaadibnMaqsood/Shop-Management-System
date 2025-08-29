@@ -5,16 +5,37 @@ import { motion } from "framer-motion";
 const Signup = () => {
   return (
     <div className="w-full h-screen flex justify-center items-center bg-gradient-to-r from-gray-900 via-black to-gray-800">
-      <motion.div
-        // initial={{ opacity: 0, y: 50 }}
-        // animate={{ opacity: 1, y: 0 }}
-        // transition={{ duration: 0.8 }}
-        className="w-[90%] sm:w-[70%] h-96 shadow-2xl rounded-2xl flex overflow-hidden"
-      >
-        {/* LEFT SIDE */}
+      {/* LEFT SIDE  */}
+      <motion.div className="w-[90%] sm:w-[70%] h-96 shadow-2xl rounded-2xl flex overflow-hidden">
         <motion.div
-          initial={{ x: -100 }}
-          animate={{ x: 450 }}
+          initial={{ x: 350 }}
+          animate={{ x: 0 }}
+          transition={{ duration: 0.8 }}
+          className="w-1/2 h-full bg-black text-white p-8 hidden sm:flex flex-col justify-center"
+        >
+          <h1 className="text-center text-3xl font-bold tracking-wide">
+            Welcome Back 👋
+          </h1>
+          <p className="pt-8 text-justify leading-relaxed text-gray-300">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
+            neque dolorum doloribus nobis. Eius harum numquam porro nam
+            accusamus facilis dolore quae. 💫
+          </p>
+
+          <div className="pt-6 text-center">
+            <span className="text-gray-400">Already have an account?</span>{" "}
+            <Link
+              to={"/login"}
+              className="text-blue-400 hover:text-blue-500 font-semibold"
+            >
+              Login
+            </Link>
+          </div>
+        </motion.div>
+        {/* RIGHT SIDE */}
+        <motion.div
+          initial={{ x: -350 }}
+          animate={{ x: 0 }}
           transition={{ duration: 0.8 }}
           className=" w-full sm:w-1/2 flex flex-col justify-center gap-6 h-full p-8 bg-white"
         >
@@ -72,32 +93,6 @@ const Signup = () => {
           </div>
         </motion.div>
 
-        {/* RIGHT SIDE */}
-        <motion.div
-          initial={{ x: 100 }}
-          animate={{ x: -440 }}
-          transition={{ duration: 0.8 }}
-          className="w-1/2 h-full bg-black text-white p-8 hidden sm:flex flex-col justify-center"
-        >
-          <h1 className="text-center text-3xl font-bold tracking-wide">
-            Welcome Back 👋
-          </h1>
-          <p className="pt-8 text-justify leading-relaxed text-gray-300">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
-            neque dolorum doloribus nobis. Eius harum numquam porro nam
-            accusamus facilis dolore quae. 💫
-          </p>
-
-          <div className="pt-6 text-center">
-            <span className="text-gray-400">Already have an account?</span>{" "}
-            <Link
-              to={"/login"}
-              className="text-blue-400 hover:text-blue-500 font-semibold"
-            >
-              Login
-            </Link>
-          </div>
-        </motion.div>
       </motion.div>
     </div>
   );

@@ -1,18 +1,17 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-
+import useLogin from "../hooks/useLogin";
 const Login = () => {
   const [loginData, setLoginData] = useState({
     email: "",
     password: "",
   });
 
-  function handleClick() {
+  const { mutate: loginMutation, isPending, error } = useLogin();
 
-    console.log('hello');
-    console.log(loginData);
-    
+  function handleClick() {
+    loginMutation(loginData);
   }
 
   return (
@@ -39,7 +38,7 @@ const Login = () => {
             <input
               type="email"
               onChange={(e) =>
-                setLoginData.email(...loginData.email, e.target.value)
+                setLoginData({ ...loginData, email: e.target.value })
               }
               required
               className="peer w-full border border-gray-400 px-3 pt-5 pb-2 rounded focus:outline-none focus:ring-2 focus:ring-black"
@@ -55,7 +54,7 @@ const Login = () => {
             <input
               type="password"
               onChange={(e) =>
-                setLoginData.password(...loginData.password, e.target.value)
+                setLoginData({ ...loginData, password: e.target.value })
               }
               required
               className="peer w-full border border-gray-400 px-3 pt-5 pb-2 rounded focus:outline-none focus:ring-2 focus:ring-black"
@@ -69,17 +68,17 @@ const Login = () => {
           {/* LOGIN BUTTON */}
           <div className="flex justify-center pt-3">
             <motion.button
-              onClick={handleClick()}
+              onClick={handleClick}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-black cursor-pointer text-white py-2 w-40 rounded-xl shadow-lg hover:bg-gray-800 transition"
             >
-              Login
+              {isPending ? "Logging in..." : "Login"}
             </motion.button>
           </div>
 
-
-           <div className="pt-6 text-center block md:hidden">
+          {/* MOBILE SIGNUP LINK */}
+          <div className="pt-6 text-center block md:hidden">
             <span className="text-gray-400">Don't have an account?</span>{" "}
             <Link
               to={"/signup"}
@@ -89,8 +88,6 @@ const Login = () => {
             </Link>
           </div>
         </motion.div>
-
-
 
         {/* RIGHT SIDE */}
         <motion.div
