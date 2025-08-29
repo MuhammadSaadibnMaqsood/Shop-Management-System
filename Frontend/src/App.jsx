@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import Home from "../Pages/Home";
 import Loading from "./components/loading";
 import Login from "../Pages/Login";
+import Signup from "../Pages/Signup"
 function App() {
   const { isLoading, user, isError, error } = useAuthUser();
   const role = user?.role;
@@ -20,6 +21,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login/>} />
+        <Route path="/signup" element={<Signup/>} />
       </Routes>
     </>
   );
