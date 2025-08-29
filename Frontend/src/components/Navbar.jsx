@@ -1,23 +1,23 @@
-import React, { useState } from "react"
-import { Link, NavLink } from "react-router-dom"
-import { Menu, X } from "lucide-react" // hamburger icon
+import React, { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { Menu, X } from "lucide-react"; // hamburger icon
 
 const Navbar = ({ role }) => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
     { path: "/", label: "Home" },
     { path: "/about", label: "About" },
     { path: "/products", label: "All Products" },
-  ]
+  ];
 
   if (role === "shopowner") {
-    navLinks.push({ path: "/dashboard", label: "Dashboard" })
+    navLinks.push({ path: "/dashboard", label: "Dashboard" });
   }
 
   return (
-    <header className="bebasFont bg-transparent  text-white shadow-md relative z-50">
-      <nav className="flex justify-between items-center p-4 max-w-6xl mx-auto">
+    <header className="bebasFont bg-transparent text-white shadow-md relative z-50">
+      <nav className="flex justify-between w-full items-center p-4">
         {/* Logo */}
         <div>
           <h1 className="text-2xl font-bold tracking-wider">
@@ -45,16 +45,15 @@ const Navbar = ({ role }) => {
 
         {/* Right Button */}
         <div className="hidden md:block">
-          <button className="bg-yellow-400 text-black font-semibold cursor-pointer py-1 px-5 rounded-2xl hover:bg-yellow-300 transition">
-            Login
-          </button>
+          <Link to="/login">
+            <button className="bg-yellow-400 text-black font-semibold cursor-pointer py-1 px-5 rounded-2xl hover:bg-yellow-300 transition">
+              Login
+            </button>
+          </Link>
         </div>
 
         {/* Mobile Hamburger */}
-        <button
-          className="md:hidden"
-          onClick={() => setIsOpen(!isOpen)}
-        >
+        <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </nav>
@@ -76,14 +75,14 @@ const Navbar = ({ role }) => {
             ))}
             <li>
               <button className="bg-yellow-400 text-black font-semibold py-1 px-5 rounded-2xl hover:bg-yellow-300 transition">
-                Login
+                <Link to={"/login"}>Login</Link>
               </button>
             </li>
           </ul>
         </div>
       )}
     </header>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
