@@ -1,12 +1,25 @@
-import React from "react";
+import React, { use, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import useSignup from "../hooks/useSignup";
 
 const Signup = () => {
+  const [signupData, setSignupData] = useState({
+    userName: "",
+    email: "",
+    password: "",
+  });
+
+  const { mutate: signupMutation, isPending, error } = useSignup();
+
+  function handleClick() {
+    signupMutation(signupData);
+  }
+
   return (
     <div className="w-full h-screen flex justify-center items-center bg-gradient-to-r from-gray-900 via-black to-gray-800">
       {/* LEFT SIDE  */}
-      <motion.div className="w-[90%] sm:w-[70%] h-96 shadow-2xl rounded-2xl flex overflow-hidden">
+      <motion.div className="w-[90%] md:w-[70%] h-96 shadow-2xl rounded-2xl flex overflow-hidden">
         <motion.div
           initial={{ x: 350 }}
           animate={{ x: 0 }}
@@ -37,7 +50,7 @@ const Signup = () => {
           initial={{ x: -350 }}
           animate={{ x: 0 }}
           transition={{ duration: 0.8 }}
-          className=" w-full sm:w-1/2 flex flex-col justify-center gap-6 h-full p-8 bg-white"
+          className=" w-full md:w-1/2 flex flex-col justify-center gap-6 h-full p-8 bg-white"
         >
           <h1 className="text-center text-4xl tekturFont font-bold text-gray-800">
             Signup
@@ -46,6 +59,9 @@ const Signup = () => {
           <div className="relative w-full">
             <input
               type="text"
+              onChange={(e) =>
+                setSignupData({ ...signupData, userName: e.target.value })
+              }
               required
               className="peer w-full border border-gray-400 px-3 pt-5 pb-2 rounded focus:outline-none focus:ring-2 focus:ring-black"
               placeholder=" "
@@ -59,6 +75,9 @@ const Signup = () => {
           <div className="relative w-full">
             <input
               type="email"
+              onChange={(e) =>
+                setSignupData({ ...signupData, email: e.target.value })
+              }
               required
               className="peer w-full border border-gray-400 px-3 pt-5 pb-2 rounded focus:outline-none focus:ring-2 focus:ring-black"
               placeholder=" "
@@ -72,6 +91,9 @@ const Signup = () => {
           <div className="relative w-full">
             <input
               type="password"
+              onChange={(e) =>
+                setSignupData({ ...signupData, password: e.target.value })
+              }
               required
               className="peer w-full border border-gray-400 px-3 pt-5 pb-2 rounded focus:outline-none focus:ring-2 focus:ring-black"
               placeholder=" "
@@ -84,15 +106,15 @@ const Signup = () => {
           {/* SIGNUP BUTTON */}
           <div className="flex justify-center pt-3">
             <motion.button
+              onClick={handleClick}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-black text-white py-2 w-40 rounded-xl shadow-lg hover:bg-gray-800 transition"
             >
-              Signup
+              {isPending ? "Signing up..." : "Signup"}
             </motion.button>
           </div>
         </motion.div>
-
       </motion.div>
     </div>
   );

@@ -9,10 +9,8 @@ export const fetchUser = async () => {
     return response?.data;
   } catch (error) {
     if (error.response?.status === 401) {
-      
       return null;
     }
-   
   }
 };
 
@@ -26,9 +24,20 @@ export const Login = async (loginData) => {
       return response?.data;
     }
   } catch (error) {
-   
-      toast.error(error.response?.data?.message || "Something went wrong!");
-    
+    toast.error(error.response?.data?.message || "Something went wrong!");
+  }
+};
 
+// SIGNUP FUNCTION
+export const Signup = async (signupData) => {
+  try {
+    const response = await axiosInstance.post("user/signup", signupData);
+
+    if (response.data) {
+      toast.success("Login successful ✅");
+      return response?.data;
+    }
+  } catch (error) {
+    toast.error(error.response?.data?.message || "Something went wrong!");
   }
 };
