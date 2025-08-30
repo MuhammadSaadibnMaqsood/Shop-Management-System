@@ -5,12 +5,14 @@ import { useNavigate } from "react-router-dom";
 const useLoginMutation = () => {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
- return useMutation({
-  mutationFn: Login,
-  onSuccess: () => { 
-    queryClient.invalidateQueries({ queryKey: ["user"] });
-    navigate("/");
-  },
-});
-}
+  return useMutation({
+    mutationFn: Login,
+    onSuccess: (data) => {
+      if (data.success) {
+        queryClient.invalidateQueries({ queryKey: ["user"] });
+        navigate("/");
+      }
+    },
+  });
+};
 export default useLoginMutation;
