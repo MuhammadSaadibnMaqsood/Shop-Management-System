@@ -4,7 +4,7 @@ import { useTexture } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 
 const Texture = () => {
-  const tex = useTexture("./3d-img.jpeg");
+  const tex = useTexture("./heroimg.jpeg");
   let cyl = useRef(null);
   useFrame((state, delta) => {
     cyl.current.rotation.y += delta;
