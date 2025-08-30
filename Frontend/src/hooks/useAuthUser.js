@@ -3,7 +3,7 @@ import { fetchUser } from "../lib/api";
 
 const useAuthUser = () => {
   const authUser = useQuery({
-    queryKey: ['user'],
+    queryKey: ["user"],
     queryFn: fetchUser,
     retry: false
   });

@@ -14,6 +14,8 @@ const Navbar = ({ role }) => {
   if (role === "shopowner") {
     navLinks.push({ path: "/dashboard", label: "Dashboard" });
   }
+  console.log(role);
+  
 
   return (
     <header className="bebasFont bg-transparent text-white shadow-md relative z-50">

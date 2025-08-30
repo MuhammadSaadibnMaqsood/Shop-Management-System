@@ -1,29 +1,34 @@
 import axiosInstance from "./axios";
+import { toast } from "react-toastify"; // yeh zaroor add karna
 
-//FETCH EXISTING USER
+// FETCH EXISTING USER
 export const fetchUser = async () => {
   try {
     const response = await axiosInstance.get("user/me");
+    console.log("User fetched:", response.data);
     return response?.data;
   } catch (error) {
-    if (err.response?.status === 401) {
-      return null; // unauthorized → user not logged in
+    if (error.response?.status === 401) {
+      
+      return null;
     }
-    throw err;
+   
   }
 };
 
-//LOGIN FUNCTION
+// LOGIN FUNCTION
 export const Login = async (loginData) => {
   try {
-    const response = await axiosInstance.post("user/login",loginData);
-    return response?.data;
-  } catch (error) {
-    if (err.response?.status === 401) {
-      return null;
+    const response = await axiosInstance.post("user/login", loginData);
+
+    if (response.data) {
+      toast.success("Login successful ✅");
+      return response?.data;
     }
-    console.log(error);
+  } catch (error) {
+   
+      toast.error(error.response?.data?.message || "Something went wrong!");
     
-    throw err;
+
   }
 };

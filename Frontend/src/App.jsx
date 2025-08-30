@@ -7,17 +7,20 @@ import Home from "./Pages/Home";
 import Loading from "./components/loading";
 import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const { isLoading, user } = useAuthUser();
-  const role = user?.role;
+  const role = user?.user?.role;
 
-  const location = useLocation(); // 👈 React Router ka hook
+  const location = useLocation();
 
   if (isLoading) return <Loading />;
 
   return (
     <>
+      <ToastContainer position="top-right" autoClose={3000} />
       {/* Navbar sirf tab show hoga jab login/signup page na ho */}
       {location.pathname !== "/login" && location.pathname !== "/signup" && (
         <Navbar role={role} />
