@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Tektur:wght@400..900&display=swap');
 @import "tailwindcss";
+@import "locomotive-scroll/dist/locomotive-scroll.css";
+
 
 .bebasFont{
     margin: 0;

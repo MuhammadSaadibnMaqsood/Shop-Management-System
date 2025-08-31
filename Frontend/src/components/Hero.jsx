@@ -11,9 +11,10 @@ import Texture from "../hooks/Texture";
 
 const Hero = () => {
   return (
-    <div className="absolute top-0 bg-black h-[100vh] w-full text-white pt-28 md:pt-20">
+    <div id="hero" className="relative top-0 bg-black h-[95vh] w-full text-white pt-28 md:pt-0">
       {/* Title */}
       <motion.h1
+     
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.5 }}
@@ -31,10 +32,11 @@ const Hero = () => {
       </motion.h1>
 
       <motion.p
-      initial={{opacity:0}}
-      animate = {{opacity:1}}
-      transition={{delay:0.5,duration:1}}
-      className="p-5 mt-5 block md:hidden">
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.5, duration: 1 }}
+        className="p-5 mt-5 block md:hidden"
+      >
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro
         blanditiis possimus, doloribus molestiae provident ipsum quae.
       </motion.p>
