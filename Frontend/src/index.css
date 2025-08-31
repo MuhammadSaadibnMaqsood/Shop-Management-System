@@ -12,3 +12,10 @@
 .tekturFont{
     font-family: 'Tektur', cursive;
 }
+
+html, body {
+  height: 100%;
+  overflow: hidden; /* locomotive khud scrolling handle karega */
+}
+
+

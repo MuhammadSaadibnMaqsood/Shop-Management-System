@@ -1,15 +1,16 @@
-// Home.jsx
 import React, { useEffect, useRef } from "react";
 import Hero from "../components/Hero";
 import Products from "../components/Products";
 import LocomotiveScroll from "locomotive-scroll";
+import "../hero.css";
 
 const Home = () => {
   const scrollRef = useRef(null);
 
   useEffect(() => {
+    let scroll;
     if (scrollRef.current) {
-      const scroll = new LocomotiveScroll({
+      scroll = new LocomotiveScroll({
         el: scrollRef.current,
         smooth: true,
         multiplier: 1,
@@ -22,11 +23,23 @@ const Home = () => {
   }, []);
 
   return (
-    <div ref={scrollRef} data-scroll-container className="overflow-hidden">
-      <section data-scroll-section>
+    <div
+      ref={scrollRef}
+      data-scroll-container
+      className="overflow-hidden homePageContainer flex flex-col"
+    >
+      {/* HERO (sticky rahega) */}
+      <section
+       
+        className="sticky top-0 z-10"
+      >
         <Hero />
       </section>
-      <section data-scroll-section>
+
+      <section
+      
+        className="relative z-20"
+      >
         <Products />
       </section>
     </div>
