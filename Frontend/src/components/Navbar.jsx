@@ -18,7 +18,7 @@ const Navbar = ({ role }) => {
   
 
   return (
-    <header className="bebasFont bg-black text-white shadow-md relative z-50">
+    <header className="bebasFont bg-black text-white shadow-md sticky top-0 z-50">
       <nav className="flex justify-between w-full items-center p-4">
         {/* Logo */}
         <div>

@@ -11,7 +11,7 @@ import Texture from "../hooks/Texture";
 
 const Hero = () => {
   return (
-    <div id="hero" className="relative top-0 bg-black h-[95vh] w-full text-white pt-28 md:pt-0">
+    <div id="hero" className="relative z-20 bg-black h-[90vh] w-full text-white pt-28 md:pt-0">
       {/* Title */}
       <motion.h1
      
@@ -46,7 +46,7 @@ const Hero = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 1.5 }}
-        className="pt-16 h-[60vh]  md:h-[100vh] w-full absolute top-60 md:top-0"
+        className="pt-16 h-[60vh]  md:h-[100vh] w-full  top-60 md:top-0"
       >
         <Canvas camera={{ fov: 25, position: [0, 0, 5] }}>
           <OrbitControls />
@@ -71,7 +71,7 @@ const Hero = () => {
             />
             <ToneMapping />
           </EffectComposer>
-        </Canvas>
+     </Canvas> 
       </motion.div>
     </div>
   );

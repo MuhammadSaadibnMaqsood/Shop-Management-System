@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Tektur:wght@400..900&display=swap');
 @import "tailwindcss";
-@import "locomotive-scroll/dist/locomotive-scroll.css";
 
 
 .bebasFont{
@@ -13,9 +12,26 @@
     font-family: 'Tektur', cursive;
 }
 
-html, body {
-  height: 100%;
-  overflow: hidden; /* locomotive khud scrolling handle karega */
+
+/* Minimal Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
+::-webkit-scrollbar-track {
+  background: #1e293b;
+}
 
+::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #475569 #1e293b;
+}

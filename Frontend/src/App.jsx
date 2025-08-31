@@ -1,6 +1,6 @@
 import React from "react";
 import "./index.css";
-import { Routes, Route, useLocation } from "react-router-dom"; // 👈 useLocation import
+import { Routes, Route, useLocation } from "react-router-dom";
 import useAuthUser from "./hooks/useAuthUser";
 import Navbar from "./components/Navbar";
 import Home from "./Pages/Home";
