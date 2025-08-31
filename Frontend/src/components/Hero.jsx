@@ -11,7 +11,7 @@ import Texture from "../hooks/Texture";
 
 const Hero = () => {
   return (
-    <div id="hero" className="relative z-20 bg-black h-[90vh] w-full text-white pt-28 md:pt-0">
+    <div id="hero" className="relative z-20 bg-black h-[95vh] w-full text-white pt-28 md:pt-0">
       {/* Title */}
       <motion.h1
      

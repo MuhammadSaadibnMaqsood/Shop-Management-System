@@ -9,7 +9,7 @@ const Home = () => {
         
       <Hero />
       </div>
-      <div className="h-[100%] w-[100%] sticky top-0">
+      <div className="h-[100%] w-[100%] sticky top-0 overflow-hidden">
         
       <Products />
       </div>

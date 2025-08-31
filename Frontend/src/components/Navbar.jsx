@@ -14,7 +14,7 @@ const Navbar = ({ role }) => {
   if (role === "shopowner") {
     navLinks.push({ path: "/dashboard", label: "Dashboard" });
   }
-  console.log(role);
+  // console.log(role);
   
 
   return (
