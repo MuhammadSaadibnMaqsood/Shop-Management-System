@@ -10,6 +10,7 @@ import Signup from "./Pages/Signup";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Footer from "./components/Footer";
+import RegisterShop from "./Pages/RegisterShop";
 
 function App() {
   const { isLoading, user } = useAuthUser();
@@ -31,9 +32,10 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/registerShop" element={<RegisterShop />} />
       </Routes>
 
-      <Footer/>
+      <Footer />
     </>
   );
 }

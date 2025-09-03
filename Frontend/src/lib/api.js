@@ -20,7 +20,7 @@ export const Login = async (loginData) => {
     const response = await axiosInstance.post("user/login", loginData);
 
     if (response.data) {
-      toast.success("Login successful ✅");
+      toast.success("Login successfull");
       return response?.data;
     }
   } catch (error) {
@@ -34,22 +34,27 @@ export const Signup = async (signupData) => {
     const response = await axiosInstance.post("user/signup", signupData);
 
     if (response.data) {
-      toast.success("Login successful ✅");
+      toast.success("Signup successfull");
       return response?.data;
     }
   } catch (error) {
     toast.error(error.response?.data?.message || "Something went wrong!");
   }
 };
+
+// LOUGOUT FUNCTION
 export const logout = async () => {
   try {
     const response = await axiosInstance.post("user/logout");
 
-    if (response?.data?.message === 'Logged out successfully' || response.data.success) {
+    if (
+      response?.data?.message === "Logged out successfully" ||
+      response.data.success
+    ) {
       toast.success("Logout successfully");
     }
 
-    return response?.data
+    return response?.data;
   } catch (error) {
     toast.error(error.response?.data?.message || "Something went wrong!");
   }

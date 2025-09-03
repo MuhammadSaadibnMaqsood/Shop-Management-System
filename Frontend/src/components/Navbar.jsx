@@ -14,6 +14,8 @@ const Navbar = ({ role }) => {
 
   if (role === "shopowner") {
     navLinks.push({ path: "/dashboard", label: "Dashboard" });
+  } else if (role === "user") {
+    navLinks.push({ path: "/registerShop", label: "Add Shop" });
   }
   // console.log(role);
   const { mutate: logoutMutation, isPending, isError } = useLogout();
