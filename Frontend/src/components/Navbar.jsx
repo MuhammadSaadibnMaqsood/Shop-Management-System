@@ -48,7 +48,7 @@ const Navbar = ({ role }) => {
         <div className="hidden md:block">
           <Link to="/login">
             <div class="rainbow relative z-0 overflow-hidden p-0.5 flex items-center justify-center rounded-full hover:scale-105 transition duration-300 active:scale-100">
-              <button class="px-8 text-sm py-3 text-white rounded-full font-medium bg-gray-800">
+              <button class="px-8  cursor-pointer text-sm py-3 text-white rounded-full font-medium bg-gray-800">
                 Login
               </button>
             </div>

@@ -11,21 +11,21 @@ import Texture from "../hooks/Texture";
 
 const Hero = () => {
   return (
-    <div id="hero" className="relative z-20  bg-black h-[90vh] w-full text-white pt-28 md:pt-10">
+    <div id="hero" className="relative z-20  bg-black h-[90vh] w-full text-white pt-28 md:pt-6">
       {/* Title */}
       <motion.h1
      
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.5 }}
-        className="text-center text-5xl sm:text-6xl md:text-9xl AsimovianFont font-bold tracking-widest relative"
+        className="text-center group hover:bg-clip-text hover:text-transparent hover:bg-gradient-to-r from-[#c6005c] to-[#4a00b8] transition-all duration-700 ease-in-out text-5xl sm:text-6xl md:text-9xl AsimovianFont font-bold tracking-widest relative"
       >
         AURA
         <motion.span
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.3 }}
           transition={{ duration: 2 }}
-          className="absolute AsimovianFont left-0 right-0 top-full text-5xl sm:text-6xl md:text-9xl font-bold tracking-widest text-gray-400 transform scale-y-[-1] blur-sm select-none"
+          className="group-hover:bg-clip-text group-hover:text-transparent group-hover:bg-gradient-to-r from-[#c6005c] to-[#4a00b8] transition-all duration-700 ease-in-out absolute AsimovianFont left-0 right-0 top-full text-5xl sm:text-6xl md:text-9xl font-bold tracking-widest text-gray-400 transform scale-y-[-1] blur-sm select-none"
         >
           AURA
         </motion.span>

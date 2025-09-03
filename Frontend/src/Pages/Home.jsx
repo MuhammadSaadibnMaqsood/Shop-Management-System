@@ -3,7 +3,7 @@ import Hero from "../components/Hero";
 import NewLetter from "../components/NewLetter";
 import Products from "../components/Products";
 import Testimonail from "../components/Testimonail";
-
+import Footer from "../components/Footer";
 const Home = () => {
   return (
     <>
@@ -26,6 +26,8 @@ const Home = () => {
           <FAQ />
         </div>
       </div>
+
+     
     </>
   );
 };
