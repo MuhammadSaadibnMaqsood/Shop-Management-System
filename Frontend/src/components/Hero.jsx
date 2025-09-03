@@ -11,21 +11,21 @@ import Texture from "../hooks/Texture";
 
 const Hero = () => {
   return (
-    <div id="hero" className="relative z-20 bg-black h-[95vh] w-full text-white pt-28 md:pt-0">
+    <div id="hero" className="relative z-20  bg-black h-[90vh] w-full text-white pt-28 md:pt-10">
       {/* Title */}
       <motion.h1
      
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.5 }}
-        className="text-center text-5xl sm:text-6xl md:text-6xl tekturFont font-bold tracking-widest relative"
+        className="text-center text-5xl sm:text-6xl md:text-6xl AsimovianFont font-bold tracking-widest relative"
       >
         AURA
         <motion.span
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.3 }}
           transition={{ duration: 2 }}
-          className="absolute left-0 right-0 top-full text-5xl sm:text-6xl md:text-6xl font-bold tracking-widest text-gray-400 transform scale-y-[-1] blur-sm select-none"
+          className="absolute AsimovianFont left-0 right-0 top-full text-5xl sm:text-6xl md:text-6xl font-bold tracking-widest text-gray-400 transform scale-y-[-1] blur-sm select-none"
         >
           AURA
         </motion.span>

@@ -1,3 +1,4 @@
+import FAQ from "../components/FAQ";
 import Hero from "../components/Hero";
 import NewLetter from "../components/NewLetter";
 import Products from "../components/Products";
@@ -7,9 +8,9 @@ const Home = () => {
   return (
     <>
       <div>
-        {/* <div className=" w-[100%] sticky top-0">
+        <div className=" w-[100%] sticky top-0">
           <Hero />
-        </div> */}
+        </div>
         <div className="h-[100%] w-[100%] sticky top-0 overflow-hidden">
           <Products />
         </div>
@@ -20,6 +21,9 @@ const Home = () => {
 
         <div className="h-[100%] w-[100%] sticky top-0 overflow-hidden">
           <NewLetter />
+          <FAQ />
+        </div>
+        <div className="h-[100%] w-[100%] sticky top-0 overflow-hidden">
         </div>
       </div>
     </>

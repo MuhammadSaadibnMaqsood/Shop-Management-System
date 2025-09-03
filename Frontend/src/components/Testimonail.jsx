@@ -94,7 +94,7 @@ const Testimonail = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
                     viewport={{ once: true }}
-                    className='tekturFont text-center text-6xl md:text-7xl font-bold text-shadow-black'>
+                    className='AsimovianFont text-center text-6xl md:text-7xl font-bold text-shadow-black'>
                     What our customers say
                 </motion.h1>
             </div>
