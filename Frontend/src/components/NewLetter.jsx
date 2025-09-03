@@ -2,7 +2,7 @@ import React from "react";
 
 const NewLetter = () => {
   return (
-    <div class="w-full h-[50vh] bg-zinc-950 px-2 text-center text-white py-20 flex flex-col items-center justify-center">
+    <div class="w-full h-screen bg-zinc-950 px-2 text-center text-white py-20 flex flex-col items-center justify-center">
       <p class="text-indigo-500 font-medium">Get updated</p>
       <h1 class="max-w-lg font-semibold text-4xl/[44px] mt-2">
         Subscribe us & get the latest news

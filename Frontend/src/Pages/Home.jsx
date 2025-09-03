@@ -21,9 +21,9 @@ const Home = () => {
 
         <div className="h-[100%] w-[100%] sticky top-0 overflow-hidden">
           <NewLetter />
-          <FAQ />
         </div>
         <div className="h-[100%] w-[100%] sticky top-0 overflow-hidden">
+          <FAQ />
         </div>
       </div>
     </>
