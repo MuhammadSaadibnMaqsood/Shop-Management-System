@@ -1,7 +1,7 @@
 import React, { useState } from "react";
+import useAddShop from "../hooks/useAddShop";
 
 const RegisterShop = () => {
-  shopName, address, phone, description;
   const [shopDetails, setShopDetails] = useState({
     shopName: null,
     address: null,
@@ -9,7 +9,12 @@ const RegisterShop = () => {
     description: null,
   });
 
-  function handleSubmit() {}
+  const { mutate: addShopMutation, isPending, isError } = useAddShop();
+  function handleSubmit() {
+    e.preventDefault(); 
+
+    addShopMutation(shopDetails);
+  }
   return (
     <div className="text-white bg-zinc-950 h-screen w-full ">
       <div className="flex flex-col items-center justify-center ">
@@ -26,6 +31,8 @@ const RegisterShop = () => {
       <div>
         <form onSubmit={handleSubmit}>
           <input
+            className="border border-white text-white"
+            placeHolder="input"
             onChange={(e) =>
               setShopDetails({ ...shopDetails, shopName: e.target.value })
             }
@@ -33,6 +40,8 @@ const RegisterShop = () => {
             required={true}
           />
           <input
+            className="border border-white text-white"
+            placeHolder="input"
             onChange={(e) =>
               setShopDetails({ ...shopDetails, address: e.target.value })
             }
@@ -40,6 +49,8 @@ const RegisterShop = () => {
             required={true}
           />
           <input
+            className="border border-white text-white"
+            placeHolder="input"
             onChange={(e) =>
               setShopDetails({ ...shopDetails, phone: e.target.value })
             }
@@ -47,6 +58,8 @@ const RegisterShop = () => {
             required={true}
           />
           <input
+            className="border border-white text-white"
+            placeHolder="input"
             onChange={(e) =>
               setShopDetails({ ...shopDetails, description: e.target.value })
             }

@@ -5,7 +5,7 @@ import { toast } from "react-toastify"; // yeh zaroor add karna
 export const fetchUser = async () => {
   try {
     const response = await axiosInstance.get("user/me");
-    console.log("User fetched:", response.data);
+    // console.log("User fetched:", response.data);
     return response?.data;
   } catch (error) {
     if (error.response?.status === 401) {
@@ -52,6 +52,22 @@ export const logout = async () => {
       response.data.success
     ) {
       toast.success("Logout successfully");
+    }
+
+    return response?.data;
+  } catch (error) {
+    toast.error(error.response?.data?.message || "Something went wrong!");
+  }
+};
+
+// REGISTOR SHOP
+export const addShop = async (shopDetails) => {
+  try {
+    const response = await axiosInstance.post("shop/create",shopDetails);
+    console.log(response);
+    
+    if (response.data.success) {
+      toast.success("Shop added");
     }
 
     return response?.data;
