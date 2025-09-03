@@ -110,7 +110,7 @@ const Products = () => {
   };
 
   return (
-    <div ref={sectionRef} className="bg-zinc-900 min-h-screen py-20 px-5">
+    <div ref={sectionRef} className="bg-zinc-950 min-h-screen py-20 px-5">
       <section className="mx-auto">
         <motion.h1
           ref={headingRef}
