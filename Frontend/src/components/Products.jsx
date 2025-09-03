@@ -43,31 +43,31 @@ const Products = () => {
       id: 1,
       name: "Product 1",
       image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUPIfiGgUML8G3ZqsNLHfaCnZK3I5g4tJabQ&s",
+        "/laptop.jpg",
     },
     {
       id: 2,
       name: "Product 2",
       image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLat8bZvhXD3ChSXyzGsFVh6qgplm1KhYPKA&s",
+        "/phone.jpg",
     },
     {
       id: 3,
       name: "Product 3",
       image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1zwhySGCEBxRRFYIcQgvOLOpRGqrT3d7Qng&s",
+        "/shos.jpg",
     },
     {
       id: 4,
       name: "Product 4",
       image:
-        "https://thumbs.dreamstime.com/b/environment-earth-day-hands-trees-growing-seedlings-bokeh-green-background-female-hand-holding-tree-nature-field-118143566.jpg",
+        "/dslr.jpg",
     },
     {
       id: 5,
       name: "Product 5",
       image:
-        "https://static.vecteezy.com/system/resources/thumbnails/036/324/708/small/ai-generated-picture-of-a-tiger-walking-in-the-forest-photo.jpg",
+        "/watch.jpg",
     },
   ];
 
@@ -136,7 +136,7 @@ const Products = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="max-w-3xl mx-auto text-center mt-10 text-white text-lg mb-16"
+          className="max-w-3/4 mx-auto text-center mt-10 text-white text-lg mb-12"
         >
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa
           blanditiis ratione possimus praesentium quibusdam quos esse vel
