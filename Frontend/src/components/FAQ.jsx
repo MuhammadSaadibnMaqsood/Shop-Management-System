@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 
 const FAQ = () => {
   const [openIndex, setOpenIndex] = useState(null);
@@ -27,8 +28,20 @@ const FAQ = () => {
 
   return (
     <div className="h-screen flex flex-col items-center justify-center bg-zinc-950 px-4">
-        <h1 className="text-center text-7xl p-3 sm:p-5 md:p-8 md:text-9xl AsimovianFont text-white">FAQ</h1>
-      <div className="max-w-4xl w-full bg-white shadow-lg rounded-xl p-6 md:p-10">
+      <motion.h1
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1, duration: 1.5 }}
+        className="text-center hover:scale-110 transition-all text-7xl p-3 sm:p-5 md:p-8 md:text-9xl AsimovianFont text-white"
+      >
+        FAQ
+      </motion.h1>
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1, duration: 1.5 }}
+        className="max-w-4xl w-full bg-white shadow-lg rounded-xl p-6 md:p-10"
+      >
         {/* <p className="text-indigo-600 text-sm font-medium">FAQ's</p> */}
         <h1 className="text-3xl font-semibold">Shopping Questions</h1>
         <p className="text-sm text-slate-500 mt-2 pb-4">
@@ -74,7 +87,7 @@ const FAQ = () => {
             </p>
           </div>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 };

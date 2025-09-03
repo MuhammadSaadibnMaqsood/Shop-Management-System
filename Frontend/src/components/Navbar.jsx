@@ -15,7 +15,6 @@ const Navbar = ({ role }) => {
     navLinks.push({ path: "/dashboard", label: "Dashboard" });
   }
   // console.log(role);
-  
 
   return (
     <header className="bebasFont bg-black text-white shadow-md sticky top-0 z-50">
@@ -34,9 +33,9 @@ const Navbar = ({ role }) => {
               <NavLink
                 to={link.path}
                 className={({ isActive }) =>
-                  `hover:text-yellow-300 cursor-pointer transition duration-300 ${
-                    isActive ? "border-b-2 border-yellow-400" : ""
-                  }`
+                  `cursor-pointer transition duration-300 
+   hover:bg-gradient-to-r hover:from-[#ff0a7f] hover:to-[#780eff] hover:text-transparent hover:bg-clip-text
+   ${isActive ? "border-b-2 border-purple-500" : ""}`
                 }
               >
                 {link.label}
@@ -48,9 +47,11 @@ const Navbar = ({ role }) => {
         {/* Right Button */}
         <div className="hidden md:block">
           <Link to="/login">
-            <button className="bg-yellow-400 text-black font-semibold cursor-pointer py-1 px-5 rounded-2xl hover:bg-yellow-300 transition">
-              Login
-            </button>
+            <div class="rainbow relative z-0 overflow-hidden p-0.5 flex items-center justify-center rounded-full hover:scale-105 transition duration-300 active:scale-100">
+              <button class="px-8 text-sm py-3 text-white rounded-full font-medium bg-gray-800">
+                Login
+              </button>
+            </div>
           </Link>
         </div>
 

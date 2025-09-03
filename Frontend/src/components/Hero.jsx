@@ -18,14 +18,14 @@ const Hero = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.5 }}
-        className="text-center text-5xl sm:text-6xl md:text-6xl AsimovianFont font-bold tracking-widest relative"
+        className="text-center text-5xl sm:text-6xl md:text-9xl AsimovianFont font-bold tracking-widest relative"
       >
         AURA
         <motion.span
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.3 }}
           transition={{ duration: 2 }}
-          className="absolute AsimovianFont left-0 right-0 top-full text-5xl sm:text-6xl md:text-6xl font-bold tracking-widest text-gray-400 transform scale-y-[-1] blur-sm select-none"
+          className="absolute AsimovianFont left-0 right-0 top-full text-5xl sm:text-6xl md:text-9xl font-bold tracking-widest text-gray-400 transform scale-y-[-1] blur-sm select-none"
         >
           AURA
         </motion.span>
@@ -46,7 +46,7 @@ const Hero = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 1.5 }}
-        className="pt-16 h-[60vh]  md:h-[100vh] w-full  top-60 md:top-0"
+        className="pt-16 md:p-0 h-[60vh]  md:h-[100vh] w-full  top-60 md:top-0"
       >
         <Canvas camera={{ fov: 25, position: [0, 0, 5] }}>
           <OrbitControls />

@@ -1,80 +1,100 @@
-import React from 'react'
-import { motion } from 'framer-motion'
+import React from "react";
+import { motion } from "framer-motion";
 
 const Testimonail = () => {
+  const cardsData = [
+    {
+      image: "https://randomuser.me/api/portraits/men/32.jpg",
+      name: "Wasif Khan",
+      handle: "@wasifk",
+      date: "March 15, 2025",
+      review:
+        "Ordered sneakers from here, delivery was super fast and quality is amazing!",
+    },
+    {
+      image: "https://randomuser.me/api/portraits/women/44.jpg",
+      name: "Emily Carter",
+      handle: "@emilyc",
+      date: "April 2, 2025",
+      review:
+        "Love the handbag I got! Exactly like the pictures and totally worth the price.",
+    },
+    {
+      image: "https://randomuser.me/api/portraits/men/77.jpg",
+      name: "Ahmed Raza",
+      handle: "@ahmedraza",
+      date: "April 18, 2025",
+      review:
+        "Bought a smartwatch, works perfectly. Customer support was really helpful too.",
+    },
+    {
+      image: "https://randomuser.me/api/portraits/women/50.jpg",
+      name: "Sophia Johnson",
+      handle: "@sophiaj",
+      date: "May 1, 2025",
+      review:
+        "I’m obsessed with the quality of the makeup kit. Packaging was neat & safe.",
+    },
+    {
+      image: "https://randomuser.me/api/portraits/men/22.jpg",
+      name: "Ali Hassan",
+      handle: "@alihassan",
+      date: "May 12, 2025",
+      review:
+        "Got headphones on sale – amazing bass and battery backup. Highly recommended!",
+    },
+    {
+      image: "https://randomuser.me/api/portraits/men/12.jpg",
+      name: "John Miller",
+      handle: "@johnm",
+      date: "May 20, 2025",
+      review: "Clothes fit perfectly. Definitely shopping again from here.",
+    },
+  ];
 
-    const cardsData = [
-        {
-            image: 'https://randomuser.me/api/portraits/men/32.jpg',
-            name: 'Wasif Khan',
-            handle: '@wasifk',
-            date: 'March 15, 2025',
-            review: "Ordered sneakers from here, delivery was super fast and quality is amazing!"
-        },
-        {
-            image: 'https://randomuser.me/api/portraits/women/44.jpg',
-            name: 'Emily Carter',
-            handle: '@emilyc',
-            date: 'April 2, 2025',
-            review: "Love the handbag I got! Exactly like the pictures and totally worth the price."
-        },
-        {
-            image: 'https://randomuser.me/api/portraits/men/77.jpg',
-            name: 'Ahmed Raza',
-            handle: '@ahmedraza',
-            date: 'April 18, 2025',
-            review: "Bought a smartwatch, works perfectly. Customer support was really helpful too."
-        },
-        {
-            image: 'https://randomuser.me/api/portraits/women/50.jpg',
-            name: 'Sophia Johnson',
-            handle: '@sophiaj',
-            date: 'May 1, 2025',
-            review: "I’m obsessed with the quality of the makeup kit. Packaging was neat & safe."
-        },
-        {
-            image: 'https://randomuser.me/api/portraits/men/22.jpg',
-            name: 'Ali Hassan',
-            handle: '@alihassan',
-            date: 'May 12, 2025',
-            review: "Got headphones on sale – amazing bass and battery backup. Highly recommended!"
-        },
-        {
-            image: 'https://randomuser.me/api/portraits/men/12.jpg',
-            name: 'John Miller',
-            handle: '@johnm',
-            date: 'May 20, 2025',
-            review: "Clothes fit perfectly. Definitely shopping again from here."
-        },
-    ];
-
-    const CreateCard = ({ card }) => (
-        <div className="p-4 rounded-lg mx-4 shadow hover:shadow-lg transition-all duration-200 w-72 shrink-0 bg-white">
-            <div className="flex gap-2">
-                <img className="size-11 rounded-full" src={card.image} alt="User Image" />
-                <div className="flex flex-col">
-                    <div className="flex items-center gap-1">
-                        <p className="font-semibold">{card.name}</p>
-                        <svg className="mt-0.5" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path fillRule="evenodd" clipRule="evenodd" d="M4.555.72a4 4 0 0 1-.297.24c-.179.12-.38.202-.59.244a4 4 0 0 1-.38.041c-.48.039-.721.058-.922.129a1.63 1.63 0 0 0-.992.992c-.071.2-.09.441-.129.922a4 4 0 0 1-.041.38 1.6 1.6 0 0 1-.245.59 3 3 0 0 1-.239.297c-.313.368-.47.551-.56.743-.213.444-.213.96 0 1.404.09.192.247.375.56.743.125.146.187.219.24.297.12.179.202.38.244.59.018.093.026.189.041.38.039.48.058.721.129.922.163.464.528.829.992.992.2.071.441.09.922.129.191.015.287.023.38.041.21.042.411.125.59.245.078.052.151.114.297.239.368.313.551.47.743.56.444.213.96.213 1.404 0 .192-.09.375-.247.743-.56.146-.125.219-.187.297-.24.179-.12.38-.202.59-.244a4 4 0 0 1 .38-.041c.48-.039.721-.058.922-.129.464-.163.829-.528.992-.992.071-.2.09-.441.129-.922a4 4 0 0 1 .041-.38c.042-.21.125-.411.245-.59.052-.078.114-.151.239-.297.313-.368.47-.551.56-.743.213-.444.213-.96 0-1.404-.09-.192-.247-.375-.56-.743a4 4 0 0 1-.24-.297 1.6 1.6 0 0 1-.244-.59 3 3 0 0 1-.041-.38c-.039-.48-.058-.721-.129-.922a1.63 1.63 0 0 0-.992-.992c-.2-.071-.441-.09-.922-.129a4 4 0 0 1-.38-.041 1.6 1.6 0 0 1-.59-.245A3 3 0 0 1 7.445.72C7.077.407 6.894.25 6.702.16a1.63 1.63 0 0 0-1.404 0c-.192.09-.375.247-.743.56m4.07 3.998a.488.488 0 0 0-.691-.69l-2.91 2.91-.958-.957a.488.488 0 0 0-.69.69l1.302 1.302c.19.191.5.191.69 0z" fill="#2196F3" />
-                        </svg>
-                    </div>
-                    <span className="text-xs text-slate-500">{card.handle}</span>
-                </div>
-            </div>
-            <p className="text-sm py-4 text-gray-800">{card.review}</p>
-            <div className="flex items-center justify-between text-slate-500 text-xs">
-                <div className="flex items-center gap-1">
-                    <span>Posted on</span>
-                </div>
-                <p>{card.date}</p>
-            </div>
+  const CreateCard = ({ card }) => (
+    <div className="p-4 rounded-lg mx-4 shadow hover:shadow-lg transition-all duration-200 w-72 shrink-0 bg-white">
+      <div className="flex gap-2">
+        <img
+          className="size-11 rounded-full"
+          src={card.image}
+          alt="User Image"
+        />
+        <div className="flex flex-col">
+          <div className="flex items-center gap-1">
+            <p className="font-semibold">{card.name}</p>
+            <svg
+              className="mt-0.5"
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M4.555.72a4 4 0 0 1-.297.24c-.179.12-.38.202-.59.244a4 4 0 0 1-.38.041c-.48.039-.721.058-.922.129a1.63 1.63 0 0 0-.992.992c-.071.2-.09.441-.129.922a4 4 0 0 1-.041.38 1.6 1.6 0 0 1-.245.59 3 3 0 0 1-.239.297c-.313.368-.47.551-.56.743-.213.444-.213.96 0 1.404.09.192.247.375.56.743.125.146.187.219.24.297.12.179.202.38.244.59.018.093.026.189.041.38.039.48.058.721.129.922.163.464.528.829.992.992.2.071.441.09.922.129.191.015.287.023.38.041.21.042.411.125.59.245.078.052.151.114.297.239.368.313.551.47.743.56.444.213.96.213 1.404 0 .192-.09.375-.247.743-.56.146-.125.219-.187.297-.24.179-.12.38-.202.59-.244a4 4 0 0 1 .38-.041c.48-.039.721-.058.922-.129.464-.163.829-.528.992-.992.071-.2.09-.441.129-.922a4 4 0 0 1 .041-.38c.042-.21.125-.411.245-.59.052-.078.114-.151.239-.297.313-.368.47-.551.56-.743.213-.444.213-.96 0-1.404-.09-.192-.247-.375-.56-.743a4 4 0 0 1-.24-.297 1.6 1.6 0 0 1-.244-.59 3 3 0 0 1-.041-.38c-.039-.48-.058-.721-.129-.922a1.63 1.63 0 0 0-.992-.992c-.2-.071-.441-.09-.922-.129a4 4 0 0 1-.38-.041 1.6 1.6 0 0 1-.59-.245A3 3 0 0 1 7.445.72C7.077.407 6.894.25 6.702.16a1.63 1.63 0 0 0-1.404 0c-.192.09-.375.247-.743.56m4.07 3.998a.488.488 0 0 0-.691-.69l-2.91 2.91-.958-.957a.488.488 0 0 0-.69.69l1.302 1.302c.19.191.5.191.69 0z"
+                fill="#2196F3"
+              />
+            </svg>
+          </div>
+          <span className="text-xs text-slate-500">{card.handle}</span>
         </div>
-    );
+      </div>
+      <p className="text-sm py-4 text-gray-800">{card.review}</p>
+      <div className="flex items-center justify-between text-slate-500 text-xs">
+        <div className="flex items-center gap-1">
+          <span>Posted on</span>
+        </div>
+        <p>{card.date}</p>
+      </div>
+    </div>
+  );
 
-    return (
-        <>
-          <style>{`
+  return (
+    <>
+      <style>{`
             @keyframes marqueeScroll {
                 0% { transform: translateX(0%); }
                 100% { transform: translateX(-50%); }
@@ -88,40 +108,41 @@ const Testimonail = () => {
                 animation-direction: reverse;
             }
         `}</style>
-            <div className='pt-20'>
-                <motion.h1
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
-                    viewport={{ once: true }}
-                    className='AsimovianFont text-center text-6xl md:text-7xl font-bold text-shadow-black'>
-                    What our customers say
-                </motion.h1>
-            </div>
+      <div className="pt-20">
+        <motion.h1
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
+          viewport={{ once: true }}
+          className="AsimovianFont bg-gradient-to-r from-[#c6005c] to-[#4a00b8] bg-clip-text text-transparent text-center text-6xl md:text-7xl font-bold"
+        >
+          What our customers say
+        </motion.h1>
+      </div>
 
-            {/* Row 1 */}
-            <div className="marquee-row w-full mx-auto max-w-6xl overflow-hidden relative">
-                <div className="absolute left-0 top-0 h-full w-20 z-10 pointer-events-none bg-gradient-to-r from-white to-transparent"></div>
-                <div className="marquee-inner flex transform-gpu min-w-[200%] pt-10 pb-5">
-                    {[...cardsData, ...cardsData].map((card, index) => (
-                        <CreateCard key={index} card={card} />
-                    ))}
-                </div>
-                <div className="absolute right-0 top-0 h-full w-20 md:w-40 z-10 pointer-events-none bg-gradient-to-l from-white to-transparent"></div>
-            </div>
+      {/* Row 1 */}
+      <div className="marquee-row w-full mx-auto max-w-6xl overflow-hidden relative">
+        <div className="absolute left-0 top-0 h-full w-20 z-10 pointer-events-none bg-gradient-to-r from-white to-transparent"></div>
+        <div className="marquee-inner flex transform-gpu min-w-[200%] pt-10 pb-5">
+          {[...cardsData, ...cardsData].map((card, index) => (
+            <CreateCard key={index} card={card} />
+          ))}
+        </div>
+        <div className="absolute right-0 top-0 h-full w-20 md:w-40 z-10 pointer-events-none bg-gradient-to-l from-white to-transparent"></div>
+      </div>
 
-            {/* Row 2 (reverse) */}
-            <div className="marquee-row w-full mx-auto max-w-6xl overflow-hidden relative">
-                <div className="absolute left-0 top-0 h-full w-20 z-10 pointer-events-none bg-gradient-to-r from-white to-transparent"></div>
-                <div className="marquee-inner marquee-reverse flex transform-gpu min-w-[200%] pt-10 pb-5">
-                    {[...cardsData, ...cardsData].map((card, index) => (
-                        <CreateCard key={index} card={card} />
-                    ))}
-                </div>
-                <div className="absolute right-0 top-0 h-full w-20 md:w-40 z-10 pointer-events-none bg-gradient-to-l from-white to-transparent"></div>
-            </div>
-        </>
-    )
-}
+      {/* Row 2 (reverse) */}
+      <div className="marquee-row w-full mx-auto max-w-6xl overflow-hidden relative">
+        <div className="absolute left-0 top-0 h-full w-20 z-10 pointer-events-none bg-gradient-to-r from-white to-transparent"></div>
+        <div className="marquee-inner marquee-reverse flex transform-gpu min-w-[200%] pt-10 pb-5">
+          {[...cardsData, ...cardsData].map((card, index) => (
+            <CreateCard key={index} card={card} />
+          ))}
+        </div>
+        <div className="absolute right-0 top-0 h-full w-20 md:w-40 z-10 pointer-events-none bg-gradient-to-l from-white to-transparent"></div>
+      </div>
+    </>
+  );
+};
 
-export default Testimonail
+export default Testimonail;
