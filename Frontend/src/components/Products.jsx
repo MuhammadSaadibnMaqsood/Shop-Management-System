@@ -127,7 +127,7 @@ const Products = () => {
             duration: 0.8,
             ease: "easeOut",
           }}
-          className="tekturFont p-3 sm:p-0 text-center font-bold text-white mb-10"
+          className="tekturFont text-shadow-white p-3 sm:p-0 text-center font-bold text-white mb-10"
         >
           PRODUCTS WE HAVE
         </motion.h1>
