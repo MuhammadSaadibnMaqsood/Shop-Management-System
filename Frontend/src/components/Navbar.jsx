@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react"; // hamburger icon
+import useLogout from "../hooks/useLogout";
 
 const Navbar = ({ role }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,6 +16,11 @@ const Navbar = ({ role }) => {
     navLinks.push({ path: "/dashboard", label: "Dashboard" });
   }
   // console.log(role);
+  const { mutate: logoutMutation, isPending, isError } = useLogout();
+
+  function handleLogout() {
+    logoutMutation();
+  }
 
   return (
     <header className="bebasFont bg-black text-white shadow-md sticky top-0 z-50">
@@ -46,13 +52,22 @@ const Navbar = ({ role }) => {
 
         {/* Right Button */}
         <div className="hidden md:block">
-          <Link to="/login">
-            <div class="rainbow relative z-0 overflow-hidden p-0.5 flex items-center justify-center rounded-full hover:scale-105 transition duration-300 active:scale-100">
-              <button class="px-8  cursor-pointer text-sm py-3 text-white rounded-full font-medium bg-gray-800">
-                Login
+          <div class="rainbow relative z-0 overflow-hidden p-0.5 flex items-center justify-center rounded-full hover:scale-105 transition duration-300 active:scale-100">
+            {role ? (
+              <button
+                onClick={handleLogout}
+                class="px-8  cursor-pointer text-sm py-3 text-white rounded-full font-medium bg-gray-800"
+              >
+                Logout
               </button>
-            </div>
-          </Link>
+            ) : (
+              <Link to="/login">
+                <button class="px-8  cursor-pointer text-sm py-3 text-white rounded-full font-medium bg-gray-800">
+                  Login
+                </button>
+              </Link>
+            )}
+          </div>
         </div>
 
         {/* Mobile Hamburger */}
@@ -76,11 +91,13 @@ const Navbar = ({ role }) => {
                 </NavLink>
               </li>
             ))}
-            <li>
-              <button className="bg-yellow-400 text-black font-semibold py-1 px-5 rounded-2xl hover:bg-yellow-300 transition">
-                <Link to={"/login"}>Login</Link>
-              </button>
-            </li>
+            {role ? null : (
+              <li>
+                <button className="bg-yellow-400 text-black font-semibold py-1 px-5 rounded-2xl hover:bg-yellow-300 transition">
+                  <Link to={"/login"}>Login</Link>
+                </button>
+              </li>
+            )}
           </ul>
         </div>
       )}

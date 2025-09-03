@@ -41,3 +41,16 @@ export const Signup = async (signupData) => {
     toast.error(error.response?.data?.message || "Something went wrong!");
   }
 };
+export const logout = async () => {
+  try {
+    const response = await axiosInstance.post("user/logout");
+
+    if (response?.data?.message === 'Logged out successfully' || response.data.success) {
+      toast.success("Logout successfully");
+    }
+
+    return response?.data
+  } catch (error) {
+    toast.error(error.response?.data?.message || "Something went wrong!");
+  }
+};
