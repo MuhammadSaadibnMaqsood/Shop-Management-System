@@ -12,6 +12,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Footer from "./components/Footer";
 import RegisterShop from "./Pages/RegisterShop";
 import Dashboard from "./Pages/shopownerPages/Dashboard";
+import About from "./Pages/About";
 
 function App() {
   const { isLoading, user } = useAuthUser();
@@ -33,6 +34,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/about" element={<About />} />
         <Route path="/registerShop" element={<RegisterShop />} />
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
