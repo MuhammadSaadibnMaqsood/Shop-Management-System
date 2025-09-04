@@ -66,8 +66,8 @@ export const addShop = async (shopDetails) => {
     const response = await axiosInstance.post("shop/create",shopDetails);
     console.log(response);
     
-    if (response.data.success) {
-      toast.success("Shop added");
+    if (response?.data.message === 'Shop created successfully') {
+      toast.success(response.data.message);
     }
 
     return response?.data;

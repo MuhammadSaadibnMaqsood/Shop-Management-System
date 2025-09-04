@@ -77,3 +77,24 @@ body {
   background-image: linear-gradient(#ff0a7f, #780eff);
   animation: rotate 4s linear infinite;
 }
+
+.form-shadow {
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+.form-shadow2 {
+  position: relative;
+  z-index: 1;
+}
+.my-box {
+}
+
+.my-box::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px; /* shadow spread ka feel */
+  background: linear-gradient(#ff0a7f, #780eff);
+  filter: blur(20px); /* shadow jesa look */
+  z-index: -1;
+}
