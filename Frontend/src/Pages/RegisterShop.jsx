@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import useAddShop from "../hooks/useAddShop";
-
+import { motion } from "framer-motion";
 const RegisterShop = () => {
   const [shopDetails, setShopDetails] = useState({
     shopName: null,
@@ -19,24 +19,29 @@ const RegisterShop = () => {
   return (
     <div className="text-white bg-zinc-950 h-screen w-full ">
       <div className="flex flex-col items-center justify-center ">
-        <h1 className="p-10 text-center text-6xl AsimovianFont font-bold">
-          Registor your shop
-        </h1>
+        <motion.h1
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.5 }}
+          className="text-center group hover:bg-clip-text hover:text-transparent hover:bg-gradient-to-r from-[#c6005c] to-[#4a00b8] transition-all duration-700 ease-in-out text-5xl sm:text-6xl md:text-7xl AsimovianFont font-bold tracking-widest relative"
+        >
+          Registor Your Shop
+          <motion.span
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.3 }}
+            transition={{ duration: 2 }}
+            className="group-hover:bg-clip-text group-hover:text-transparent group-hover:bg-gradient-to-r from-[#c6005c] to-[#4a00b8] transition-all duration-700 ease-in-out absolute AsimovianFont left-0 right-0 top-full text-5xl sm:text-6xl md:text-7xl font-bold tracking-widest text-gray-400 transform scale-y-[-1] blur-sm select-none"
+          >
+            Registor Your Shop
+          </motion.span>
+        </motion.h1>
       </div>
 
-      <div className="flex p-10 items-center justify-center gap-2">
-        {/* <div className="h-[50vh] w-[40vw]  flex items-center justify-center">
-          <img
-            className="w-96 h-full object-fill rounded-3xl"
-            src="/shop-sign.gif"
-            alt="shop-sign"
-          />
-        </div> */}
-
-        <div className="h-[55vh] w-[40vw] border">
+      <div className="flex p-10 mt-10 items-center  justify-center gap-2">
+        <div className="h-[55vh] w-[40vw] form-shadow  ">
           <form
             onSubmit={handleSubmit}
-            className="flex p-10  flex-col space-y-8 items-center justify-center"
+            className="flex p-10 relative z-50 flex-col space-y-8 items-center justify-center"
           >
             {/* Shop Name */}
             <div className="flex flex-col relative w-1/2 ">
@@ -52,7 +57,7 @@ const RegisterShop = () => {
               />
               <label
                 htmlFor="shopName"
-                className="absolute left-5 top-2 text-gray-400 transition-all 
+                className="absolute cursor-pointer left-5 top-2 text-gray-400 transition-all 
                peer-placeholder-shown:top-2 peer-placeholder-shown:text-gray-500 peer-placeholder-shown:text-base 
                peer-focus:top-[-10px] peer-focus:text-sm peer-focus:bg-clip-text peer-focus:text-transparent peer-focus:bg-gradient-to-r from-[#c6005c] to-[#4a00b8]"
               >
@@ -74,7 +79,7 @@ const RegisterShop = () => {
               />
               <label
                 htmlFor="address"
-                className="absolute left-5 top-2 text-gray-400 transition-all 
+                className="absolute left-5 top-2 cursor-pointer text-gray-400 transition-all 
                peer-placeholder-shown:top-2 peer-placeholder-shown:text-gray-500 peer-placeholder-shown:text-base 
                peer-focus:top-[-10px] peer-focus:text-sm peer-focus:bg-clip-text peer-focus:text-transparent peer-focus:bg-gradient-to-r from-[#c6005c] to-[#4a00b8]"
               >
@@ -94,9 +99,10 @@ const RegisterShop = () => {
                 type="number"
                 required
               />
+
               <label
                 htmlFor="phone"
-                className="absolute left-5 top-2 text-gray-400 transition-all 
+                className="absolute left-5 top-2 text-gray-400 cursor-pointer transition-all 
                peer-placeholder-shown:top-2 peer-placeholder-shown:text-gray-500 peer-placeholder-shown:text-base 
                peer-focus:top-[-10px] peer-focus:text-sm peer-focus:bg-clip-text peer-focus:text-transparent peer-focus:bg-gradient-to-r from-[#c6005c] to-[#4a00b8]"
               >
@@ -121,7 +127,7 @@ const RegisterShop = () => {
               />
               <label
                 htmlFor="description"
-                className="absolute left-5 top-2 text-gray-400 transition-all 
+                className="absolute left-5 top-2 text-gray-400 transition-all cursor-pointer
                peer-placeholder-shown:top-2 peer-placeholder-shown:text-gray-500 peer-placeholder-shown:text-base 
                peer-focus:top-[-10px] peer-focus:text-sm peer-focus:bg-clip-text peer-focus:text-transparent peer-focus:bg-gradient-to-r from-[#c6005c] to-[#4a00b8]"
               >

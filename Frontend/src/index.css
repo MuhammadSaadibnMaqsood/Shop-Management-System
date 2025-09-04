@@ -83,12 +83,10 @@ body {
 }
 .form-shadow2 {
   position: relative;
-  z-index: 1;
-}
-.my-box {
+  z-index: 10;
 }
 
-.my-box::after {
+.form-shadow2::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -97,4 +95,15 @@ body {
   background: linear-gradient(#ff0a7f, #780eff);
   filter: blur(20px); /* shadow jesa look */
   z-index: -1;
+}
+
+/* Hide arrows in number input */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
 }
