@@ -22,29 +22,34 @@ const RegisterShop = () => {
         <motion.h1
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1.5 }}
+          transition={{ duration: 1.5, delay: 1.5 }}
           className="text-center group hover:bg-clip-text hover:text-transparent hover:bg-gradient-to-r from-[#c6005c] to-[#4a00b8] transition-all duration-700 ease-in-out text-5xl sm:text-6xl md:text-7xl AsimovianFont font-bold tracking-widest relative"
         >
           Registor Your Shop
           <motion.span
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.3 }}
-            transition={{ duration: 2 }}
-            className="group-hover:bg-clip-text group-hover:text-transparent group-hover:bg-gradient-to-r from-[#c6005c] to-[#4a00b8] transition-all duration-700 ease-in-out absolute AsimovianFont left-0 right-0 top-full text-5xl sm:text-6xl md:text-7xl font-bold tracking-widest text-gray-400 transform scale-y-[-1] blur-sm select-none"
+            transition={{ duration: 2, delay: 1.5 }}
+            className="hidden md:block group-hover:bg-clip-text group-hover:text-transparent group-hover:bg-gradient-to-r from-[#c6005c] to-[#4a00b8] transition-all duration-700 ease-in-out absolute AsimovianFont left-0 right-0 top-full text-5xl sm:text-6xl md:text-7xl font-bold tracking-widest text-gray-400 transform scale-y-[-1] blur-sm select-none"
           >
             Registor Your Shop
           </motion.span>
         </motion.h1>
       </div>
 
-      <div className="flex p-10 mt-10 items-center  justify-center gap-2">
-        <div className="h-[55vh] w-[40vw] form-shadow  ">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 2, delay: 2.5 }}
+        className="flex p-10 mt-10 items-center  justify-center gap-2"
+      >
+        <div className="h-[45vh] lg:h-[55vh] w-[90vw] lg:w-[40vw] form-shadow  ">
           <form
             onSubmit={handleSubmit}
             className="flex p-10 relative z-50 flex-col space-y-8 items-center justify-center"
           >
             {/* Shop Name */}
-            <div className="flex flex-col relative w-1/2 ">
+            <div className="flex flex-col relative w-full lg:w-1/2 ">
               <input
                 id="shopName"
                 className="peer cursor-pointer border-b rounded-2xl h-10 p-5 text-white bg-transparent placeholder-transparent focus:outline-none"
@@ -66,7 +71,7 @@ const RegisterShop = () => {
             </div>
 
             {/* Address */}
-            <div className="flex flex-col relative w-1/2">
+            <div className="flex flex-col relative w-full md:w-1/2">
               <input
                 id="address"
                 className="peer cursor-pointer border-b rounded-2xl h-10 p-5 text-white bg-transparent placeholder-transparent focus:outline-none"
@@ -88,7 +93,7 @@ const RegisterShop = () => {
             </div>
 
             {/* Phone */}
-            <div className="flex flex-col relative w-1/2">
+            <div className="flex flex-col relative w-full md:w-1/2">
               <input
                 id="phone"
                 className="peer cursor-pointer border-b rounded-2xl h-10 p-5 text-white bg-transparent placeholder-transparent focus:outline-none"
@@ -111,7 +116,7 @@ const RegisterShop = () => {
             </div>
 
             {/* Description */}
-            <div className="flex flex-col relative w-1/2">
+            <div className="flex flex-col relative w-full md:w-1/2">
               <input
                 id="description"
                 className="peer cursor-pointer border-b rounded-2xl h-10 p-5 text-white bg-transparent placeholder-transparent focus:outline-none"
@@ -141,7 +146,7 @@ const RegisterShop = () => {
             </div>
           </form>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };
