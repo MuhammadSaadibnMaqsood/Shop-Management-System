@@ -13,6 +13,7 @@ import Footer from "./components/Footer";
 import RegisterShop from "./Pages/RegisterShop";
 import Dashboard from "./Pages/shopownerPages/Dashboard";
 import About from "./Pages/About";
+import Allproducts from "./Pages/Allproducts";
 
 function App() {
   const { isLoading, user } = useAuthUser();
@@ -35,6 +36,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/about" element={<About />} />
+        <Route path="/products" element={<Allproducts />} />
         <Route path="/registerShop" element={<RegisterShop />} />
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
