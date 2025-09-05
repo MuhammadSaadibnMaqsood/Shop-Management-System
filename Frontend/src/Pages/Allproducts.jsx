@@ -4,17 +4,19 @@ import ProductCard from "../components/ProductCard";
 const dummyProducts = [
   {
     _id: "1",
-    productName: "Nike Air Zoom",
+    productName: "Bag",
     price: 120,
     category: "shoes",
-    images: ["/uploads/shoe1.jpg", "/uploads/shoe2.jpg"],
+    images: [
+      "https://plus.unsplash.com/premium_photo-1664392147011-2a720f214e01?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZHVjdHxlbnwwfHwwfHx8MA%3D%3D",
+    ],
   },
   {
     _id: "2",
     productName: "Adidas Ultraboost",
     price: 150,
     category: "shoes",
-    images: ["/uploads/shoe3.jpg"],
+    images: ["/shoe2.jpg"],
   },
   {
     _id: "3",
@@ -22,7 +24,9 @@ const dummyProducts = [
     price: 40,
     category: "shirts",
     brand: "Levis",
-    images: ["/uploads/shirt1.jpg"],
+    images: [
+      "https://plus.unsplash.com/premium_photo-1683140431958-31505d0fd1ff?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bWVucyUyMHNoaXJ0fGVufDB8fDB8fHww",
+    ],
   },
 ];
 
@@ -40,15 +44,15 @@ const Allproducts = () => {
       </motion.h1>
 
       <div>
-        {dummyProducts.map((item) => {
+        {dummyProducts.map((item) => (
           <ProductCard
-          key={item._id}
+            key={item._id}
             productName={item.productName}
             price={item.price}
             image={item.images[0]}
-            category = {item.category}
-          />;
-        })}
+            category={item.category}
+          />
+        ))}
       </div>
     </div>
   );
