@@ -1,23 +1,30 @@
 import React from "react";
-import { delay, motion } from "framer-motion";
+import { motion } from "framer-motion";
+
 const About = () => {
   return (
     <div>
-      <div className="h-screen w-full relative bg-black text-white flex flex-col xl:flex-row  items-center justify-center">
+      <div className="h-screen w-full relative bg-black text-white flex flex-col xl:flex-row items-center justify-center">
+        {/* Image */}
         <motion.img
           initial={{ opacity: 0, y: 100 }}
-          animate={{ opacity: 0.7, y: 0 }}
-          transition={{ duration: 0.5, delay: 2 }}
-          className="h-full hidden sm:hidden md:hidden  xl:block"
+          animate={{ opacity: 0.8, y: 0 }}
+          transition={{
+            opacity: { duration: 0.7, delay: 2 },
+            y: { duration: 0.7, delay: 2 },
+          }}
+          whileHover={{ scale: 1.05 }}
+          className="h-full object-contain hidden xl:block"
           src="/shoe4.webp"
-          alt=""
+          alt="shoe"
         />
 
+        {/* Heading */}
         <motion.h1
           initial={{ opacity: 0, x: -100 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.5, duration: 1 }}
-          className="text-center group hover:bg-clip-text hover:text-transparent hover:bg-gradient-to-r from-[#c6005c] to-[#4a00b8] transition-all duration-700 ease-in-out md:text-9xl text-5xl sm:text-6xl static  xl:absolute  xl:top-35    xl:right-55 AsimovianFont"
+          className="text-center group hover:bg-clip-text hover:text-transparent hover:bg-gradient-to-r from-[#c6005c] to-[#4a00b8] transition-all duration-700 ease-in-out md:text-9xl text-5xl sm:text-6xl static xl:absolute xl:top-35 xl:right-55 AsimovianFont drop-shadow-[0_5px_15px_rgba(200,0,200,0.3)]"
         >
           AURA
           <motion.span
@@ -30,16 +37,17 @@ const About = () => {
           </motion.span>
         </motion.h1>
 
+        {/* Paragraph */}
         <motion.p
-        initial={{opacity:0,x:100}}
-        animate={{opacity:1,x:0}}
-        transition={{duration:1,delay:2.5}}
-        
-        className="static xl:absolute top-80 left-60 w-96">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-          similique non reprehenderit ea quibusdam, id aut ut vero minima quas
-          officiis doloribus laudantium inventore, vel impedit eos quo! Eveniet,
-          illum aperiam. Illo?
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 2.5 }}
+          className="static xl:absolute top-80 left-60 w-96 text-gray-300 leading-relaxed"
+        >
+          This role-based e-commerce platform allows customers to explore and
+          purchase products effortlessly, while shop owners and admins can
+          manage shops, products, and orders with ease, ensuring a smooth and
+          personalized shopping experience.
         </motion.p>
       </div>
     </div>
