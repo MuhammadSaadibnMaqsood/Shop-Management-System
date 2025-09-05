@@ -2,11 +2,22 @@ import React from "react";
 
 const ProductCard = ({ productName, price, image, category }) => {
   return (
-    <div>
-      <div>
-        <img src={image} alt="" />
+    <div class="group m-5 w-52 h-64 [perspective:1000px] cursor-pointer">
+      <div class="relative w-full h-full transition-transform duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+        {/* <!-- Front Side --> */}
+        <div class="absolute w-full h-full [backface-visibility:hidden] flex items-center justify-center rounded-md bg-white border border-gray-200">
+          <img
+            src={image}
+            alt={productName}
+            className="w-full h-full object-cpver rounded-md"
+          />
+        </div>
+
+        {/* <!-- Back Side --> */}
+        <div class="absolute w-full h-full [backface-visibility:hidden] flex items-center justify-center rounded-md bg-indigo-600 text-white [transform:rotateY(180deg)]">
+          Back Side
+        </div>
       </div>
-      <h2>{productName}</h2> <span>price</span>
     </div>
   );
 };
