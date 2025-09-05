@@ -64,11 +64,28 @@ export const logout = async () => {
 export const addShop = async (shopDetails) => {
   try {
     const response = await axiosInstance.post("shop/create",shopDetails);
-    console.log(response);
+    // console.log(response);
     
     if (response?.data.message === 'Shop created successfully') {
       toast.success(response.data.message);
     }
+
+    return response?.data;
+  } catch (error) {
+    toast.error(error.response?.data?.message || "Something went wrong!");
+  }
+};
+
+
+// GET ALL PRODUCTS 
+export const getProducts = async () => {
+  try {
+    const response = await axiosInstance.get("product/allproducts");
+    console.log(response);
+    
+    // if (response?.data.message === 'Shop created successfully') {
+    //   toast.success(response.data.message);
+    // }
 
     return response?.data;
   } catch (error) {

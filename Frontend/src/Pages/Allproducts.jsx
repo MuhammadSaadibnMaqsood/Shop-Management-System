@@ -10,7 +10,7 @@ const dummyProducts = [
     price: 120,
     category: "bags",
     images: [
-      "https://images.unsplash.com/photo-1627123424574-025d908aa8f5?ixlib=rb-4.0.3&q=80&w=1080",
+      "https://plus.unsplash.com/premium_photo-1678739395192-bfdd13322d34?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     ],
   },
   {
@@ -19,16 +19,14 @@ const dummyProducts = [
     price: 90,
     category: "bags",
     images: [
-      "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?ixlib=rb-4.0.3&q=80&w=1080",
+      "https://images.unsplash.com/photo-1598532163257-ae3c6b2524b6?q=80&w=763&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     ],
-  },
-  {
     _id: "3",
     productName: "Tote Bag",
     price: 60,
     category: "bags",
     images: [
-      "https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&q=80&w=1080",
+      "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?q=80&w=738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     ],
   },
   {
@@ -37,7 +35,7 @@ const dummyProducts = [
     price: 150,
     category: "bags",
     images: [
-      "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?ixlib=rb-4.0.3&q=80&w=1080",
+      "https://plus.unsplash.com/premium_photo-1681498856888-2f3552c0b189?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     ],
   },
 
@@ -86,7 +84,7 @@ const dummyProducts = [
     price: 45,
     category: "shirts",
     images: [
-      "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&q=80&w=1080",
+      "https://images.unsplash.com/photo-1602810320073-1230c46d89d4?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     ],
   },
   {
@@ -95,7 +93,7 @@ const dummyProducts = [
     price: 70,
     category: "shirts",
     images: [
-      "https://images.unsplash.com/photo-1598032892707-5b08b68d1c6f?ixlib=rb-4.0.3&q=80&w=1080",
+      "https://plus.unsplash.com/premium_photo-1725075088969-73798c9b422c?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     ],
   },
   {
@@ -104,7 +102,7 @@ const dummyProducts = [
     price: 65,
     category: "shirts",
     images: [
-      "https://images.unsplash.com/photo-1618354691325-67852e8a9b42?ixlib=rb-4.0.3&q=80&w=1080",
+      "https://images.unsplash.com/photo-1581655353564-df123a1eb820?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     ],
   },
   {
@@ -113,7 +111,7 @@ const dummyProducts = [
     price: 55,
     category: "shirts",
     images: [
-      "https://images.unsplash.com/photo-1624378439575-2d9e2c1e25c7?ixlib=rb-4.0.3&q=80&w=1080",
+      "https://plus.unsplash.com/premium_photo-1673356301514-2cad91907f74?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     ],
   },
 
@@ -196,23 +194,36 @@ const dummyProducts = [
 
 const Allproducts = () => {
   const shoes = dummyProducts.filter((item) => item.category === "shoes");
-  console.log(shoes);
+  const bags = dummyProducts.filter((item) => item.category === "bags");
+  const shirts = dummyProducts.filter((item) => item.category === "shirts");
+  // console.log(shoes);
 
   return (
     <div className="bg-zinc-950">
-      {/* <motion.h1
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
-        viewport={{ once: true }}
-        className="AsimovianFont pt-10 bg-gradient-to-r from-[#c6005c] to-[#4a00b8] bg-clip-text text-transparent text-center text-6xl md:text-7xl font-bold"
-      >
-        Product we have !
-      </motion.h1> */}
+        {/* INDIVIDUAL PRODUCT SECTION FOR SHOES  */}
       <div className="">
-        {/* INDIVIDUAL PRODUCT SECTION  */}
+        <h1 className="text-5xl w-[70%] mx-auto text-white tekturFont py-5">
+          Shoes
+        </h1>
+
         <div className="">
           <ProductsSection cardData={shoes} />
+        </div>
+        {/* INDIVIDUAL PRODUCT SECTION FOR BAGS  */}
+        <h1 className="text-5xl w-[70%] pt-7 mx-auto text-white tekturFont py-5">
+          BAGS
+        </h1>
+
+        <div className="">
+          <ProductsSection cardData={bags} />
+        </div>
+        {/* INDIVIDUAL PRODUCT SECTION SHIRTS */}
+        <h1 className="text-5xl w-[70%] mx-auto text-white tekturFont pt-7 py-5">
+          SHIRTS
+        </h1>
+
+        <div className="">
+          <ProductsSection cardData={shirts} />
         </div>
       </div>
     </div>

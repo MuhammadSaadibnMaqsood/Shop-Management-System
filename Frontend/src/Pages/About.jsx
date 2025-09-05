@@ -24,7 +24,7 @@ const About = () => {
           initial={{ opacity: 0, x: -100 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.5, duration: 1 }}
-          className="text-center group hover:bg-clip-text hover:text-transparent hover:bg-gradient-to-r from-[#c6005c] to-[#4a00b8] transition-all duration-700 ease-in-out md:text-9xl text-9xl static xl:absolute xl:top-35 xl:right-55 AsimovianFont drop-shadow-[0_5px_15px_rgba(200,0,200,0.3)]"
+          className="text-center group hover:bg-clip-text hover:text-transparent hover:bg-gradient-to-r from-[#c6005c] to-[#4a00b8] transition-all duration-700 ease-in-out md:text-9xl text-9xl static xl:absolute xl:top-20 xl:right-25 AsimovianFont drop-shadow-[0_5px_15px_rgba(200,0,200,0.3)]"
         >
           AURA
           <motion.span
@@ -39,10 +39,10 @@ const About = () => {
 
         {/* Paragraph */}
         <motion.p
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, x:100  }}
+          animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, delay: 2.5 }}
-          className="static pt-20 xl:p-0 xl:absolute top-80 left-60 w-full text-center xl:w-96 text-gray-300 leading-relaxed"
+          className="static pt-20 xl:p-0 xl:absolute top-60 left-30 w-full text-center xl:w-96 text-gray-300 leading-relaxed"
         >
           This role-based e-commerce platform allows customers to explore and
           purchase products effortlessly, while shop owners and admins can

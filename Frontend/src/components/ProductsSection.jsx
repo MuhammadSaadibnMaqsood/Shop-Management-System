@@ -47,7 +47,6 @@ const ProductsSection = ({cardData}) => {
         onMouseEnter={() => setStopScroll(true)}
         onMouseLeave={() => setStopScroll(false)}
       >
-        <h1 className="text-5xl text-white tekturFont py-5">Shoes</h1>
         <div className="absolute left-0 top-0 h-full w-20 z-10 pointer-events-none bg-transparent" />
         <div
           className="marquee-inner flex w-fit"
