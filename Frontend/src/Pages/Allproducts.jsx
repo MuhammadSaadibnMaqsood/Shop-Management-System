@@ -39,16 +39,19 @@ const Allproducts = () => {
 
   return (
     <div className="bg-zinc-950 text-white">
-      <div className="flex items-center justify-between p-6">
+      <div className="flex flex-col md:flex-row items-center justify-between p-6">
         <div className="w-full">
           <input
             type="text"
             onKeyDown={searchFilter}
             placeholder="search item"
-            className="bg-white ml-0 px-4 py-2 lg:ml-44 text-black rounded-2xl w-1/2"
+            className="bg-white ml-0 px-4 py-2 lg:ml-44 text-black rounded-2xl w-full md:w-1/2 "
           />
         </div>
+        <div className="flex md:block items-center justify-end w-full md:w-32 mt-6 md:mt-0">
+
         <Funnel className="w-7 h-7" />
+        </div>
       </div>
 
       {/* 👇 agar search nh ho to normal sections dikhayenge */}
