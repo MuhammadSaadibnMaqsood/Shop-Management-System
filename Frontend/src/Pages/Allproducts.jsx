@@ -11,7 +11,7 @@ const Allproducts = () => {
   const bags = dummyProducts.filter((item) => item.category === "bags");
   const shirts = dummyProducts.filter((item) => item.category === "shirts");
 
-  const [filteredItem, setFilteredItem] = useState([]);
+  const [filteredItem, setFilteredItem] = useState(dummyProducts);
   const [isSearching, setIsSearching] = useState(false);
 
   const { products, isLoading, error } = useGetAllProducts();
