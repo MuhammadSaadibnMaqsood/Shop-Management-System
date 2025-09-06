@@ -63,10 +63,10 @@ export const logout = async () => {
 // REGISTOR SHOP
 export const addShop = async (shopDetails) => {
   try {
-    const response = await axiosInstance.post("shop/create",shopDetails);
+    const response = await axiosInstance.post("shop/create", shopDetails);
     // console.log(response);
-    
-    if (response?.data.message === 'Shop created successfully') {
+
+    if (response?.data.message === "Shop created successfully") {
       toast.success(response.data.message);
     }
 
@@ -76,16 +76,11 @@ export const addShop = async (shopDetails) => {
   }
 };
 
-
-// GET ALL PRODUCTS 
+// GET ALL PRODUCTS
 export const getProducts = async () => {
   try {
     const response = await axiosInstance.get("product/allproducts");
-    console.log(response);
-    
-    // if (response?.data.message === 'Shop created successfully') {
-    //   toast.success(response.data.message);
-    // }
+    // console.log(response);
 
     return response?.data;
   } catch (error) {
