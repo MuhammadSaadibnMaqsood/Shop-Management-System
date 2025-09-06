@@ -13,15 +13,18 @@ const Allproducts = () => {
 
   const [filteredItem, setFilteredItem] = useState(dummyProducts);
   const [isSearching, setIsSearching] = useState(false);
+  const [showFilter, setShowFilter] = useState(false);
+  const [filterArray, setFilterArray] = useState([]);
 
   const { products, isLoading, error } = useGetAllProducts();
 
+  // 🔎 Search functionality
   function searchFilter(e) {
     if (e.key === "Enter") {
       const searchValue = e.target.value.toLowerCase();
 
       if (searchValue.trim() === "") {
-        setFilteredItem([]); // reset
+        setFilteredItem(dummyProducts);
         setIsSearching(false);
         return;
       }
@@ -37,8 +40,39 @@ const Allproducts = () => {
     }
   }
 
+  function handleCheckbox(value) {
+    setFilterArray((prev) => {
+      let updated;
+      if (prev.includes(value)) {
+        updated = prev.filter((item) => item !== value); // remove
+      } else {
+        updated = [...prev, value]; // add
+      }
+
+      // agar kuch select kiya hai toh filter karo, warna sab products show karo
+      if (updated.length > 0) {
+        setFilteredItem(
+          dummyProducts.filter((product) =>
+            updated.some((range) => product.price <= range)
+          )
+        );
+        setIsSearching(true);
+      } else {
+        setFilteredItem(dummyProducts);
+        setIsSearching(false);
+      }
+
+      return updated;
+    });
+  }
+
+  function handleFilterModel() {
+    setShowFilter(false);
+  }
+
   return (
-    <div className="bg-zinc-950 text-white">
+    <div className="bg-zinc-950 text-white relative">
+      {/* Search & Filter Row */}
       <div className="flex flex-col md:flex-row items-center justify-between p-6">
         <div className="w-full">
           <input
@@ -49,27 +83,62 @@ const Allproducts = () => {
           />
         </div>
         <div className="flex md:block items-center justify-end w-full md:w-32 mt-6 md:mt-0">
-
-        <Funnel className="w-7 h-7" />
+          <Funnel
+            onClick={() => setShowFilter(true)}
+            className="w-7 h-7 cursor-pointer"
+          />
         </div>
       </div>
 
-      {/* 👇 agar search nh ho to normal sections dikhayenge */}
+      {/* Filter Modal */}
+      {showFilter && (
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-10">
+          {/* Modal Box */}
+          <div className="p-10 absolute text-black z-20 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-2xl w-96 bg-white">
+            <h1 className="text-center mb-10">Price Ranges</h1>
+            {[
+              { label: "0-100Rs", value: 100 },
+              { label: "0-200Rs", value: 200 },
+              { label: "0-300Rs", value: 300 },
+            ].map((range) => (
+              <div
+                key={range.value}
+                className="flex items-center p-5 gap-5 justify-center"
+              >
+                <input
+                  onChange={() => handleCheckbox(range.value)}
+                  className="cursor-pointer"
+                  type="checkbox"
+                  checked={filterArray.includes(range.value)}
+                />
+                <span>{range.label}</span>
+              </div>
+            ))}
+            <div className="rainbow relative z-0 overflow-hidden p-0.5 flex items-center justify-center rounded-full hover:scale-105 transition duration-300 active:scale-100">
+              <button
+                onClick={handleFilterModel}
+                className="px-8 cursor-pointer text-sm py-3 text-white rounded-full font-medium bg-gray-800"
+              >
+                Done
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Categories (Only when not searching) */}
       {!isSearching && (
-        <div>
-          {/* INDIVIDUAL PRODUCT SECTION FOR SHOES  */}
+        <div className="relative">
           <h1 className="text-5xl w-[70%] mx-auto text-white tekturFont py-5">
             Shoes
           </h1>
           <ProductsSection cardData={shoes} />
 
-          {/* INDIVIDUAL PRODUCT SECTION FOR BAGS  */}
           <h1 className="text-5xl w-[70%] pt-7 mx-auto text-white tekturFont py-5">
             BAGS
           </h1>
           <ProductsSection cardData={bags} />
 
-          {/* INDIVIDUAL PRODUCT SECTION FOR SHIRTS */}
           <h1 className="text-5xl w-[70%] mx-auto text-white tekturFont pt-7 py-5">
             SHIRTS
           </h1>
@@ -77,6 +146,7 @@ const Allproducts = () => {
         </div>
       )}
 
+      {/* All Products (Default View) */}
       {!isSearching && (
         <>
           <motion.h1
@@ -95,8 +165,8 @@ const Allproducts = () => {
               ALL PRODUCTS
             </motion.span>
           </motion.h1>
-          <div className="w-[70%] flex gap-10 flex-wrap mx-auto py-5">
-            {filteredItem.map((item) => (
+          <div className="w-[70%] flex gap-10 sm:gap-2 xl:gap-7 md:gap-10 flex-wrap mx-auto py-5">
+            {dummyProducts.map((item) => (
               <ProductCard
                 key={item.productName}
                 productName={item.productName}
@@ -109,7 +179,7 @@ const Allproducts = () => {
         </>
       )}
 
-      {/* 👇 agar search ho to sirf filteredItem show karenge */}
+      {/* Search / Filter Results */}
       {isSearching && (
         <>
           <motion.h1
@@ -120,7 +190,7 @@ const Allproducts = () => {
           >
             SEARCH RESULTS
           </motion.h1>
-          <div className="w-[70%] flex gap-10 flex-wrap mx-auto py-5">
+          <div className="w-[70%] flex gap-10 justify-evenly items-center flex-wrap mx-auto py-5">
             {filteredItem.length > 0 ? (
               filteredItem.map((item) => (
                 <ProductCard

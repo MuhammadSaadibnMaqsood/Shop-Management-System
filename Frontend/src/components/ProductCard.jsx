@@ -15,7 +15,10 @@ const ProductCard = ({ productName, price, image, category }) => {
 
         {/* <!-- Back Side --> */}
         <div class="absolute w-full h-full [backface-visibility:hidden] flex items-center justify-center rounded-md bg-indigo-600 text-white [transform:rotateY(180deg)]">
-          Back Side
+          <div>
+            <h2 className="text-center">{productName}</h2>
+            <p className="text-center">{price}Rs</p>
+          </div>
         </div>
       </div>
     </div>
