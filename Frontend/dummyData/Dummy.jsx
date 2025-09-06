@@ -127,7 +127,7 @@ export const dummyProducts = [
     price: 90,
     category: "jeans",
     images: [
-      "https://images.unsplash.com/photo-1607345366928-402d96b60a3a?ixlib=rb-4.0.3&q=80&w=1080",
+      "https://plus.unsplash.com/premium_photo-1674828601362-afb73c907ebe?q=80&w=753&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     ],
   },
   {
@@ -136,7 +136,7 @@ export const dummyProducts = [
     price: 85,
     category: "jeans",
     images: [
-      "https://images.unsplash.com/photo-1602810319256-36c1b2cc74e5?ixlib=rb-4.0.3&q=80&w=1080",
+      "https://images.unsplash.com/photo-1542272604-787c3835535d?q=80&w=1026&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     ],
   },
   {
@@ -145,7 +145,7 @@ export const dummyProducts = [
     price: 95,
     category: "jeans",
     images: [
-      "https://images.unsplash.com/photo-1593032465171-8e5cf72e23a6?ixlib=rb-4.0.3&q=80&w=1080",
+      "https://images.unsplash.com/photo-1602293589930-45aad59ba3ab?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     ],
   },
 
@@ -165,7 +165,7 @@ export const dummyProducts = [
     price: 500,
     category: "watches",
     images: [
-      "https://images.unsplash.com/photo-1585241645927-43cbbf8e7e8d?ixlib=rb-4.0.3&q=80&w=1080",
+      "https://images.unsplash.com/photo-1604242692760-2f7b0c26856d?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     ],
   },
   {
@@ -174,7 +174,7 @@ export const dummyProducts = [
     price: 250,
     category: "watches",
     images: [
-      "https://images.unsplash.com/photo-1523475496153-3d6ccf62d936?ixlib=rb-4.0.3&q=80&w=1080",
+      "https://images.unsplash.com/photo-1620625515032-6ed0c1790c75?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     ],
   },
   {
@@ -183,8 +183,7 @@ export const dummyProducts = [
     price: 150,
     category: "watches",
     images: [
-      "https://images.unsplash.com/photo-1509718443690-d8e2fb3474b7?ixlib=rb-4.0.3&q=80&w=1080",
+      "https://images.unsplash.com/photo-1507679622673-989605832e3d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     ],
   },
 ];
-
