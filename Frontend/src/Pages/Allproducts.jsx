@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import ProductCard from "../components/ProductCard";
 import ProductsSection from "../components/ProductsSection";
 import useGetAllProducts from "../hooks/useGetAllProducts";
 import { dummyProducts } from "../../dummyData/Dummy";
 import { Funnel } from "lucide-react";
+import useProductsStore from "../Zustand/useProducts";
 
 const Allproducts = () => {
   const shoes = dummyProducts.filter((item) => item.category === "shoes");
@@ -17,8 +18,17 @@ const Allproducts = () => {
   const [filterArray, setFilterArray] = useState([]);
 
   const { products, isLoading, error } = useGetAllProducts();
+  const { productsZustand, setProducts } = useProductsStore();
 
-  // 🔎 Search functionality
+  setProducts(products);
+
+  useEffect(() => {
+    if (products) {
+      setProducts(products);
+    }
+  }, [products, setProducts]);
+
+
   function searchFilter(e) {
     if (e.key === "Enter") {
       const searchValue = e.target.value.toLowerCase();
@@ -165,10 +175,11 @@ const Allproducts = () => {
               ALL PRODUCTS
             </motion.span>
           </motion.h1>
-          <div className="w-[70%] flex gap-10 sm:gap-2 xl:gap-7 md:gap-10 flex-wrap mx-auto py-5">
+          <div className="w-[75%] justify-center mx-auto flex gap-10 sm:gap-2 xl:gap-7 md:gap-10 flex-wrap mx-auto py-5">
             {dummyProducts.map((item) => (
               <ProductCard
                 key={item.productName}
+                productId={item._id}
                 productName={item.productName}
                 price={item.price}
                 image={item.images[0]}

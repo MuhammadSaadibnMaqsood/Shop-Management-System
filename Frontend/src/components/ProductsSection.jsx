@@ -1,28 +1,7 @@
 import React, { useState } from "react";
-// const cardData = [
-//   {
-//     title: "Unlock Your Creative Flow",
-//     image:
-//       "https://images.unsplash.com/photo-1543487945-139a97f387d5?w=1200&auto=format&fit=crop&q=60",
-//   },
-//   {
-//     title: "Design Your Digital Future",
-//     image:
-//       "https://images.unsplash.com/photo-1529254479751-faeedc59e78f?w=1200&auto=format&fit=crop&q=60",
-//   },
-//   {
-//     title: "Build with Passion, Ship with Pride",
-//     image:
-//       "https://images.unsplash.com/photo-1618327907215-4e514efabd41?w=1200&auto=format&fit=crop&q=60",
-//   },
-//   {
-//     title: "Think Big, Code Smart",
-//     image:
-//       "https://images.unsplash.com/photo-1583407723467-9b2d22504831?w=1200&auto=format&fit=crop&q=60",
-//   },
-// ];
+import { Link } from "react-router-dom";
 
-const ProductsSection = ({cardData}) => {
+const ProductsSection = ({ cardData }) => {
   const [stopScroll, setStopScroll] = useState(false);
   return (
     <>
@@ -57,24 +36,26 @@ const ProductsSection = ({cardData}) => {
         >
           <div className="flex">
             {[...cardData, ...cardData].map((card, index) => (
-              <div
-                key={index}
-                className="w-56 mx-4 h-[20rem] relative group hover:scale-90 transition-all duration-300"
-              >
-                <img
-                  src={card.images[0]}
-                  alt="card"
-                  className="w-full h-full object-cover"
-                />
-                <div className="flex items-center flex-col justify-center px-4 opacity-0 group-hover:opacity-100 transition-all duration-300 absolute bottom-0 backdrop-blur-md left-0 w-full h-full bg-black/20">
-                  <p className="text-white text-lg font-semibold text-center">
-                    {card.productName}
-                  </p>
-                  <p className="text-white text-lg font-semibold text-center">
-                    Price:{" "} <b>{card.price}Rs</b>
-                  </p>
+              <Link to={`${card._id}`}>
+                <div
+                  key={index}
+                  className="w-56 mx-4 h-[20rem] relative group hover:scale-90 transition-all duration-300"
+                >
+                  <img
+                    src={card.images[0]}
+                    alt="card"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="flex items-center flex-col justify-center px-4 opacity-0 group-hover:opacity-100 transition-all duration-300 absolute bottom-0 backdrop-blur-md left-0 w-full h-full bg-black/20">
+                    <p className="text-white text-lg font-semibold text-center">
+                      {card.productName}
+                    </p>
+                    <p className="text-white text-lg font-semibold text-center">
+                      Price: <b>{card.price}Rs</b>
+                    </p>
+                  </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
