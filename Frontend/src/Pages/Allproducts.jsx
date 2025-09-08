@@ -20,7 +20,7 @@ const Allproducts = () => {
   const { products, isLoading, error } = useGetAllProducts();
   const { productsZustand, setProducts } = useProductsStore();
 
-  setProducts(products);
+  // setProducts(products);
 
   useEffect(() => {
     if (products) {

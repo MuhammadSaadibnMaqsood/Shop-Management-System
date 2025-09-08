@@ -15,6 +15,7 @@ import Dashboard from "./Pages/shopownerPages/Dashboard";
 import About from "./Pages/About";
 import Allproducts from "./Pages/Allproducts";
 import IndividualProduct from "./Pages/IndividualProduct";
+import CreateProduct from "./Pages/shopownerPages/CreateProduct";
 
 function App() {
   const { isLoading, user } = useAuthUser();
@@ -41,6 +42,7 @@ function App() {
         <Route path="/products/:id" element={<IndividualProduct />} />
         <Route path="/registerShop" element={<RegisterShop />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/createproduct" element={<CreateProduct />} />
       </Routes>
 
       <Footer />
