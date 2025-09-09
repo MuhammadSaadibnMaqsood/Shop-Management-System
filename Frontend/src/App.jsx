@@ -43,7 +43,7 @@ function App() {
         <Route path="/products/:id" element={<IndividualProduct />} />
         <Route path="/registerShop" element={<RegisterShop />} />
         <Route path="/owner" element={<OwnerLayout />}>
-          <Route index element={<Dashboard />} />
+          {/* /owner pe Dashboard aaega */}
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="createproduct" element={<CreateProduct />} />
         </Route>

@@ -2,6 +2,8 @@ import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 const SideBar = () => {
   const location = useLocation();
+  console.log(location);
+  
   const navigate = useNavigate();
 
   return (
@@ -10,7 +12,7 @@ const SideBar = () => {
         <button
         onClick={()=> navigate('dashboard')}
           className={`w-full border-b border-pink-300 cursor-pointer hover:scale-105 transition-all duration-700 text-white h-14 rounded-2xl ${
-            location.pathname === "/dashboard" ? "border-purple-900" : "border-pink-300"
+            location.pathname === "/owner/dashboard" ? "border-purple-900" : "border-pink-300"
           }`}
         >
           Dashboard
@@ -18,7 +20,7 @@ const SideBar = () => {
         <button
         onClick={()=> navigate('createproduct')}
           className={`w-full border-b pt-3 mt-5 border-pink-300 cursor-pointer hover:scale-105 transition-all duration-700 text-white h-14 rounded-2xl ${
-            location.pathname === "/createproduct" ? "border-purple-900" : "border-pink-300"
+            location.pathname === "/owner/createproduct" ? "border-purple-900" : "border-pink-300"
           }`}
         >
             List product

@@ -4,11 +4,11 @@ import { Outlet } from "react-router-dom";
 
 const OwnerLayout = () => {
   return (
-    <div>
+    <div className="flex">
       <div>
         <SideBar />
       </div>
-      <div>
+      <div className="h-full w-full">
         <Outlet />
       </div>
     </div>

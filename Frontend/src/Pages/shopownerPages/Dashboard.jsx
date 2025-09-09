@@ -1,13 +1,13 @@
-import React from 'react'
-import SideBar from '../../components/SideBar'
+import React from "react";
+import SideBar from "../../components/SideBar";
+import { Outlet } from "react-router-dom";
 
-const Dashboard = () => {
+const OwnerLayout = () => {
   return (
-    <div className='w-full h-[90] bg-zinc-950 text-white'>
-      {/* <SideBar/> */}
-
+    <div className="flex min-h-[90vh] bg-zinc-950">
+      <h1 className="text-white">HELLO</h1>
     </div>
-  )
-}
+  );
+};
 
-export default Dashboard
+export default OwnerLayout;
