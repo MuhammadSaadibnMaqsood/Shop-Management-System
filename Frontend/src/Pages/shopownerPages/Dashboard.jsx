@@ -1,13 +1,32 @@
 import React from "react";
-import SideBar from "../../components/SideBar";
-import { Outlet } from "react-router-dom";
-
-const OwnerLayout = () => {
+import { motion } from "framer-motion";
+const Dashboard = () => {
   return (
-    <div className="flex min-h-[90vh] bg-zinc-950">
-      <h1 className="text-white">HELLO</h1>
+    <div className="min-h-[90vh] bg-zinc-950 p-10">
+      <motion.h1
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5 }}
+        className="text-center pb-10 text-white w-ful group hover:bg-clip-text hover:text-transparent hover:bg-gradient-to-r from-[#c6005c] to-[#4a00b8] transition-all duration-700 ease-in-out text-3xl sm:text-3xl md:text-5xl AsimovianFont font-bold tracking-widest relative"
+      >
+        DASHBOARD OVERVIEW
+      </motion.h1>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Total Sales */}
+        <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300">
+          <h2 className="text-lg font-medium text-gray-300">Total Sales</h2>
+          <p className="text-3xl font-bold text-green-400 mt-3">1200+</p>
+        </div>
+
+        {/* Total Listed Items */}
+        <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300">
+          <h2 className="text-lg font-medium text-gray-300">Listed Items</h2>
+          <p className="text-3xl font-bold text-blue-400 mt-3">45</p>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default OwnerLayout;
+export default Dashboard;
