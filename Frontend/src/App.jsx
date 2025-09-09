@@ -44,6 +44,7 @@ function App() {
         <Route path="/registerShop" element={<RegisterShop />} />
         <Route path="/owner" element={<OwnerLayout />}>
           <Route index element={<Dashboard />} />
+          <Route path="dashboard" element={<Dashboard />} />
           <Route path="createproduct" element={<CreateProduct />} />
         </Route>
       </Routes>

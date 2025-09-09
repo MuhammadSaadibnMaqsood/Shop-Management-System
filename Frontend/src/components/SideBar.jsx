@@ -8,7 +8,7 @@ const SideBar = () => {
     <div className="w-64 h-[90vh] bg-zinc-950 border-r border-gray-800 p-5">
       <div>
         <button
-        onClick={()=> navigate('/dashboard')}
+        onClick={()=> navigate('dashboard')}
           className={`w-full border-b border-pink-300 cursor-pointer hover:scale-105 transition-all duration-700 text-white h-14 rounded-2xl ${
             location.pathname === "/dashboard" ? "border-purple-900" : "border-pink-300"
           }`}
@@ -16,7 +16,7 @@ const SideBar = () => {
           Dashboard
         </button>
         <button
-        onClick={()=> navigate('/createproduct')}
+        onClick={()=> navigate('createproduct')}
           className={`w-full border-b pt-3 mt-5 border-pink-300 cursor-pointer hover:scale-105 transition-all duration-700 text-white h-14 rounded-2xl ${
             location.pathname === "/createproduct" ? "border-purple-900" : "border-pink-300"
           }`}

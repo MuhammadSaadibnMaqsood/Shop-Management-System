@@ -5,7 +5,6 @@ import { Outlet } from "react-router-dom";
 const OwnerLayout = () => {
   return (
     <div>
-      <h1>Owner Layout Loaded ✅</h1>
       <div>
         <SideBar />
       </div>
