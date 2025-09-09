@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { dummyProducts } from "../../../dummyData/Dummy";
 const Dashboard = () => {
   return (
     <div className="min-h-[90vh] bg-zinc-950 p-10">
@@ -22,7 +23,45 @@ const Dashboard = () => {
         {/* Total Listed Items */}
         <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300">
           <h2 className="text-lg font-medium text-gray-300">Listed Items</h2>
-          <p className="text-3xl font-bold text-blue-400 mt-3">45</p>
+          <p className="text-3xl font-bold text-blue-400 mt-3">
+            {dummyProducts.length}
+          </p>
+        </div>
+      </div>
+
+      <div className="text-white pt-10">
+        <div className="overflow-x-auto rounded-lg shadow-lg border border-zinc-800">
+          <table className="w-full text-left border-collapse">
+            <thead className="bg-zinc-900 text-gray-300">
+              <tr>
+                <th className="px-6 py-3 border-b border-zinc-800">Product</th>
+                <th className="px-6 py-3 border-b border-zinc-800">Price</th>
+                <th className="px-6 py-3 border-b border-zinc-800">Stock</th>
+                <th className="px-6 py-3 border-b border-zinc-800">Sell</th>
+              </tr>
+            </thead>
+            <tbody>
+              {dummyProducts.map((product, index) => (
+                <tr
+                  key={index}
+                  className="hover:bg-zinc-800 transition duration-200"
+                >
+                  <td className="px-6 py-4 border-b border-zinc-800 font-medium">
+                    {product.productName}
+                  </td>
+                  <td className="px-6 py-4 border-b border-zinc-800 text-green-400">
+                    Rs. {product.price}
+                  </td>
+                  <td className="px-6 py-4 border-b border-zinc-800">
+                    {product.stock || 0}
+                  </td>
+                  <td className="px-6 py-4 border-b border-zinc-800 text-blue-400">
+                    {product.sell || 0}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
