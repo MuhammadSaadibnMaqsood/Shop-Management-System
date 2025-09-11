@@ -29,7 +29,8 @@ const CreateProduct = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-
+    console.log(productData);
+    
     list(productData);
   }
   return (

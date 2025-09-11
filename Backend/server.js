@@ -4,7 +4,7 @@ import connectDB from './config/db.js';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import userRouter from './routes/userRoutes.js';
-import clodinary from './config/cloudinary.js';
+// import clodinary from './config/cloudinary.js';
 import shopRouter from './routes/shopRouter.js';
 import productRouter from './routes/productRoutes.js';
 import bookingRouter from './routes/bookingRoutes.js';
@@ -15,7 +15,7 @@ const PORT = process.env.PORT ||3000;
 // connectivity to MongoDB
 connectDB();
 // connectivity to Cloudinary
-clodinary();
+// clodinary();
 
 // app setup
 const app = express();

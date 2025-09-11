@@ -5,8 +5,15 @@ import productModel from "../models/product.js";
 // FUNCTION TO CREATE PRODUCT
 export async function createProduct(req, res) {
   try {
-    const { productName, price, description, category,warranty, stock, brand } =
-      req.body;
+    const {
+      productName,
+      price,
+      description,
+      category,
+      warranty,
+      stock,
+      brand,
+    } = req.body;
 
     if (
       !productName ||
@@ -18,6 +25,8 @@ export async function createProduct(req, res) {
     ) {
       return res.status(400).json({ message: "All fields are required" });
     }
+
+    console.log(req.body);
 
     if (price <= 0 || stock < 0) {
       return res.status(400).json({

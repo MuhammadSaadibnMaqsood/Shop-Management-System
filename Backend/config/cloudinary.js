@@ -1,18 +1,10 @@
-import { v2 as cloudinary } from 'cloudinary';
+// config/cloudinary.js
+import { v2 as cloudinary } from "cloudinary";
 
-const clodinary = async ()=> {
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
-    try {
-        cloudinary.config({ 
-            cloud_name: process.env.CLOUDINARY_CLOUD_NAME, 
-            api_key: process.env.CLOUDINARY_API_KEY,
-            api_secret: process.env.CLOUDINARY_API_SECRET 
-        });
-
-    } catch (error) {
-        console.error("Cloudinary configuration error:", error);
-        throw new Error("Failed to configure Cloudinary");
-    }
-}
-
-export default clodinary;
+export default cloudinary;

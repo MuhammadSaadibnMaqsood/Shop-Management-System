@@ -89,9 +89,9 @@ export const getProducts = async () => {
 };
 
 // LIST PRODUCT
-export const listProduct = async () => {
+export const listProduct = async (productData) => {
   try {
-    const response = await axiosInstance.post("product/create");
+    const response = await axiosInstance.post("product/create", productData);
     console.log(response);
 
     if (response.data.success) {
