@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Plus } from "lucide-react";
+import useListProduct from "../../hooks/useListProduct";
 
 const CreateProduct = () => {
   const [productData, setproductData] = useState({
@@ -14,14 +15,22 @@ const CreateProduct = () => {
     images: [],
   });
 
+  const { mutate: list, isLoading, isError } = useListProduct();
+
   function handleImageChange(e, index) {
-    const file = e.target.files[0]; 
+    const file = e.target.files[0];
     if (!file) return;
 
     let newImages = [...productData.images];
     newImages[index] = file;
 
     setproductData({ ...productData, images: newImages });
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    list(productData);
   }
   return (
     <div className="min-h-screen bg-zinc-950 text-white flex flex-col items-center px-6 py-10">
@@ -38,7 +47,10 @@ const CreateProduct = () => {
         List your product
       </motion.h1>
 
-      <form className="w-full max-w-3xl bg-zinc-900 p-8 rounded-2xl shadow-xl space-y-6">
+      <form
+        onSubmit={handleSubmit}
+        className="w-full max-w-3xl bg-zinc-900 p-8 rounded-2xl shadow-xl space-y-6"
+      >
         {/* Row 1 */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <input
@@ -46,6 +58,7 @@ const CreateProduct = () => {
               setproductData({ ...productData, productName: e.target.value })
             }
             type="text"
+            required={true}
             placeholder="Product Name"
             className="w-full px-4 py-3 rounded-lg bg-zinc-800 
             text-white border border-zinc-700 focus:outline-none 
@@ -53,6 +66,7 @@ const CreateProduct = () => {
           />
           <input
             type="number"
+            required={true}
             onChange={(e) =>
               setproductData({ ...productData, price: e.target.value })
             }
@@ -66,6 +80,7 @@ const CreateProduct = () => {
         {/* Row 2 */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <input
+            required={true}
             onChange={(e) =>
               setproductData({ ...productData, category: e.target.value })
             }
@@ -80,6 +95,7 @@ const CreateProduct = () => {
               setproductData({ ...productData, warranty: e.target.value })
             }
             type="number"
+            required={true}
             placeholder="Warranty (months)"
             className="w-full px-4 py-3 rounded-lg bg-zinc-800 
             text-white border border-zinc-700 focus:outline-none 
@@ -90,6 +106,7 @@ const CreateProduct = () => {
         {/* Row 3 */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <input
+            required={true}
             onChange={(e) =>
               setproductData({ ...productData, stock: e.target.value })
             }
@@ -100,6 +117,7 @@ const CreateProduct = () => {
             focus:ring-2 focus:ring-purple-600"
           />
           <input
+            required={true}
             onChange={(e) =>
               setproductData({ ...productData, brand: e.target.value })
             }
@@ -121,6 +139,7 @@ const CreateProduct = () => {
               cursor-pointer hover:border-purple-600 transition"
             >
               <input
+                required={true}
                 onChange={(e) => handleImageChange(e, i)}
                 type="file"
                 className="hidden"
@@ -132,6 +151,7 @@ const CreateProduct = () => {
 
         {/* Description */}
         <textarea
+          required={true}
           onChange={(e) =>
             setproductData({ ...productData, description: e.target.value })
           }
