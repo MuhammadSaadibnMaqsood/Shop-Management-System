@@ -88,12 +88,15 @@ export const getProducts = async () => {
   }
 };
 
-
 // LIST PRODUCT
 export const listProduct = async () => {
   try {
-    const response = await axiosInstance.get("product/allproducts");
-    // console.log(response);
+    const response = await axiosInstance.post("product/create");
+    console.log(response);
+
+    if (response.data.success) {
+      toast.success("Product listed successfully");
+    }
 
     return response?.data;
   } catch (error) {

@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Plus } from "lucide-react";
 
 const CreateProduct = () => {
+  const [productData, setproductData] = useState({
+    productName: null,
+    price: null,
+    description: null,
+    category: null,
+    stock: null,
+    brand: null,
+  });
   return (
     <div className="min-h-screen bg-zinc-950 text-white flex flex-col items-center px-6 py-10">
       <motion.h1
