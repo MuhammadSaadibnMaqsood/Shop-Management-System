@@ -87,3 +87,16 @@ export const getProducts = async () => {
     toast.error(error.response?.data?.message || "Something went wrong!");
   }
 };
+
+
+// LIST PRODUCT
+export const listProduct = async () => {
+  try {
+    const response = await axiosInstance.get("product/allproducts");
+    // console.log(response);
+
+    return response?.data;
+  } catch (error) {
+    toast.error(error.response?.data?.message || "Something went wrong!");
+  }
+};
