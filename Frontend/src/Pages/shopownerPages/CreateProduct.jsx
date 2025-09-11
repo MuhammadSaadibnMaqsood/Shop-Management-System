@@ -8,9 +8,21 @@ const CreateProduct = () => {
     price: null,
     description: null,
     category: null,
+    warranty: null,
     stock: null,
     brand: null,
+    images: [],
   });
+
+  function handleImageChange(e, index) {
+    const file = e.target.files[0]; 
+    if (!file) return;
+
+    let newImages = [...productData.images];
+    newImages[index] = file;
+
+    setproductData({ ...productData, images: newImages });
+  }
   return (
     <div className="min-h-screen bg-zinc-950 text-white flex flex-col items-center px-6 py-10">
       <motion.h1
@@ -30,6 +42,9 @@ const CreateProduct = () => {
         {/* Row 1 */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <input
+            onChange={(e) =>
+              setproductData({ ...productData, productName: e.target.value })
+            }
             type="text"
             placeholder="Product Name"
             className="w-full px-4 py-3 rounded-lg bg-zinc-800 
@@ -38,6 +53,9 @@ const CreateProduct = () => {
           />
           <input
             type="number"
+            onChange={(e) =>
+              setproductData({ ...productData, price: e.target.value })
+            }
             placeholder="Price"
             className="w-full px-4 py-3 rounded-lg bg-zinc-800 
             text-white border border-zinc-700 focus:outline-none 
@@ -48,6 +66,9 @@ const CreateProduct = () => {
         {/* Row 2 */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <input
+            onChange={(e) =>
+              setproductData({ ...productData, category: e.target.value })
+            }
             type="text"
             placeholder="Category"
             className="w-full px-4 py-3 rounded-lg bg-zinc-800 
@@ -55,6 +76,9 @@ const CreateProduct = () => {
             focus:ring-2 focus:ring-purple-600"
           />
           <input
+            onChange={(e) =>
+              setproductData({ ...productData, warranty: e.target.value })
+            }
             type="number"
             placeholder="Warranty (months)"
             className="w-full px-4 py-3 rounded-lg bg-zinc-800 
@@ -66,6 +90,9 @@ const CreateProduct = () => {
         {/* Row 3 */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <input
+            onChange={(e) =>
+              setproductData({ ...productData, stock: e.target.value })
+            }
             type="number"
             placeholder="Stock"
             className="w-full px-4 py-3 rounded-lg bg-zinc-800 
@@ -73,6 +100,9 @@ const CreateProduct = () => {
             focus:ring-2 focus:ring-purple-600"
           />
           <input
+            onChange={(e) =>
+              setproductData({ ...productData, brand: e.target.value })
+            }
             type="text"
             placeholder="Brand"
             className="w-full px-4 py-3 rounded-lg bg-zinc-800 
@@ -90,7 +120,11 @@ const CreateProduct = () => {
               border-2 border-dashed border-zinc-600 rounded-xl 
               cursor-pointer hover:border-purple-600 transition"
             >
-              <input type="file" className="hidden" />
+              <input
+                onChange={(e) => handleImageChange(e, i)}
+                type="file"
+                className="hidden"
+              />
               <Plus className="w-10 h-10 text-zinc-400 group-hover:text-white" />
             </label>
           ))}
@@ -98,6 +132,9 @@ const CreateProduct = () => {
 
         {/* Description */}
         <textarea
+          onChange={(e) =>
+            setproductData({ ...productData, description: e.target.value })
+          }
           rows={6}
           placeholder="Description"
           className="w-full px-4 py-3 rounded-lg bg-zinc-800 
