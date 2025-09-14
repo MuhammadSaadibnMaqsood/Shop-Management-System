@@ -29,9 +29,23 @@ const CreateProduct = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(productData);
-    
-    list(productData);
+    try {
+      const formData = new FormData();
+
+      formData.append("productName", productData.productName);
+      formData.append("price", productData.price);
+      formData.append("description", productData.description);
+      formData.append("category", productData.category);
+      formData.append("warranty", productData.warranty);
+      formData.append("stock", productData.stock);
+      formData.append("brand", productData.brand);
+      productData.images.map((img) => {
+        formData.append("images", img);
+      });
+      list(formData);
+    } catch (error) {
+      console.log(error.message);
+    }
   }
   return (
     <div className="min-h-screen bg-zinc-950 text-white flex flex-col items-center px-6 py-10">
@@ -132,7 +146,7 @@ const CreateProduct = () => {
 
         {/* File Uploads */}
         <div className="flex flex-wrap gap-5">
-          {[1, 2, 3, 4].map((i) => (
+          {[0, 1, 2, 3].map((i) => (
             <label
               key={i}
               className="w-24 h-24 flex items-center justify-center 
