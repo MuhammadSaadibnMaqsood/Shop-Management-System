@@ -17,22 +17,17 @@ const Allproducts = () => {
   const [showFilter, setShowFilter] = useState(false);
   const [filterArray, setFilterArray] = useState([]);
 
-  const { products, isLoading, error } = useGetAllProducts();
+  const { data: products, isLoading, error } = useGetAllProducts();
+
+  const [product, setProducts] = useState([]);
 
   useEffect(() => {
-    console.log(products);
+    setProducts(products);
   }, [products]);
 
-  // const { productsZustand, setProducts } = useProductsStore();
-  const [product, setProducts] = useState([]);
-  // setProducts(products);
-
   useEffect(() => {
-    if (products) {
-      setProducts(products);
-      console.log(product);
-    }
-  }, [products, setProducts]);
+    console.log(product);
+  }, [product]);
 
   // SEARCH FILTER LOGIC
   function searchFilter(e) {
