@@ -89,17 +89,18 @@ export const getProducts = async () => {
 };
 
 // LIST PRODUCT
-export const listProduct = async (productData) => {
+export const listProduct = async (formData) => {
   try {
-    const response = await axiosInstance.post("product/create", productData);
+    const response = await axiosInstance.post("product/create", formData);
     console.log(response);
 
-    if (response.data.success) {
+    if (response?.data?.product) {
       toast.success("Product listed successfully");
     }
-
     return response?.data;
   } catch (error) {
     toast.error(error.response?.data?.message || "Something went wrong!");
+    console.log(error);
+    
   }
 };

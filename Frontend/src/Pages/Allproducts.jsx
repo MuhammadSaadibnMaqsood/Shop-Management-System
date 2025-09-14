@@ -18,17 +18,23 @@ const Allproducts = () => {
   const [filterArray, setFilterArray] = useState([]);
 
   const { products, isLoading, error } = useGetAllProducts();
-  const { productsZustand, setProducts } = useProductsStore();
 
+  useEffect(() => {
+    console.log(products);
+  }, [products]);
+
+  // const { productsZustand, setProducts } = useProductsStore();
+  const [product, setProducts] = useState([]);
   // setProducts(products);
 
   useEffect(() => {
     if (products) {
       setProducts(products);
+      console.log(product);
     }
   }, [products, setProducts]);
 
-
+  // SEARCH FILTER LOGIC
   function searchFilter(e) {
     if (e.key === "Enter") {
       const searchValue = e.target.value.toLowerCase();
@@ -49,7 +55,7 @@ const Allproducts = () => {
       setIsSearching(true);
     }
   }
-
+  // CHECK BOX LOGIC
   function handleCheckbox(value) {
     setFilterArray((prev) => {
       let updated;
@@ -75,7 +81,7 @@ const Allproducts = () => {
       return updated;
     });
   }
-
+  // HANDLE FILTER MODEL VISIBILITY
   function handleFilterModel() {
     setShowFilter(false);
   }

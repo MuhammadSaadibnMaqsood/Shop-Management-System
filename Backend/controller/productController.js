@@ -1,8 +1,6 @@
-import express from "express";
-import shopModel from "../models/shop.js";
 import productModel from "../models/product.js";
+import shopModel from "../models/shop.js";
 
-// FUNCTION TO CREATE PRODUCT
 export async function createProduct(req, res) {
   try {
     const {
@@ -26,7 +24,8 @@ export async function createProduct(req, res) {
       return res.status(400).json({ message: "All fields are required" });
     }
 
-    console.log(req.body);
+    console.log("➡️ req.body:", req.body);
+    console.log("➡️ req.files:", req.files);
 
     if (price <= 0 || stock < 0) {
       return res.status(400).json({
@@ -34,15 +33,14 @@ export async function createProduct(req, res) {
       });
     }
 
+    // Multer-Cloudinary ne file URLs return kiye hain
     const images = req.files?.map((file) => file.path) || [];
 
-    //finding shop id
-
+    // Shop find karni
     const shopOwner = await shopModel.findOne({ shopOwner: req.user._id });
     if (!shopOwner) {
       return res.status(404).json({ message: "Shop not found" });
     }
-    const shopId = shopOwner._id;
 
     const newProduct = await productModel.create({
       productName,
@@ -53,19 +51,23 @@ export async function createProduct(req, res) {
       stock,
       brand,
       images,
-      shopId,
+      shopId: shopOwner._id,
       ownerId: req.user._id,
     });
-
+    console.log("➡️ req.body:", req.body);
+    console.log("➡️ req.files:", req.files);
     return res.status(201).json({
       message: "Product created successfully",
       product: newProduct,
     });
   } catch (error) {
-    console.error("Error creating product:", error);
+    console.log("➡️ req.body:", req.body);
+    console.log("➡️ req.files:", req.files);
+    console.error("❌ Error creating product:", error);
     return res.status(500).json({ message: "Internal server error" });
   }
 }
+
 // FUNCTION TO GET ALL PRODUCTS
 export async function getAllProducts(req, res) {
   try {

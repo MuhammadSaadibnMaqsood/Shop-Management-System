@@ -43,6 +43,7 @@ const CreateProduct = () => {
         formData.append("images", img);
       });
       list(formData);
+      
     } catch (error) {
       console.log(error.message);
     }

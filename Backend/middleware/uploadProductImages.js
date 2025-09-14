@@ -1,16 +1,16 @@
-// middleware/multer.js
 import multer from "multer";
 import { CloudinaryStorage } from "multer-storage-cloudinary";
 import cloudinary from "../config/cloudinary.js";
 
 const storage = new CloudinaryStorage({
   cloudinary,
-  params: {
-    folder: "product_images",
-    allowed_formats: ["jpg", "png", "jpeg"],
+  params: async (req, file) => {
+    return {
+      folder: "product_images",
+      allowed_formats: ["jpg", "png", "jpeg", "avif"],
+    };
   },
 });
+const upload = multer({ storage });
 
-const uploadProduct = multer({ storage });
-
-export default uploadProduct;
+export default upload;

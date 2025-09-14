@@ -8,13 +8,15 @@ import cloudinary from "./config/cloudinary.js";
 import shopRouter from "./routes/shopRouter.js";
 import productRouter from "./routes/productRoutes.js";
 import bookingRouter from "./routes/bookingRoutes.js";
+import connetCloudinary from "./config/cloudinary.js";
 
-dotenv.config();
+dotenv.config({ path: "./.env" });
 const PORT = process.env.PORT || 3000;
 
 // connectivity to MongoDB
 connectDB();
 // connectivity to Cloudinary
+// connetCloudinary()
 
 // app setup
 const app = express();
@@ -39,6 +41,5 @@ app.get("/", (req, res) => {
 });
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
-  console.log("✅ Cloudinary configured successfully");
- 
+  
 });
