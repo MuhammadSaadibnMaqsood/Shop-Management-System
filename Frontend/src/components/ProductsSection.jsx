@@ -3,6 +3,11 @@ import { Link } from "react-router-dom";
 
 const ProductsSection = ({ cardData }) => {
   const [stopScroll, setStopScroll] = useState(false);
+
+  if (cardData) {
+    console.log(cardData);
+    
+  }
   return (
     <>
       <style>{`

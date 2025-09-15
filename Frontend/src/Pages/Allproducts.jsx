@@ -5,23 +5,31 @@ import ProductsSection from "../components/ProductsSection";
 import useGetAllProducts from "../hooks/useGetAllProducts";
 import { dummyProducts } from "../../dummyData/Dummy";
 import { Funnel } from "lucide-react";
-import useProductsStore from "../Zustand/useProducts";
 
 const Allproducts = () => {
-  const [filteredItem, setFilteredItem] = useState(dummyProducts);
+  const [filteredItem, setFilteredItem] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
   const [showFilter, setShowFilter] = useState(false);
   const [filterArray, setFilterArray] = useState([]);
 
   const { data: products, isLoading, error } = useGetAllProducts();
 
-  const shoes = products?.filter((item) => item.category === "shoes");
-  const bags = products?.filter((item) => item.category === "bags");
-  const shirts = products?.filter((item) => item.category === "shirts");
+  // fallback: agar API se data nhi aya to dummy products dikhao
+  const finalProducts =
+    products && products.length > 0 ? products : dummyProducts;
+
+  let shoes = [];
+  let bags = [];
+  let shirts = [];
+  useEffect(() => {
+    shoes = finalProducts?.filter((p) => p.category === "shoes") || [];
+    bags = finalProducts?.filter((p) => p.category === "bags") || [];
+    shirts = finalProducts?.filter((p) => p.category === "shirts") || [];
+  }, [finalProducts]);
 
   useEffect(() => {
-    console.log(shoes, bags, shirts);
-  }, [shoes, bags, shirts]);
+    setFilteredItem(finalProducts);
+  }, [finalProducts]);
 
   // SEARCH FILTER LOGIC
   function searchFilter(e) {
@@ -29,12 +37,12 @@ const Allproducts = () => {
       const searchValue = e.target.value.toLowerCase();
 
       if (searchValue.trim() === "") {
-        setFilteredItem(dummyProducts);
+        setFilteredItem(finalProducts);
         setIsSearching(false);
         return;
       }
 
-      const search = dummyProducts.filter(
+      const search = finalProducts.filter(
         (product) =>
           product.category.toLowerCase().includes(searchValue) ||
           product.productName.toLowerCase().includes(searchValue)
@@ -44,7 +52,8 @@ const Allproducts = () => {
       setIsSearching(true);
     }
   }
-  // CHECK BOX LOGIC
+
+  // CHECK BOX LOGIC (Price filter)
   function handleCheckbox(value) {
     setFilterArray((prev) => {
       let updated;
@@ -54,26 +63,32 @@ const Allproducts = () => {
         updated = [...prev, value]; // add
       }
 
-      // agar kuch select kiya hai toh filter karo, warna sab products show karo
       if (updated.length > 0) {
         setFilteredItem(
-          dummyProducts.filter((product) =>
+          finalProducts.filter((product) =>
             updated.some((range) => product.price <= range)
           )
         );
         setIsSearching(true);
       } else {
-        setFilteredItem(dummyProducts);
+        setFilteredItem(finalProducts);
         setIsSearching(false);
       }
 
       return updated;
     });
   }
-  // HANDLE FILTER MODEL VISIBILITY
+
+  // HANDLE FILTER MODAL VISIBILITY
   function handleFilterModel() {
     setShowFilter(false);
   }
+
+  if (isLoading) return <p className="text-center text-xl">Loading...</p>;
+  if (error)
+    return (
+      <p className="text-center text-xl text-red-500">Error loading products</p>
+    );
 
   return (
     <div className="bg-zinc-950 text-white relative">
@@ -83,7 +98,7 @@ const Allproducts = () => {
           <input
             type="text"
             onKeyDown={searchFilter}
-            placeholder="search item"
+            placeholder="Search item"
             className="bg-white ml-0 px-4 py-2 lg:ml-44 text-black rounded-2xl w-full md:w-1/2 "
           />
         </div>
@@ -98,7 +113,6 @@ const Allproducts = () => {
       {/* Filter Modal */}
       {showFilter && (
         <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-10">
-          {/* Modal Box */}
           <div className="p-10 absolute text-black z-20 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-2xl w-96 bg-white">
             <h1 className="text-center mb-10">Price Ranges</h1>
             {[
@@ -132,24 +146,25 @@ const Allproducts = () => {
       )}
 
       {/* Categories (Only when not searching) */}
-      {!isSearching && (
-        <div className="relative">
-          <h1 className="text-5xl w-[70%] mx-auto text-white tekturFont py-5">
-            Shoes
-          </h1>
-          <ProductsSection cardData={shoes} />
+      {!isSearching &&
+        (shoes.length > 0 || bags.length > 0 || shirts.length > 0) && (
+          <div className="relative">
+            <h1 className="text-5xl w-[70%] mx-auto text-white tekturFont py-5">
+              Shoes
+            </h1>
+            <ProductsSection cardData={shoes} />
 
-          <h1 className="text-5xl w-[70%] pt-7 mx-auto text-white tekturFont py-5">
-            BAGS
-          </h1>
-          <ProductsSection cardData={bags} />
+            <h1 className="text-5xl w-[70%] pt-7 mx-auto text-white tekturFont py-5">
+              Bags
+            </h1>
+            <ProductsSection cardData={bags} />
 
-          <h1 className="text-5xl w-[70%] mx-auto text-white tekturFont pt-7 py-5">
-            SHIRTS
-          </h1>
-          <ProductsSection cardData={shirts} />
-        </div>
-      )}
+            <h1 className="text-5xl w-[70%] mx-auto text-white tekturFont pt-7 py-5">
+              Shirts
+            </h1>
+            <ProductsSection cardData={shirts} />
+          </div>
+        )}
 
       {/* All Products (Default View) */}
       {!isSearching && (
@@ -171,9 +186,9 @@ const Allproducts = () => {
             </motion.span>
           </motion.h1>
           <div className="w-[75%] justify-center mx-auto flex gap-10 sm:gap-2 xl:gap-7 md:gap-10 flex-wrap mx-auto py-5">
-            {dummyProducts.map((item) => (
+            {finalProducts.map((item) => (
               <ProductCard
-                key={item.productName}
+                key={item._id || item.productName}
                 productId={item._id}
                 productName={item.productName}
                 price={item.price}
@@ -200,7 +215,8 @@ const Allproducts = () => {
             {filteredItem.length > 0 ? (
               filteredItem.map((item) => (
                 <ProductCard
-                  key={item.productName}
+                  key={item._id || item.productName}
+                  productId={item._id}
                   productName={item.productName}
                   price={item.price}
                   image={item.images[0]}
