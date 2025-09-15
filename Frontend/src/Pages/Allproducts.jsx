@@ -8,10 +8,6 @@ import { Funnel } from "lucide-react";
 import useProductsStore from "../Zustand/useProducts";
 
 const Allproducts = () => {
-  const shoes = dummyProducts.filter((item) => item.category === "shoes");
-  const bags = dummyProducts.filter((item) => item.category === "bags");
-  const shirts = dummyProducts.filter((item) => item.category === "shirts");
-
   const [filteredItem, setFilteredItem] = useState(dummyProducts);
   const [isSearching, setIsSearching] = useState(false);
   const [showFilter, setShowFilter] = useState(false);
@@ -19,15 +15,13 @@ const Allproducts = () => {
 
   const { data: products, isLoading, error } = useGetAllProducts();
 
-  const [product, setProducts] = useState([]);
+  const shoes = products?.filter((item) => item.category === "shoes");
+  const bags = products?.filter((item) => item.category === "bags");
+  const shirts = products?.filter((item) => item.category === "shirts");
 
   useEffect(() => {
-    setProducts(products);
-  }, [products]);
-
-  useEffect(() => {
-    console.log(product);
-  }, [product]);
+    console.log(shoes, bags, shirts);
+  }, [shoes, bags, shirts]);
 
   // SEARCH FILTER LOGIC
   function searchFilter(e) {

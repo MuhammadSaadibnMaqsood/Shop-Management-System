@@ -155,7 +155,7 @@ const CreateProduct = () => {
               cursor-pointer hover:border-purple-600 transition"
             >
               <input
-                required={true}
+               
                 onChange={(e) => handleImageChange(e, i)}
                 type="file"
                 className="hidden"
