@@ -8,9 +8,9 @@ const IndividualProduct = () => {
 
   const [product, setProduct] = useState(null);
   const [mainImg, setMainImg] = useState(null);
-  const [animation, setAnimation] = useState(false);
+  const [overlay, setOverlay] = useState(false); // white div animation
 
-  // Find product from Zustand store
+  // Find product from Zustand
   useEffect(() => {
     if (productsZustand.length > 0) {
       const foundProduct = productsZustand.find(
@@ -20,7 +20,7 @@ const IndividualProduct = () => {
     }
   }, [productsZustand, id]);
 
-  // Set main image when product changes
+  // Set first image as default
   useEffect(() => {
     if (product?.images?.length > 0) {
       setMainImg(product.images[0]);
@@ -35,44 +35,44 @@ const IndividualProduct = () => {
     );
   }
 
+  // Handle image change with overlay animation
+  const handleImageChange = (img) => {
+    setOverlay(true);
+    setTimeout(() => {
+      setMainImg(img);
+    }, 400);
+    setTimeout(() => {
+      setOverlay(false);
+    }, 800);
+  };
+
   return (
     <div className="bg-zinc-950 h-[100vh]">
       <div className="pt-10">
-        {/* Main Product Image */}
-        <div>
-          {!animation && (
-            <div className="w-[80vw] md:w-[40vw] rounded-xl h-[50vh] mx-auto">
-              <img
-                className={`object-cover w-full h-full rounded-xl ${
-                  animation ? "animate-fadeIn duration-1000" : ""
-                }`}
-                src={mainImg}
-                alt={product.productName}
-              />
-            </div>
-          )}
-          {/* ANIMATION DIV  */}
-          {animation && (
-            <div
-              className={`w-0 bg-white ${
-                animation && "w-[80vw]"
-              } transition-all duration-700 md:w-[40vw] rounded-xl h-[50vh] mx-auto `}
-            ></div>
+        {/* Main Product Image with Overlay */}
+        <div className="relative w-[80vw] md:w-[40vw] h-[50vh] mx-auto rounded-xl overflow-hidden">
+          {/* Main Image */}
+          <img
+            className="object-cover w-full h-full rounded-xl"
+            src={mainImg}
+            alt={product.productName}
+          />
+
+          {/* White Overlay Div */}
+          {overlay && (
+            <div className="absolute top-0 left-0 h-full w-0 bg-black animate-slideOverlay"></div>
           )}
         </div>
+
         {/* Thumbnails */}
-        <div className="flex items-center justify-center w-[80vw] transition-all gap-5 mx-auto mt-5 rounded-xl">
+        <div className="flex items-center justify-center w-[80vw] gap-5 mx-auto mt-5 rounded-xl">
           {product.images?.map((img, index) => (
             <div
               key={index}
-              className={`w-32 h-32 rounded-xl cursor-pointer transition-all ${
+              className={` w-32 h-20 sm:h-32 rounded-xl cursor-pointer transition-all ${
                 mainImg === img ? "shadow-[0_0_10px_purple]" : ""
               }`}
-              onClick={() => {
-                setMainImg(img);
-                setAnimation(true);
-                setTimeout(() => setAnimation(false), 2000);
-              }}
+              onClick={() => handleImageChange(img)}
             >
               <img
                 className="object-cover rounded-xl w-full h-full"
