@@ -18,14 +18,16 @@ const Allproducts = () => {
   const finalProducts =
     products && products.length > 0 ? products : dummyProducts;
 
-  let shoes = [];
-  let bags = [];
-  let shirts = [];
+  const shoes =
+    products?.filter((p) => p.category?.toLowerCase().includes("shoe")) || [];
+  const bags =
+    products?.filter((p) => p.category?.toLowerCase().includes("bag")) || [];
+  const shirts =
+    products?.filter((p) => p.category?.toLowerCase().includes("shirt")) || [];
+
   useEffect(() => {
-    shoes = finalProducts?.filter((p) => p.category === "shoes") || [];
-    bags = finalProducts?.filter((p) => p.category === "bags") || [];
-    shirts = finalProducts?.filter((p) => p.category === "shirts") || [];
-  }, [finalProducts]);
+    console.log(shoes);
+  }, [shoes, products, shirts]);
 
   useEffect(() => {
     setFilteredItem(finalProducts);
