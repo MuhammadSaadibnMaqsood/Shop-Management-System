@@ -5,8 +5,10 @@ import ProductsSection from "../components/ProductsSection";
 import useGetAllProducts from "../hooks/useGetAllProducts";
 import { dummyProducts } from "../../dummyData/Dummy";
 import { Funnel } from "lucide-react";
+import useProductsStore from "../Zustand/useProducts";
 
 const Allproducts = () => {
+  const { setProducts, productsZustand } = useProductsStore();
   const [filteredItem, setFilteredItem] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
   const [showFilter, setShowFilter] = useState(false);
@@ -14,9 +16,14 @@ const Allproducts = () => {
 
   const { data: products, isLoading, error } = useGetAllProducts();
 
-  // fallback: agar API se data nhi aya to dummy products dikhao
+  useEffect(() => {
+    setProducts(products);
+  }, [products]);
+
   const finalProducts =
-    products && products.length > 0 ? products : dummyProducts;
+    productsZustand && productsZustand.length > 0
+      ? productsZustand
+      : dummyProducts;
 
   const shoes =
     products?.filter((p) => p.category?.toLowerCase().includes("shoe")) || [];
@@ -26,7 +33,7 @@ const Allproducts = () => {
     products?.filter((p) => p.category?.toLowerCase().includes("shirt")) || [];
 
   useEffect(() => {
-    console.log(shoes);
+    // console.log(shoes);
   }, [shoes, products, shirts]);
 
   useEffect(() => {
@@ -187,7 +194,7 @@ const Allproducts = () => {
               ALL PRODUCTS
             </motion.span>
           </motion.h1>
-          <div className="w-[75%] justify-center mx-auto flex gap-10 sm:gap-2 xl:gap-7 md:gap-10 flex-wrap mx-auto py-5">
+          <div className="w-[75%] justify-center flex gap-10 sm:gap-2 xl:gap-7 md:gap-10 flex-wrap mx-auto py-5">
             {finalProducts.map((item) => (
               <ProductCard
                 key={item._id || item.productName}

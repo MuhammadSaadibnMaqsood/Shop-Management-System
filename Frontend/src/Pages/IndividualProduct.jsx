@@ -4,9 +4,12 @@ import { dummyProducts } from "../../dummyData/Dummy";
 
 const IndividualProduct = () => {
   const { id } = useParams();
+  // console.log(id);
 
   const [mainImg, setMainImg] = useState(null);
-  const product = dummyProducts.find((product) => product._id === id);
+  const product = dummyProducts.find((product) => product._id == id);
+  console.log(product);
+  
 
   useEffect(() => {
     setMainImg(product.images[0]);

@@ -5,8 +5,7 @@ const ProductsSection = ({ cardData }) => {
   const [stopScroll, setStopScroll] = useState(false);
 
   if (cardData) {
-    console.log(cardData);
-    
+    // console.log(cardData);
   }
   return (
     <>
@@ -41,11 +40,8 @@ const ProductsSection = ({ cardData }) => {
         >
           <div className="flex">
             {[...cardData, ...cardData].map((card, index) => (
-              <Link to={`${card._id}`}>
-                <div
-                  key={index}
-                  className="w-56 mx-4 h-[20rem] relative group hover:scale-90 transition-all duration-300"
-                >
+              <Link key={index} to={`${card._id}`}>
+                <div className="w-56 mx-4 h-[20rem] relative group hover:scale-90 transition-all duration-300">
                   <img
                     src={card.images[0]}
                     alt="card"
