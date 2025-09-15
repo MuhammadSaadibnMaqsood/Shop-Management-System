@@ -2,7 +2,7 @@ import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 const SideBar = () => {
   const location = useLocation();
-  console.log(location);
+  
 
   const navigate = useNavigate();
 

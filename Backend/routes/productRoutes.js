@@ -10,10 +10,6 @@ import upload from "../middleware/uploadLogoMiddleware.js";
 const productRouter = express.Router();
 productRouter.post(
   "/create",
-  (req, res, next) => {
-    console.log("🔥 Request aayi hai");
-    next();
-  },
   authMiddleware,
   (req, res, next) => {
     upload.array("images", 5)(req, res, (err) => {
@@ -23,7 +19,6 @@ productRouter.post(
           .status(400)
           .json({ message: "Multer upload failed", error: err.message });
       }
-      console.log("🔥 Multer ke baad:", req.files);
       next();
     });
   },

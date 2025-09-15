@@ -101,6 +101,16 @@ export const listProduct = async (formData) => {
   } catch (error) {
     toast.error(error.response?.data?.message || "Something went wrong!");
     console.log(error);
-    
+  }
+};
+// LIST PRODUCT
+export const ownerProduct = async () => {
+  try {
+    const response = await axiosInstance.get("product/ownerproducts");
+    // console.log(response);
+    return response?.data;
+  } catch (error) {
+    toast.error(error.response?.data?.message || "Something went wrong!");
+    console.log(error);
   }
 };

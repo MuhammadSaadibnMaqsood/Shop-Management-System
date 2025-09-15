@@ -1,7 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { dummyProducts } from "../../../dummyData/Dummy";
+import useGetOwnerProducts from "../../hooks/useGetOwnerProducts";
 const Dashboard = () => {
+  const { data: ownerProducts, isLoading, isError } = useGetOwnerProducts();
+
+  const [dashBoardData, setdashBoardData] = useState({});
+
+  useEffect(() => {
+    if (!ownerProducts) return;
+
+    let totalSell = 0;
+    let totalProducts = 0;
+
+    ownerProducts.forEach((product) => {
+      totalSell += product.totalSell || 0;
+      totalProducts += 1;
+    });
+
+    setdashBoardData({ totalSell, totalProducts });
+  }, [ownerProducts]);
+
   return (
     <div className="min-h-[90vh] bg-zinc-950 p-10">
       <motion.h1
@@ -17,14 +36,16 @@ const Dashboard = () => {
         {/* Total Sales */}
         <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300">
           <h2 className="text-lg font-medium text-gray-300">Total Sales</h2>
-          <p className="text-3xl font-bold text-green-400 mt-3">1200+</p>
+          <p className="text-3xl font-bold text-green-400 mt-3">
+            {dashBoardData.totalSell}+
+          </p>
         </div>
 
         {/* Total Listed Items */}
         <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300">
           <h2 className="text-lg font-medium text-gray-300">Listed Items</h2>
           <p className="text-3xl font-bold text-blue-400 mt-3">
-            {dummyProducts.length}
+            {dashBoardData.totalProducts}
           </p>
         </div>
       </div>
@@ -41,7 +62,7 @@ const Dashboard = () => {
               </tr>
             </thead>
             <tbody>
-              {dummyProducts.map((product, index) => (
+              {ownerProducts?.map((product, index) => (
                 <tr
                   key={index}
                   className="hover:bg-zinc-800 transition duration-200"

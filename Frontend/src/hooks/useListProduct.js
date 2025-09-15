@@ -7,6 +7,7 @@ const useListProduct = () => {
     mutationFn: listProduct,
     onSuccess: () => {
       queryClient.invalidateQueries(["allproducts"]);
+      queryClient.invalidateQueries(["ownerProducts"]);
     },
   });
 };
