@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import useProductStore from "../Zustand/useProducts";
+import OrderModel from "../components/OrderModel";
 
 const IndividualProduct = () => {
   const { id } = useParams();
@@ -9,6 +10,7 @@ const IndividualProduct = () => {
   const [product, setProduct] = useState(null);
   const [mainImg, setMainImg] = useState(null);
   const [overlay, setOverlay] = useState(false);
+  const [orderModel, setorderModel] = useState(false);
 
   useEffect(() => {
     if (productsZustand.length > 0) {
@@ -46,7 +48,13 @@ const IndividualProduct = () => {
   };
 
   return (
-    <div className="bg-zinc-950 min-h-[100vh]">
+    <div className="bg-zinc-950 min-h-[100vh] relative">
+      {orderModel && (
+        <div className=" absolute z-50 h-[100vh] bg-black w-full">
+          <OrderModel />
+        </div>
+      )}
+
       <div className="pt-10">
         {/* Main Product Image with Overlay */}
         <div className="relative w-[80vw] md:w-[40vw] h-[50vh] mx-auto rounded-xl overflow-hidden">
@@ -93,11 +101,15 @@ const IndividualProduct = () => {
 
           <div className=" flex items-center justify-center w-full pt-10">
             <div className="rainbow relative z-0 overflow-hidden p-0.5 flex items-center justify-center rounded-full hover:scale-105 transition duration-300 active:scale-100">
-              <Link to="/order">
-                <button class="px-8  cursor-pointer text-sm py-3 text-white rounded-full font-medium bg-gray-800">
-                  Order Now!
-                </button>
-              </Link>
+              <button
+                onClick={() => {
+                  setorderModel(true);
+                scrollTo(0,0);
+                }}
+                class="px-8  cursor-pointer text-sm py-3 text-white rounded-full font-medium bg-gray-800"
+              >
+                Order Now!
+              </button>
             </div>
           </div>
 
