@@ -93,7 +93,7 @@ const IndividualProduct = () => {
 
           {/* Info Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8 text-sm sm:text-base">
-            <div className="bg-zinc-900/50 p-4 rounded-xl shadow-md text-white">
+            <div className="bg-zinc-900/50 p-4 rounded-xl shadow-md text-white hover:shadow-[0px_7px_29px_0px_rgba(100,_100,_111,_0.2)] transition-all duration-500">
               <h2 className="text-lg font-semibold text-pink-400 mb-2">
                 Product Info
               </h2>
@@ -117,7 +117,7 @@ const IndividualProduct = () => {
               </p>
             </div>
 
-            <div className="bg-zinc-900/50 p-4 rounded-xl shadow-md text-white hover:shadow-[2px_4px_10px_white] pb-5 transition-all duration-500">
+            <div className="bg-zinc-900/50 p-4 rounded-xl shadow-md text-white hover:shadow-[0px_7px_29px_0px_rgba(100,_100,_111,_0.2)] transition-all duration-500">
               <h2 className="text-lg font-semibold text-purple-400 mb-2">
                 Shop Details
               </h2>
@@ -133,7 +133,7 @@ const IndividualProduct = () => {
           </div>
 
           {/* Owner */}
-          <div className="bg-zinc-900/50 p-4 rounded-xl shadow-md text-white mt-6 hover:shadow-[2px_4px_10px_white] pb-5 transition-all duration-500">
+          <div className="bg-zinc-900/50 p-4 rounded-xl shadow-md text-white mt-6 hover:shadow-[0px_7px_29px_0px_rgba(100,_100,_111,_0.2)] pb-5 transition-all duration-500">
             <h2 className="text-lg font-semibold bg-clip-text text-transparent bg-gradient-to-b from-pink-500 to-purple-700 mb-2">
               Owner Details
             </h2>
