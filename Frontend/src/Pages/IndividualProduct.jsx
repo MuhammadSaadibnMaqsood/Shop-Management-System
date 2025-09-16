@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import useProductStore from "../Zustand/useProducts";
 
 const IndividualProduct = () => {
@@ -28,7 +28,7 @@ const IndividualProduct = () => {
 
   if (!product) {
     return (
-      <div className="text-black h-[100vh] flex items-center justify-center text-white">
+      <div className=" h-[100vh] flex items-center justify-center text-white">
         <p>Loading product...</p>
       </div>
     );
@@ -90,6 +90,16 @@ const IndividualProduct = () => {
           <p className="text-gray-300 text-center max-w-2xl mx-auto mt-4 text-sm sm:text-base leading-relaxed">
             {product.description}
           </p>
+
+          <div className=" flex items-center justify-center w-full pt-10">
+            <div className="rainbow relative z-0 overflow-hidden p-0.5 flex items-center justify-center rounded-full hover:scale-105 transition duration-300 active:scale-100">
+              <Link to="/order">
+                <button class="px-8  cursor-pointer text-sm py-3 text-white rounded-full font-medium bg-gray-800">
+                  Order Now!
+                </button>
+              </Link>
+            </div>
+          </div>
 
           {/* Info Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8 text-sm sm:text-base">
