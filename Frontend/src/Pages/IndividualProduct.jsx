@@ -8,9 +8,8 @@ const IndividualProduct = () => {
 
   const [product, setProduct] = useState(null);
   const [mainImg, setMainImg] = useState(null);
-  const [overlay, setOverlay] = useState(false); // white div animation
+  const [overlay, setOverlay] = useState(false);
 
-  // Find product from Zustand
   useEffect(() => {
     if (productsZustand.length > 0) {
       const foundProduct = productsZustand.find(
@@ -20,11 +19,11 @@ const IndividualProduct = () => {
     }
   }, [productsZustand, id]);
 
-  // Set first image as default
   useEffect(() => {
     if (product?.images?.length > 0) {
       setMainImg(product.images[0]);
     }
+    console.log(product);
   }, [product]);
 
   if (!product) {
@@ -47,7 +46,7 @@ const IndividualProduct = () => {
   };
 
   return (
-    <div className="bg-zinc-950 h-[100vh]">
+    <div className="bg-zinc-950 min-h-[100vh]">
       <div className="pt-10">
         {/* Main Product Image with Overlay */}
         <div className="relative w-[80vw] md:w-[40vw] h-[50vh] mx-auto rounded-xl overflow-hidden">
@@ -81,6 +80,32 @@ const IndividualProduct = () => {
               />
             </div>
           ))}
+        </div>
+        {/* PRODUCT DETAILS  */}
+        <div>
+          <h1 className=" bg-clip-text bg-transparent bg-gradient-to-r from-pink-500 to-purple-700 text-center text-3xl pt-10">
+            {product.productName}
+          </h1>
+          <div className="flex items-center justify-center">
+            <p className="text-white w-[70%] opacity-70 text-center  text-sm pt-10">
+              {product.description}
+            </p>
+          </div>
+
+          <div className="text-white">
+            <p>Brand: {product?.brand}</p>
+            <p>Warranty: {product?.warranty}</p>
+            <p>Price: {product?.price}</p>
+            <p>Avialable: {product?.stock > 0 ? "Yes" : "No"}</p>
+          </div>
+        </div>
+
+        {/* SHOP DETAILS  */}
+        {/* OWNER DETAILS  */}
+        <div className="text-white px-2 py-5">
+          <h1 className="text-2xl ">Owner details</h1>
+          <h1>Name: {product?.ownerId.userName}</h1>
+          <h1>Contact: {product?.ownerId.email}</h1>
         </div>
       </div>
     </div>
