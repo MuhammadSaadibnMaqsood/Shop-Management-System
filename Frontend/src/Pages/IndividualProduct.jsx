@@ -50,8 +50,8 @@ const IndividualProduct = () => {
   return (
     <div className="bg-zinc-950 min-h-[100vh] relative">
       {orderModel && (
-        <div className=" absolute z-50 h-[100vh] bg-black w-full">
-          <OrderModel />
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-10 flex items-center justify-center">
+          <OrderModel product={product} img={mainImg} />
         </div>
       )}
 
