@@ -55,6 +55,10 @@ body {
 .text-shadow-white {
   text-shadow: 2px 4px 12px rgba(221, 217, 214, 0.6); /* orange-600 */
 }
+.boxshadow{
+ box-shadow: 2px 4px 12px rgba(221, 217, 214, 0.6); /* orange-600 */
+; 
+}
 
 @keyframes rotate {
   100% {

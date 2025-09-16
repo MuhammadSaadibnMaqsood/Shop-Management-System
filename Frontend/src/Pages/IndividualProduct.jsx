@@ -28,7 +28,7 @@ const IndividualProduct = () => {
 
   if (!product) {
     return (
-      <div className="text-black h-[100vh] flex items-center justify-center">
+      <div className="text-black h-[100vh] flex items-center justify-center text-white">
         <p>Loading product...</p>
       </div>
     );
@@ -81,31 +81,71 @@ const IndividualProduct = () => {
             </div>
           ))}
         </div>
-        {/* PRODUCT DETAILS  */}
-        <div>
-          <h1 className=" bg-clip-text bg-transparent bg-gradient-to-r from-pink-500 to-purple-700 text-center text-3xl pt-10">
+        {/* PRODUCT DETAILS */}
+        <div className="mt-10 max-w-4xl mx-auto px-4">
+          <h1 className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-purple-700 text-center text-3xl font-bold">
             {product.productName}
           </h1>
-          <div className="flex items-center justify-center">
-            <p className="text-white w-[70%] opacity-70 text-center  text-sm pt-10">
-              {product.description}
+
+          <p className="text-gray-300 text-center max-w-2xl mx-auto mt-4 text-sm sm:text-base leading-relaxed">
+            {product.description}
+          </p>
+
+          {/* Info Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8 text-sm sm:text-base">
+            <div className="bg-zinc-900/50 p-4 rounded-xl shadow-md text-white">
+              <h2 className="text-lg font-semibold text-pink-400 mb-2">
+                Product Info
+              </h2>
+              <p>
+                <span className="font-medium">Brand:</span> {product?.brand}
+              </p>
+              <p>
+                <span className="font-medium">Warranty:</span>{" "}
+                {product?.warranty}
+              </p>
+              <p>
+                <span className="font-medium">Price:</span> ${product?.price}
+              </p>
+              <p>
+                <span className="font-medium">Available:</span>{" "}
+                {product?.stock > 0 ? (
+                  <span className="text-green-400">Yes</span>
+                ) : (
+                  <span className="text-red-400">No</span>
+                )}
+              </p>
+            </div>
+
+            <div className="bg-zinc-900/50 p-4 rounded-xl shadow-md text-white hover:shadow-[2px_4px_10px_white] pb-5 transition-all duration-500">
+              <h2 className="text-lg font-semibold text-purple-400 mb-2">
+                Shop Details
+              </h2>
+              <p>
+                <span className="font-medium">Shop Name:</span>{" "}
+                {product?.shopId.shopName}
+              </p>
+              <p>
+                <span className="font-medium">Address:</span>{" "}
+                {product?.shopId.address}
+              </p>
+            </div>
+          </div>
+
+          {/* Owner */}
+          <div className="bg-zinc-900/50 p-4 rounded-xl shadow-md text-white mt-6 hover:shadow-[2px_4px_10px_white] pb-5 transition-all duration-500">
+            <h2 className="text-lg font-semibold bg-clip-text text-transparent bg-gradient-to-b from-pink-500 to-purple-700 mb-2">
+              Owner Details
+            </h2>
+            <p>
+              <span className="font-medium">Name:</span>{" "}
+              {product?.ownerId.userName}
+            </p>
+            <p>
+              <span className="font-medium">Contact:</span>{" "}
+              {product?.ownerId.email}
             </p>
           </div>
-
-          <div className="text-white">
-            <p>Brand: {product?.brand}</p>
-            <p>Warranty: {product?.warranty}</p>
-            <p>Price: {product?.price}</p>
-            <p>Avialable: {product?.stock > 0 ? "Yes" : "No"}</p>
-          </div>
-        </div>
-
-        {/* SHOP DETAILS  */}
-        {/* OWNER DETAILS  */}
-        <div className="text-white px-2 py-5">
-          <h1 className="text-2xl ">Owner details</h1>
-          <h1>Name: {product?.ownerId.userName}</h1>
-          <h1>Contact: {product?.ownerId.email}</h1>
         </div>
       </div>
     </div>
