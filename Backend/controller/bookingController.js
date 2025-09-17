@@ -7,6 +7,8 @@ import bookingModel from "../models/booking.js";
 export async function createBooking(req, res) {
   try {
     const productId = req.params.id;
+    console.log(productId);
+    
     const { address, paymentType, img } = req.body;
     const customer = req.user._id;
     if (!address || !paymentType || !img) {
