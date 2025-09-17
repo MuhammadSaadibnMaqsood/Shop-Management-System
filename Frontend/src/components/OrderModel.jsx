@@ -7,15 +7,14 @@ const OrderModel = ({ product, img }) => {
     paymentType: "",
     img: img,
   });
-  // console.log(product._id);
+  // console.log("order model: ",product._id);
 
   const { mutate: order, isLoading, error } = useOrder();
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(orderData,product._id);
 
-    order(orderData);
+    order({orderData,id:product._id});
   }
 
   return (
