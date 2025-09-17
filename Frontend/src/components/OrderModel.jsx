@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import useOrder from "../hooks/useOrder";
-import useOrderModelStore from "../Zustand/OrderModelStore";
+// import useOrderModelStore from "../Zustand/OrderModelStore";
 
 const OrderModel = ({ product, img }) => {
   const [orderData, setorderData] = useState({
@@ -11,7 +11,7 @@ const OrderModel = ({ product, img }) => {
   });
   // console.log("order model: ",product._id);
 
-  const { setOrderModel } = useOrderModelStore();
+  // const { setOrderModel } = useOrderModelStore();
 
   const { mutate: order, isLoading, error } = useOrder();
 
@@ -22,7 +22,7 @@ const OrderModel = ({ product, img }) => {
   }
 
   return (
-    <div className="text-black h-[60vh] md:h-[60vh] bg-white w-[80vw] md:w-[50vw] rounded-xl shadow-lg">
+    <div className="text-black bg-white w-[80vw] md:w-[50vw] rounded-xl shadow-lg">
       {/* Product Info */}
       <div className="flex items-center justify-between w-full rounded-t-xl p-6 border-b border-gray-200">
         <div>
@@ -50,12 +50,12 @@ const OrderModel = ({ product, img }) => {
             placeholder="Enter your address"
           />
         </div>
-        <div className="w-full flex items-center justify-around">
+        <div className="w-full p-6 md:p-0 gap-5 md:gap-0 flex-col md:flex-row flex items-center justify-around">
           <select
             onChange={(e) =>
               setorderData({ ...orderData, paymentType: e.target.value })
             }
-            className="px-4 py-2 border border-gray-300 rounded-lg w-[40%] focus:outline-none focus:ring-2 focus:ring-purple-500"
+            className="px-4 py-2 border border-gray-300 rounded-lg w-full md:w-[40%] focus:outline-none focus:ring-2 focus:ring-purple-500"
             defaultValue=""
           >
             <option disabled value="">
@@ -68,17 +68,16 @@ const OrderModel = ({ product, img }) => {
             onChange={(e) =>
               setorderData({ ...orderData, quantity: e.target.value })
             }
-            className="px-4 py-2 border border-gray-300 rounded-lg w-[40%] focus:outline-none focus:ring-2 focus:ring-purple-500"
+            className="px-4 py-2 border border-gray-300 rounded-lg w-full md:w-[40%] focus:outline-none focus:ring-2 focus:ring-purple-500"
             type="text"
             placeholder="Enter quantity"
           />
         </div>
 
         {/* Order Button */}
-        <div className="flex items-center justify-center w-full pt-5">
+        <div className="flex mb-10  items-center justify-center w-full pt-5">
           <div className="rainbow relative z-0 overflow-hidden p-0.5 flex items-center justify-center rounded-full hover:scale-105 transition duration-300 active:scale-100">
             <button
-              onClick={() => setOrderModel(false)}
               type="submit"
               disabled={isLoading}
               className="px-8 cursor-pointer text-sm py-3 text-white rounded-full font-medium bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed"
