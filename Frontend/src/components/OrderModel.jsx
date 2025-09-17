@@ -1,14 +1,19 @@
 import React, { useState } from "react";
 
 const OrderModel = ({ product, img }) => {
-  console.log("Product:", product);
-  console.log("img:", img);
-
   const [orderData, setorderData] = useState({
     address: "",
     paymentType: "",
-    img: "",
+    img: img,
   });
+
+  const { mutate: order, isloading, error } = useOrder();
+
+  function handleSubmit(e) {
+    e.prevent.Default();
+
+    order(orderData);
+  }
 
   return (
     <div className="text-black h-[60vh] md:h-[60vh] bg-white w-[80vw] md:w-[50vw] rounded-xl shadow-lg">
@@ -28,18 +33,24 @@ const OrderModel = ({ product, img }) => {
       </div>
 
       {/* Input & Select */}
-      <form onSubmit={handleSumit}>
+      <form onSubmit={handleSubmit}>
         <div className="p-6 flex flex-col gap-4">
           <input
+            onChange={() =>
+              setorderData({ ...orderData, address: e.target.value })
+            }
             className="px-4 py-2 border border-gray-300 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-purple-500"
             type="text"
             placeholder="Enter your address"
           />
           <select
+            onChange={() =>
+              setorderData({ ...orderData, paymentType: e.target.value })
+            }
             className="px-4 py-2 border border-gray-300 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-purple-500"
             defaultValue=""
           >
-            <option value="">Select Payment Method</option>
+            <option disabled>Select Payment Method</option>
             <option value="COD">Cash on Delivery</option>
           </select>
         </div>
