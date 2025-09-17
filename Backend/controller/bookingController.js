@@ -7,9 +7,9 @@ import bookingModel from "../models/booking.js";
 export async function createBooking(req, res) {
   try {
     const productId = req.params.id;
-    const { address, paymentType } = req.body;
+    const { address, paymentType, img } = req.body;
     const customer = req.user._id;
-    if (!address || !paymentType) {
+    if (!address || !paymentType || img) {
       return res
         .status(400)
         .json({ message: "Address and payment type is required" });
@@ -50,6 +50,7 @@ export async function createBooking(req, res) {
       product: product._id,
       address: req.body.address,
       paymentType: req.body.paymentType,
+      productImg: img,
       warrantyExpiry: warrantyExpiry,
       qrCode: qrCode,
     });

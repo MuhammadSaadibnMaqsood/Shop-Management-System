@@ -26,6 +26,10 @@ const bookingSchema = new mongoose.Schema({
         default: "COD",
         required: true,
     },
+    productImg:{
+        type:String,
+        required: true
+    },
     paymentStatus:{
         type: String,
         enum: ["PENDING", "COMPLETED"],
