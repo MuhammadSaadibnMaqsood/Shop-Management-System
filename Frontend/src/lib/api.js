@@ -1,8 +1,6 @@
 import axiosInstance from "./axios";
 import { toast } from "react-toastify"; // yeh zaroor add karna
 
-
-
 // FETCH EXISTING USER
 export const fetchUser = async () => {
   try {
@@ -110,6 +108,21 @@ export const ownerProduct = async () => {
   try {
     const response = await axiosInstance.get("product/ownerproducts");
     // console.log(response);
+
+    return response?.data;
+  } catch (error) {
+    toast.error(error.response?.data?.message || "Something went wrong!");
+    console.log(error);
+  }
+};
+// ORDER PRODUCT
+export const orderProduct = async () => {
+  try {
+    const response = await axiosInstance.post("booking/create-booking/:id");
+    console.log(response);
+    if (response?.data?.message) {
+      toast.success(response?.data?.message);
+    }
 
     return response?.data;
   } catch (error) {

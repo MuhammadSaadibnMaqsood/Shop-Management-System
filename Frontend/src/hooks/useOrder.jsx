@@ -1,8 +1,11 @@
 import React from "react";
+import { orderProduct } from "../lib/api";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 const useOrder = () => {
-  const queryClient = useQuery();
-  return useMuatation({
+  const queryClient = useQueryClient();
+
+  return useMutation({
     mutationFn: orderProduct,
     onSuccess: () => {
       queryClient.invalidateQueries(["ownerProducts"]);
