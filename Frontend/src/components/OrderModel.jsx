@@ -12,6 +12,8 @@ const OrderModel = ({ product, img }) => {
 
   function handleSubmit(e) {
     e.preventDefault();
+    console.log(orderData);
+    
     order(orderData);
   }
 

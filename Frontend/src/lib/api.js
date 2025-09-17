@@ -116,9 +116,12 @@ export const ownerProduct = async () => {
   }
 };
 // ORDER PRODUCT
-export const orderProduct = async () => {
+export const orderProduct = async (orderData) => {
   try {
-    const response = await axiosInstance.post("booking/create-booking/:id");
+    const response = await axiosInstance.post(
+      "booking/create-booking/:id",
+      orderData
+    );
     console.log(response);
     if (response?.data?.message) {
       toast.success(response?.data?.message);

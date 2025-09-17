@@ -25,7 +25,6 @@ const IndividualProduct = () => {
     if (product?.images?.length > 0) {
       setMainImg(product.images[0]);
     }
-    console.log(product);
   }, [product]);
 
   if (!product) {
@@ -104,7 +103,7 @@ const IndividualProduct = () => {
               <button
                 onClick={() => {
                   setorderModel(true);
-                scrollTo(0,0);
+                  scrollTo(0, 0);
                 }}
                 class="px-8  cursor-pointer text-sm py-3 text-white rounded-full font-medium bg-gray-800"
               >

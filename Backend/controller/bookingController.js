@@ -9,7 +9,7 @@ export async function createBooking(req, res) {
     const productId = req.params.id;
     const { address, paymentType, img } = req.body;
     const customer = req.user._id;
-    if (!address || !paymentType || img) {
+    if (!address || !paymentType || !img) {
       return res
         .status(400)
         .json({ message: "Address and payment type is required" });
