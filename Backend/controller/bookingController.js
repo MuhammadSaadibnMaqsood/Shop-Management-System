@@ -2,14 +2,13 @@ import QRCode from "qrcode";
 import productModel from "../models/product.js";
 import bookingModel from "../models/booking.js";
 
-
 //FUNCTION TO CREATE A NEW BOOKING
 export async function createBooking(req, res) {
   try {
     const productId = req.params.id;
     console.log(productId);
-    
-    const { address, paymentType, img } = req.body;
+
+    const { address, paymentType, img, quantity } = req.body;
     const customer = req.user._id;
     if (!address || !paymentType || !img) {
       return res
@@ -52,6 +51,7 @@ export async function createBooking(req, res) {
       product: product._id,
       address: req.body.address,
       paymentType: req.body.paymentType,
+      quantity: quantity,
       productImg: img,
       warrantyExpiry: warrantyExpiry,
       qrCode: qrCode,

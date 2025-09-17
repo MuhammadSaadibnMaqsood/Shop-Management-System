@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import useProductStore from "../Zustand/useProducts";
 import OrderModel from "../components/OrderModel";
+import useOrderModelStore from "../Zustand/OrderModelStore";
 
 const IndividualProduct = () => {
   const { id } = useParams();
@@ -10,8 +11,10 @@ const IndividualProduct = () => {
   const [product, setProduct] = useState(null);
   const [mainImg, setMainImg] = useState(null);
   const [overlay, setOverlay] = useState(false);
-  const [orderModel, setorderModel] = useState(false);
+  // const [orderModel, setorderModel] = useState(false);
 
+  const {showOrderModel,setOrderModel} = useOrderModelStore();
+ 
   useEffect(() => {
     if (productsZustand.length > 0) {
       const foundProduct = productsZustand.find(
@@ -48,7 +51,7 @@ const IndividualProduct = () => {
 
   return (
     <div className="bg-zinc-950 min-h-[100vh] relative">
-      {orderModel && (
+      {showOrderModel && (
         <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-10 flex items-center justify-center">
           <OrderModel product={product} img={mainImg} />
         </div>
@@ -102,7 +105,7 @@ const IndividualProduct = () => {
             <div className="rainbow relative z-0 overflow-hidden p-0.5 flex items-center justify-center rounded-full hover:scale-105 transition duration-300 active:scale-100">
               <button
                 onClick={() => {
-                  setorderModel(true);
+                  setOrderModel(true);
                   scrollTo(0, 0);
                 }}
                 class="px-8  cursor-pointer text-sm py-3 text-white rounded-full font-medium bg-gray-800"

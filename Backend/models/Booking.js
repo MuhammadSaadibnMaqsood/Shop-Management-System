@@ -26,6 +26,10 @@ const bookingSchema = new mongoose.Schema({
         default: "COD",
         required: true,
     },
+    quantity:{
+        type: Number,
+        default: 1
+    },
     productImg:{
         type:String,
         required: true

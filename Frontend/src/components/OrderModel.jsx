@@ -1,20 +1,24 @@
 import React, { useState } from "react";
 import useOrder from "../hooks/useOrder";
+import useOrderModelStore from "../Zustand/OrderModelStore";
 
 const OrderModel = ({ product, img }) => {
   const [orderData, setorderData] = useState({
     address: "",
     paymentType: "",
     img: img,
+    quantity: null,
   });
   // console.log("order model: ",product._id);
+
+  const { setOrderModel } = useOrderModelStore();
 
   const { mutate: order, isLoading, error } = useOrder();
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    order({orderData,id:product._id});
+    order({ orderData, id: product._id });
   }
 
   return (
@@ -45,11 +49,13 @@ const OrderModel = ({ product, img }) => {
             type="text"
             placeholder="Enter your address"
           />
+        </div>
+        <div className="w-full flex items-center justify-around">
           <select
             onChange={(e) =>
               setorderData({ ...orderData, paymentType: e.target.value })
             }
-            className="px-4 py-2 border border-gray-300 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-purple-500"
+            className="px-4 py-2 border border-gray-300 rounded-lg w-[40%] focus:outline-none focus:ring-2 focus:ring-purple-500"
             defaultValue=""
           >
             <option disabled value="">
@@ -57,12 +63,22 @@ const OrderModel = ({ product, img }) => {
             </option>
             <option value="COD">Cash on Delivery</option>
           </select>
+          {/* INPUT FOR QUNATITY  */}
+          <input
+            onChange={(e) =>
+              setorderData({ ...orderData, quantity: e.target.value })
+            }
+            className="px-4 py-2 border border-gray-300 rounded-lg w-[40%] focus:outline-none focus:ring-2 focus:ring-purple-500"
+            type="text"
+            placeholder="Enter quantity"
+          />
         </div>
 
         {/* Order Button */}
         <div className="flex items-center justify-center w-full pt-5">
           <div className="rainbow relative z-0 overflow-hidden p-0.5 flex items-center justify-center rounded-full hover:scale-105 transition duration-300 active:scale-100">
             <button
+              onClick={() => setOrderModel(false)}
               type="submit"
               disabled={isLoading}
               className="px-8 cursor-pointer text-sm py-3 text-white rounded-full font-medium bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed"
