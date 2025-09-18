@@ -1,9 +1,12 @@
 import React, { useEffect } from 'react'
-import useGetAllProducts from '../hooks/useGetAllProducts'
+import useGetOrders from '../hooks/useGetOrders';
 
 export const Orders = () => {
 
-    const {data:orders, isloading, iserror} = useGetAllProducts();
+    const {data:orders, isloading, iserror} = useGetOrders();
+    
+    console.log(orders);
+    
 
     useEffect(()=>{
         console.log(orders);

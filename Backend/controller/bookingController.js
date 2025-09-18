@@ -76,6 +76,7 @@ export async function createBooking(req, res) {
 export async function getBooking(req, res) {
   try {
     const customerId = req.user._id;
+    
 
     if (!customerId) {
       return res.status(401).json({ success: false, message: "Unauthorized" });

@@ -139,13 +139,7 @@ export const orderProduct = async ({ orderData, id }) => {
 export const getOrders = async () => {
   try {
 
-    const response = await axiosInstance.post('/booking/getBookings');
-
-    if (response?.data?.message) {
-      console.log(response.data);
-      
-    }
-
+    const response = await axiosInstance.get('/booking/getBookings');
     return response?.data;
   } catch (error) {
     toast.error(error.response?.data?.message || "Something went wrong!");
