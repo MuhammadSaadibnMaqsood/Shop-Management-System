@@ -76,14 +76,17 @@ export async function createBooking(req, res) {
 export async function getBooking(req, res) {
   try {
     const customerId = req.user._id;
-    if (customerId) {
-      return res.status(401).json({ success: false });
-    }
-    const orders = bookingModel.findById({ customerId });
 
-    return res.status(200).json({ success: true, orders: orders });
+    if (!customerId) {
+      return res.status(401).json({ success: false, message: "Unauthorized" });
+    }
+
+    // Find all bookings for this customer
+    const orders = await bookingModel.find({ customer: customerId });
+
+    return res.status(200).json({ success: true, orders });
   } catch (error) {
-    console.error("Error Fectching booking:", error);
+    console.error("Error Fetching booking:", error);
     return res.status(500).json({ message: "Internal server error" });
   }
 }

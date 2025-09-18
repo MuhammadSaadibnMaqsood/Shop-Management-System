@@ -136,3 +136,20 @@ export const orderProduct = async ({ orderData, id }) => {
   }
 };
 
+export const getOrders = async () => {
+  try {
+
+    const response = await axiosInstance.post('/booking/getBookings');
+
+    if (response?.data?.message) {
+      console.log(response.data);
+      
+    }
+
+    return response?.data;
+  } catch (error) {
+    toast.error(error.response?.data?.message || "Something went wrong!");
+    console.log(error);
+  }
+};
+
