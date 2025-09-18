@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { Menu, X } from "lucide-react"; // hamburger icon
+import { LogOut, Menu, X } from "lucide-react"; // hamburger icon
 import useLogout from "../hooks/useLogout";
+import Logout from "./Logout";
 
 const Navbar = ({ role }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,7 +26,7 @@ const Navbar = ({ role }) => {
   }
 
   return (
-    <header className="bebasFont bg-black text-white shadow-md sticky top-0 z-50">
+    <header className="bebasFont bg-black text-white shadow-md sticky top-0 z-40">
       <nav className="flex justify-between w-full items-center p-4">
         {/* Logo */}
         <div>
@@ -54,22 +55,21 @@ const Navbar = ({ role }) => {
 
         {/* Right Button */}
         <div className="hidden md:block">
-          <div className="rainbow relative z-0 overflow-hidden p-0.5 flex items-center justify-center rounded-full hover:scale-105 transition duration-300 active:scale-100">
-            {role ? (
-              <button
-                onClick={handleLogout}
-                className="px-8  cursor-pointer text-sm py-3 text-white rounded-full font-medium bg-gray-800"
-              >
-                Logout
-              </button>
-            ) : (
+          {!role && (
+            <div className="rainbow relative z-0 overflow-hidden p-0.5 flex items-center justify-center rounded-full hover:scale-105 transition duration-300 active:scale-100">
               <Link to="/login">
                 <button class="px-8  cursor-pointer text-sm py-3 text-white rounded-full font-medium bg-gray-800">
                   Login
                 </button>
               </Link>
-            )}
-          </div>
+            </div>
+          )}
+
+          {role && (
+            <div className="relative">
+              <Logout />
+            </div>
+          )}
         </div>
 
         {/* Mobile Hamburger */}

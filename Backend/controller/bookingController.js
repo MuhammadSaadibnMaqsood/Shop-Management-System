@@ -6,7 +6,6 @@ import bookingModel from "../models/booking.js";
 export async function createBooking(req, res) {
   try {
     const productId = req.params.id;
-    console.log(productId);
 
     const { address, paymentType, img, quantity } = req.body;
     const customer = req.user._id;
@@ -70,5 +69,21 @@ export async function createBooking(req, res) {
   } catch (error) {
     console.error("Error creating booking:", error);
     res.status(500).json({ message: "Internal server error" });
+  }
+}
+// FUNCTION TO GET ALL ORDERS
+
+export async function getBooking(req, res) {
+  try {
+    const customerId = req.user._id;
+    if (customerId) {
+      return res.status(401).json({ success: false });
+    }
+    const orders = bookingModel.findById({ customerId });
+
+    return res.status(200).json({ success: true, orders: orders });
+  } catch (error) {
+    console.error("Error Fectching booking:", error);
+    return res.status(500).json({ message: "Internal server error" });
   }
 }
