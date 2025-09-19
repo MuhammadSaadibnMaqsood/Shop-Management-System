@@ -19,11 +19,9 @@ const Navbar = ({ role }) => {
     navLinks.push({ path: "/registerShop", label: "Add Shop" });
   }
   // console.log(role);
-  const { mutate: logoutMutation, isPending, isError } = useLogout();
+ 
 
-  function handleLogout() {
-    logoutMutation();
-  }
+
 
   return (
     <header className="bebasFont bg-black text-white shadow-md sticky top-0 z-40">

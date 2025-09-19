@@ -140,7 +140,7 @@ export const getOrders = async () => {
   try {
 
     const response = await axiosInstance.get('/booking/getBookings');
-    return response?.data;
+    return response?.data?.orders;
   } catch (error) {
     toast.error(error.response?.data?.message || "Something went wrong!");
     console.log(error);

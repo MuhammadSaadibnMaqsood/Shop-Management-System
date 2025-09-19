@@ -22,6 +22,8 @@ import { Orders } from "./Pages/Orders";
 function App() {
   const { isLoading, user } = useAuthUser();
   const role = user?.user?.role;
+  console.log(role);
+  
 
   const location = useLocation();
 
