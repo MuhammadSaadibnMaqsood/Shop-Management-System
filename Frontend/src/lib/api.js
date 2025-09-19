@@ -149,3 +149,17 @@ export const getOrders = async () => {
   }
 };
 
+// OWNER SOLD ITEMS
+
+export const getSoldItems = async () => {
+  try {
+
+    const response = await axiosInstance.get('/product/getsoldproducts');
+    
+    return response?.data;
+  } catch (error) {
+    toast.error(error.response?.data?.message || "Something went wrong!");
+    console.log(error);
+  }
+};
+
