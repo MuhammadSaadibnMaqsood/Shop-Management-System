@@ -1,5 +1,6 @@
 import productModel from "../models/product.js";
 import shopModel from "../models/shop.js";
+import bookingModel from "../models/booking.js";
 
 export async function createProduct(req, res) {
   try {
@@ -89,6 +90,18 @@ export async function getOwnerProducts(req, res) {
     return res.status(200).json(products);
   } catch (error) {
     console.log("error in get specific owner product function", error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+}
+//GET OWNER SOLD PRODUCTS ONLY
+
+export async function getSoldProducts(req, res) {
+  try {
+    const shop = await shopModel.findOne({ shopOwner: req.user._id });
+    const products = await bookingModel.find({ shop: shop._id });
+    return res.status(200).json(products);
+  } catch (error) {
+    console.log("error in get sold products function", error);
     return res.status(500).json({ message: "Internal server error" });
   }
 }

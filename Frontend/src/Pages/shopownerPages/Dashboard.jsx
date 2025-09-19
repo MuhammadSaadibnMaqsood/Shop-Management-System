@@ -7,6 +7,8 @@ import Tabs from "../../components/Tabs";
 const Dashboard = () => {
   const { data: ownerProducts, isLoading, isError } = useGetOwnerProducts();
 
+  console.log(ownerProducts);
+
   const [dashBoardData, setdashBoardData] = useState({});
 
   useEffect(() => {
@@ -63,10 +65,8 @@ const Dashboard = () => {
       </div>
 
       <div>
-        <Tabs ownerProducts ={ownerProducts}/>
+        <Tabs ownerProducts={ownerProducts} />
       </div>
-
-    
     </div>
   );
 };

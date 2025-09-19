@@ -4,6 +4,7 @@ import {
   createProduct,
   getAllProducts,
   getOwnerProducts,
+  getSoldProducts,
 } from "../controller/productController.js";
 import upload from "../middleware/uploadLogoMiddleware.js";
 
@@ -27,5 +28,6 @@ productRouter.post(
 
 productRouter.get("/allproducts", getAllProducts);
 productRouter.get("/ownerproducts", authMiddleware, getOwnerProducts);
+productRouter.get("/getsoldproducts", authMiddleware, getSoldProducts);
 
 export default productRouter;
