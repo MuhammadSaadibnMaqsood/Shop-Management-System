@@ -94,22 +94,25 @@ export async function getBooking(req, res) {
 //CHANGE PAYMENT STATUS
 export async function changeStatus(req, res) {
   try {
-    const id = req.body;
+    const { id } = req.body;   // req.body se sirf id nikalo
 
     if (!id) {
-      return res.status(401).json({message: "Un-authorize"});
+      return res.status(401).json({ message: "Un-authorize" });
     }
 
-    const order = await bookingModel.findOne(id);
+    // findOne({_id: id}) ya direct findById use karo
+    const order = await bookingModel.findById(id);
     if (!order) {
-      return res.status(404).json({message:"No such Order found "});
+      return res.status(404).json({ message: "No such Order found" });
     }
+
     order.paymentStatus = "COMPLETED";
     await order.save();
 
-    return res.status(200).json({success:true,order});
+    return res.status(200).json({ success: true, order });
   } catch (error) {
-    console.error("Error CHange booking status:", error);
-   return res.status(500).json({ message: "Internal server error" });
+    console.error("Error Change booking status:", error);
+    return res.status(500).json({ message: "Internal server error" });
   }
 }
+
