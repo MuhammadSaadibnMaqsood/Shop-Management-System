@@ -165,7 +165,7 @@ export const getSoldItems = async () => {
 
 export const changePaymentStatus = async (id) => {
   try {
-    const response = await axiosInstance.post("/booking/paymentstatus",id);
+    const response = await axiosInstance.post("/booking/paymentstatus",{id:id});
     console.log(response);
 
     if (response.data.success) {
