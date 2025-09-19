@@ -28,7 +28,7 @@ const Logout = () => {
           <button
             onClick={() => {
               setshowDropDown(false);
-              handleLogout;
+              handleLogout();
             }}
           >
             <p className="cursor-pointer hover:bg-gray-700 p-2 mx-5 rounded">

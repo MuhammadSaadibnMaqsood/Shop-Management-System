@@ -97,7 +97,7 @@ export const login = async (req, res) => {
     });
 
     // Send response (without password)
-    const { password: pwd, ...userData } = user._doc; 
+    const { password: pwd, ...userData } = user._doc;
     res.status(200).json({
       success: true,
       user: userData,
@@ -112,22 +112,22 @@ export const login = async (req, res) => {
 
 export const logout = (req, res) => {
   try {
+    console.log("Logout call ae");
 
     res.clearCookie("jwt", {
-      httpOnly:true,
+      httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: "strict",
-    })
-    
+    });
+
     res.status(200).json({ message: "Logged out successfully" });
   } catch (error) {
     console.log("Error in logout:", error);
     res.status(500).json({ message: "Internal Server Error" });
   }
-}
+};
 
-
-// function to fetch user 
+// function to fetch user
 
 export const getUser = async (req, res) => {
   try {
@@ -136,4 +136,4 @@ export const getUser = async (req, res) => {
     console.error("Error in getUser:", error);
     res.status(500).json({ message: "Internal Server Error" });
   }
-}
+};

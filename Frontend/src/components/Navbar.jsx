@@ -56,7 +56,7 @@ const Navbar = ({ role }) => {
           {!role && (
             <div className="rainbow relative z-0 overflow-hidden p-0.5 flex items-center justify-center rounded-full hover:scale-105 transition duration-300 active:scale-100">
               <Link to="/login">
-                <button class="px-8  cursor-pointer text-sm py-3 text-white rounded-full font-medium bg-gray-800">
+                <button className="px-8  cursor-pointer text-sm py-3 text-white rounded-full font-medium bg-gray-800">
                   Login
                 </button>
               </Link>

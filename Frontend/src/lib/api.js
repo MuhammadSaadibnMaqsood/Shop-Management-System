@@ -45,6 +45,8 @@ export const Signup = async (signupData) => {
 // LOUGOUT FUNCTION
 export const logout = async () => {
   try {
+    console.log("call ae");
+    
     const response = await axiosInstance.post("user/logout");
 
     if (
@@ -135,7 +137,7 @@ export const orderProduct = async ({ orderData, id }) => {
     console.log(error);
   }
 };
-
+//GET ORDERS
 export const getOrders = async () => {
   try {
 

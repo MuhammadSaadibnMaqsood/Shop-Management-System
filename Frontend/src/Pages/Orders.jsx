@@ -23,6 +23,24 @@ export const Orders = () => {
 
   return (
     <div className="min-h-[100vh] bg-zinc-950 text-white p-6">
+      <div className="pt-3 py-10">
+        <motion.h1
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.5 }}
+          className="text-center group hover:bg-clip-text hover:text-transparent hover:bg-gradient-to-r from-[#c6005c] to-[#4a00b8] transition-all duration-700 ease-in-out text-5xl sm:text-6xl md:text-8xl AsimovianFont font-bold tracking-widest relative"
+        >
+          My Orders
+          <motion.span
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.3 }}
+            transition={{ duration: 2 }}
+            className="group-hover:bg-clip-text group-hover:text-transparent group-hover:bg-gradient-to-r from-[#c6005c] to-[#4a00b8] transition-all duration-700 ease-in-out absolute AsimovianFont left-0 right-0 top-full text-5xl sm:text-6xl md:text-8xl font-bold tracking-widest text-gray-400 transform scale-y-[-1] blur-sm select-none"
+          >
+            My Orders
+          </motion.span>
+        </motion.h1>
+      </div>
       {orders && orders.length > 0 ? (
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {orders.map((order, index) => (
