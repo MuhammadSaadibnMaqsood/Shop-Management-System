@@ -163,9 +163,11 @@ export const getSoldItems = async () => {
 
 // CHANGE STATUS
 
-export const changePaymentStatus = async () => {
+export const changePaymentStatus = async (id) => {
   try {
-    const response = await axiosInstance.post("/booking/paymentstatus");
+    const response = await axiosInstance.post("/booking/paymentstatus",id);
+    console.log(response);
+
     if (response.data.success) {
       toast.success("Payment status changed");
     }

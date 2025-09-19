@@ -1,10 +1,18 @@
 import React from "react";
 import { motion } from "framer-motion";
 import useGetSoldItems from "../hooks/useGetSoldItems";
+import useChangeStatus from "../hooks/useChangeStatus";
 
 const SoldItems = () => {
   const { data: soldItems } = useGetSoldItems();
+
+  const {mutate:changeStatus} = useChangeStatus();
   // console.log(soldItems);
+
+  function handleChange(e){
+    const id =e.target.value
+    changeStatus(id);
+  }
 
   return (
     <motion.div
@@ -51,7 +59,7 @@ const SoldItems = () => {
                   </td>
                   <td className="px-6 py-4 hidden md:block border-b border-zinc-800 text-blue-400">
                     <label className="relative flex items-center cursor-pointer">
-                      <input type="checkbox" className="peer hidden" />
+                      <input onChange={handleChange} value={product._id} type="checkbox" className="peer hidden" />
                       <span className="w-5 h-5 border-2 border-blue-400 rounded-md peer-checked:bg-blue-500 peer-checked:border-blue-500 transition-all duration-300 flex items-center justify-center">
                         <svg
                           className="w-3 h-3 text-white opacity-0 peer-checked:opacity-100 transition-opacity duration-200"
