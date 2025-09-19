@@ -46,7 +46,7 @@ export const Signup = async (signupData) => {
 export const logout = async () => {
   try {
     console.log("call ae");
-    
+
     const response = await axiosInstance.post("user/logout");
 
     if (
@@ -140,8 +140,7 @@ export const orderProduct = async ({ orderData, id }) => {
 //GET ORDERS
 export const getOrders = async () => {
   try {
-
-    const response = await axiosInstance.get('/booking/getBookings');
+    const response = await axiosInstance.get("/booking/getBookings");
     return response?.data?.orders;
   } catch (error) {
     toast.error(error.response?.data?.message || "Something went wrong!");
@@ -153,9 +152,8 @@ export const getOrders = async () => {
 
 export const getSoldItems = async () => {
   try {
+    const response = await axiosInstance.get("/product/getsoldproducts");
 
-    const response = await axiosInstance.get('/product/getsoldproducts');
-    
     return response?.data;
   } catch (error) {
     toast.error(error.response?.data?.message || "Something went wrong!");
@@ -163,3 +161,16 @@ export const getSoldItems = async () => {
   }
 };
 
+// CHANGE STATUS
+
+export const changePaymentStatus = async () => {
+  try {
+    const response = await axiosInstance.post("/booking/paymentstatus");
+    if (response.data.success) {
+      toast.success("Payment status changed");
+    }
+  } catch (error) {
+    toast.error(error.response?.data?.message || "Something went wrong!");
+    console.log(error);
+  }
+};
