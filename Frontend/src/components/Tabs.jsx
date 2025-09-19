@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ListedItems from "./ListedItems";
+import SoldItems from "../components/SoldItems";
 
 export const Tabs = ({ ownerProducts }) => {
   const [activeTab, setActiveTab] = useState("dashboard");
@@ -51,9 +52,11 @@ export const Tabs = ({ ownerProducts }) => {
       </div>
 
       {activeTab === "dashboard" ? (
-      <ListedItems ownerProducts={ownerProducts}/>
+        <ListedItems ownerProducts={ownerProducts} />
       ) : (
-        <div></div>
+        <div>
+          <SoldItems />
+        </div>
       )}
     </div>
   );

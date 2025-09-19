@@ -1,11 +1,12 @@
-import { useQuery } from '@tanstack/react-query'
-import React from 'react'
-import { getOrders } from '../lib/api'
+import { useQuery } from "@tanstack/react-query";
+import React from "react";
+import { getOrders } from "../lib/api";
 
 const useGetOrders = () => {
   return useQuery({
-    queryFn:getOrders,
-  })
-}
+    queryKey: ["getOrders"],
+    queryFn: getOrders,
+  });
+};
 
-export default useGetOrders
+export default useGetOrders;

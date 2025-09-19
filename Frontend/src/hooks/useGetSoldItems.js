@@ -1,9 +1,9 @@
-import React from "react";
+import { useQuery } from "@tanstack/react-query";
 import { getSoldItems } from "../lib/api";
-import {useQuery} from '@tanstack/react-query'
 
 const useGetSoldItems = () => {
   return useQuery({
+    queryKey: ["soldItems"],   
     queryFn: getSoldItems,
   });
 };
