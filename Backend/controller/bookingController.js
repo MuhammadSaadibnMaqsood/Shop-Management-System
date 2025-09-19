@@ -76,7 +76,6 @@ export async function createBooking(req, res) {
 export async function getBooking(req, res) {
   try {
     const customerId = req.user._id;
-    
 
     if (!customerId) {
       return res.status(401).json({ success: false, message: "Unauthorized" });
@@ -89,5 +88,28 @@ export async function getBooking(req, res) {
   } catch (error) {
     console.error("Error Fetching booking:", error);
     return res.status(500).json({ message: "Internal server error" });
+  }
+}
+
+//CHANGE PAYMENT STATUS
+export async function changeStatus(req, res) {
+  try {
+    const id = req.body;
+
+    if (!id) {
+      return res.status(401).json({message: "Un-authorize"});
+    }
+
+    const order = await bookingModel.findOne(id);
+    if (!order) {
+      return res.status(404).json({message:"No such Order found "});
+    }
+    order.paymentStatus = "COMPLETED";
+    await order.save();
+
+    return res.status(200).json({success:true,order});
+  } catch (error) {
+    console.error("Error CHange booking status:", error);
+   return res.status(500).json({ message: "Internal server error" });
   }
 }

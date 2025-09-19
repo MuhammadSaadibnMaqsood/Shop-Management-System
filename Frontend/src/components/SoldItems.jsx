@@ -4,7 +4,7 @@ import useGetSoldItems from "../hooks/useGetSoldItems";
 
 const SoldItems = () => {
   const { data: soldItems } = useGetSoldItems();
-  console.log(soldItems);
+  // console.log(soldItems);
 
   return (
     <motion.div
