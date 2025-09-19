@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Plus } from "lucide-react";
 import useListProduct from "../../hooks/useListProduct";
+import { toast } from "react-toastify";
 
 const CreateProduct = () => {
   const [productData, setproductData] = useState({
@@ -17,21 +18,21 @@ const CreateProduct = () => {
 
   const { mutate: list, isLoading, isError } = useListProduct();
 
+  //  Image change & preview
   function handleImageChange(e, index) {
     const file = e.target.files[0];
     if (!file) return;
 
-    let newImages = [...productData.images];
+    const newImages = [...productData.images];
     newImages[index] = file;
-
     setproductData({ ...productData, images: newImages });
   }
 
+  //  Submit product
   function handleSubmit(e) {
     e.preventDefault();
     try {
       const formData = new FormData();
-
       formData.append("productName", productData.productName);
       formData.append("price", productData.price);
       formData.append("description", productData.description);
@@ -39,15 +40,21 @@ const CreateProduct = () => {
       formData.append("warranty", productData.warranty);
       formData.append("stock", productData.stock);
       formData.append("brand", productData.brand);
-      productData.images.map((img) => {
-        formData.append("images", img);
-      });
-      list(formData);
-      
+
+      if (productData.images.length > 0) {
+        productData.images.forEach((img) => {
+          formData.append("images", img);
+        });
+
+        list(formData);
+      }else{
+        toast.error("Please enter atleast one product image")
+      }
     } catch (error) {
       console.log(error.message);
     }
   }
+
   return (
     <div className="min-h-screen bg-zinc-950 text-white flex flex-col items-center px-6 py-10">
       <motion.h1
@@ -74,100 +81,95 @@ const CreateProduct = () => {
               setproductData({ ...productData, productName: e.target.value })
             }
             type="text"
-            required={true}
+            required
             placeholder="Product Name"
-            className="w-full px-4 py-3 rounded-lg bg-zinc-800 
-            text-white border border-zinc-700 focus:outline-none 
-            focus:ring-2 focus:ring-purple-600"
+            className="w-full px-4 py-3 rounded-lg bg-zinc-800 text-white border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-purple-600"
           />
           <input
             type="number"
-            required={true}
+            required
             onChange={(e) =>
               setproductData({ ...productData, price: e.target.value })
             }
             placeholder="Price"
-            className="w-full px-4 py-3 rounded-lg bg-zinc-800 
-            text-white border border-zinc-700 focus:outline-none 
-            focus:ring-2 focus:ring-purple-600"
+            className="w-full px-4 py-3 rounded-lg bg-zinc-800 text-white border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-purple-600"
           />
         </div>
 
         {/* Row 2 */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <input
-            required={true}
+            required
             onChange={(e) =>
               setproductData({ ...productData, category: e.target.value })
             }
             type="text"
             placeholder="Category"
-            className="w-full px-4 py-3 rounded-lg bg-zinc-800 
-            text-white border border-zinc-700 focus:outline-none 
-            focus:ring-2 focus:ring-purple-600"
+            className="w-full px-4 py-3 rounded-lg bg-zinc-800 text-white border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-purple-600"
           />
           <input
             onChange={(e) =>
               setproductData({ ...productData, warranty: e.target.value })
             }
             type="number"
-            required={true}
+            required
             placeholder="Warranty (months)"
-            className="w-full px-4 py-3 rounded-lg bg-zinc-800 
-            text-white border border-zinc-700 focus:outline-none 
-            focus:ring-2 focus:ring-purple-600"
+            className="w-full px-4 py-3 rounded-lg bg-zinc-800 text-white border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-purple-600"
           />
         </div>
 
         {/* Row 3 */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <input
-            required={true}
+            required
             onChange={(e) =>
               setproductData({ ...productData, stock: e.target.value })
             }
             type="number"
             placeholder="Stock"
-            className="w-full px-4 py-3 rounded-lg bg-zinc-800 
-            text-white border border-zinc-700 focus:outline-none 
-            focus:ring-2 focus:ring-purple-600"
+            className="w-full px-4 py-3 rounded-lg bg-zinc-800 text-white border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-purple-600"
           />
           <input
-            required={true}
+            required
             onChange={(e) =>
               setproductData({ ...productData, brand: e.target.value })
             }
             type="text"
             placeholder="Brand"
-            className="w-full px-4 py-3 rounded-lg bg-zinc-800 
-            text-white border border-zinc-700 focus:outline-none 
-            focus:ring-2 focus:ring-purple-600"
+            className="w-full px-4 py-3 rounded-lg bg-zinc-800 text-white border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-purple-600"
           />
         </div>
 
-        {/* File Uploads */}
+        {/* File Uploads with Preview */}
         <div className="flex flex-wrap gap-5">
           {[0, 1, 2, 3].map((i) => (
             <label
               key={i}
               className="w-24 h-24 flex items-center justify-center 
               border-2 border-dashed border-zinc-600 rounded-xl 
-              cursor-pointer hover:border-purple-600 transition"
+              cursor-pointer hover:border-purple-600 transition bg-cover bg-center"
+              style={{
+                backgroundImage: productData.images[i]
+                  ? `url(${URL.createObjectURL(productData.images[i])})`
+                  : "none",
+              }}
             >
               <input
-               
                 onChange={(e) => handleImageChange(e, i)}
                 type="file"
+                accept="image/*"
                 className="hidden"
               />
-              <Plus className="w-10 h-10 text-zinc-400 group-hover:text-white" />
+              {!productData.images[i] && (
+                <Plus className="w-10 h-10 text-zinc-400 group-hover:text-white" />
+              )}
             </label>
           ))}
         </div>
 
         {/* Description */}
         <textarea
-          required={true}
+          required
           onChange={(e) =>
             setproductData({ ...productData, description: e.target.value })
           }
@@ -181,11 +183,12 @@ const CreateProduct = () => {
         {/* Submit Button */}
         <button
           type="submit"
+          disabled={isLoading}
           className="w-full py-3 rounded-xl bg-gradient-to-r 
           from-[#c6005c] to-[#4a00b8] text-white font-bold 
-          hover:opacity-90 transition"
+          hover:opacity-90 transition disabled:opacity-50"
         >
-          Submit Product
+          {isLoading ? "Submitting..." : "Submit Product"}
         </button>
       </form>
     </div>
