@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { dummyProducts } from "../../../dummyData/Dummy";
 import useGetOwnerProducts from "../../hooks/useGetOwnerProducts";
+import { Link } from "react-router-dom";
 const Dashboard = () => {
   const { data: ownerProducts, isLoading, isError } = useGetOwnerProducts();
 
@@ -32,6 +33,16 @@ const Dashboard = () => {
         DASHBOARD OVERVIEW
       </motion.h1>
 
+      <div className="flex justify-end mb-5">
+         <div className="rainbow relative w-40 z-0 overflow-hidden p-0.5 flex items-center justify-center rounded-full hover:scale-105 transition duration-300 active:scale-100">
+              <Link to="/owner/createproduct">
+                <button className="px-8  cursor-pointer text-sm py-3 text-white rounded-full font-medium bg-gray-800">
+                  Add product
+                </button>
+              </Link>
+            </div>
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {/* Total Sales */}
         <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300">
@@ -56,9 +67,13 @@ const Dashboard = () => {
             <thead className="bg-zinc-900 text-gray-300">
               <tr>
                 <th className="px-6 py-3 border-b border-zinc-800">Product</th>
-                <th className="px-6 py-3 border-b border-zinc-800">Price</th>
+                <th className="px-6 py-3 hidden sm:block  border-b border-zinc-800">
+                  Price
+                </th>
                 <th className="px-6 py-3 border-b border-zinc-800">Stock</th>
-                <th className="px-6 py-3 border-b border-zinc-800">Sell</th>
+                <th className="px-6 py-3 border-b hidden md:block border-zinc-800">
+                  Sell
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -70,13 +85,13 @@ const Dashboard = () => {
                   <td className="px-6 py-4 border-b border-zinc-800 font-medium">
                     {product.productName}
                   </td>
-                  <td className="px-6 py-4 border-b border-zinc-800 text-green-400">
+                  <td className="px-6 py-4 hidden sm:block border-b border-zinc-800 text-green-400">
                     Rs. {product.price}
                   </td>
                   <td className="px-6 py-4 border-b border-zinc-800">
                     {product.stock || 0}
                   </td>
-                  <td className="px-6 py-4 border-b border-zinc-800 text-blue-400">
+                  <td className="px-6 py-4 hidden md:block border-b border-zinc-800 text-blue-400">
                     {product.sell || 0}
                   </td>
                 </tr>

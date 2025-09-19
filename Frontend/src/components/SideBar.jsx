@@ -7,7 +7,7 @@ const SideBar = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="w-64 h-full bg-zinc-950 border-r border-gray-800 p-5">
+    <div className="w-40 sm:w-64 h-full bg-zinc-950 border-r border-gray-800 p-5">
       <div>
         <button
           onClick={() => navigate("dashboard")}
