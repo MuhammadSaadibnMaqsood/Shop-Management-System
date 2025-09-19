@@ -98,7 +98,7 @@ export async function getOwnerProducts(req, res) {
 export async function getSoldProducts(req, res) {
   try {
     const shop = await shopModel.findOne({ shopOwner: req.user._id });
-    const products = await bookingModel.find({ shop: shop._id });
+    const products = await bookingModel.find({ shop: shop._id }).populate("product");
     return res.status(200).json(products);
   } catch (error) {
     console.log("error in get sold products function", error);

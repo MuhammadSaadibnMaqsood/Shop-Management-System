@@ -54,9 +54,7 @@ export const Tabs = ({ ownerProducts }) => {
       {activeTab === "dashboard" ? (
         <ListedItems ownerProducts={ownerProducts} />
       ) : (
-        <div>
-          <SoldItems />
-        </div>
+        <SoldItems />
       )}
     </div>
   );
