@@ -101,7 +101,9 @@ const IndividualProduct = () => {
             {product.description}
           </p>
 
-          <div className=" flex items-center justify-center w-full pt-10">
+          <div className=" flex gap-5 items-center justify-center w-full pt-10">
+
+            {/* ORDER BUTTON   */}
             <div className="rainbow relative z-0 overflow-hidden p-0.5 flex items-center justify-center rounded-full hover:scale-105 transition duration-300 active:scale-100">
               <button
                 onClick={() => {
@@ -111,6 +113,19 @@ const IndividualProduct = () => {
                 class="px-8  cursor-pointer text-sm py-3 text-white rounded-full font-medium bg-gray-800"
               >
                 Order Now!
+              </button>
+            </div>
+
+            {/* ADD TO CART BUTTON  */}
+            <div className="rainbow relative z-0 overflow-hidden p-0.5 flex items-center justify-center rounded-full hover:scale-105 transition duration-300 active:scale-100">
+              <button
+                onClick={() => {
+                  setOrderModel(true);
+                  scrollTo(0, 0);
+                }}
+                class="px-8  cursor-pointer text-sm py-3 text-white rounded-full font-medium bg-gray-800"
+              >
+               Add to cart
               </button>
             </div>
           </div>
