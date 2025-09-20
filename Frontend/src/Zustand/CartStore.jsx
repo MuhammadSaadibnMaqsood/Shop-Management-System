@@ -1,9 +1,30 @@
+// src/store/cartStore.js
 import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
+const useCartStore = create(
+  persist(
+    (set) => ({
+      cartItems: [],
 
-const cartStore = create((set) => ({
-    cartItem: [],
-    setCartItem: (item) => set({ cartItem: item }),
-}))
+     
+      addToCart: (item) =>
+        set((state) => ({
+          cartItems: [...state.cartItems, item],
+        })),
 
-export default cartStore;
+     
+      removeFromCart: (id) =>
+        set((state) => ({
+          cartItems: state.cartItems.filter((i) => i._id !== id),
+        })),
+
+      clearCart: () => set({ cartItems: [] }),
+    }),
+    {
+      name: "Cart-Storage", // localStorage key
+    }
+  )
+);
+
+export default useCartStore;

@@ -5,11 +5,11 @@ import { persist } from "zustand/middleware";
 const useOrderModelStore = create(
   persist(
     (set) => ({
-      showOrderModel: false, // default: modal is closed
+      showOrderModel: false, 
       setOrderModel: (model) => set({ showOrderModel: model }),
     }),
     {
-      name: "order-model", // localStorage key
+      name: "order-model", 
     }
   )
 );

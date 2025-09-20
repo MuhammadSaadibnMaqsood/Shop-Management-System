@@ -19,7 +19,7 @@ const Allproducts = () => {
   // API hook
   const { data: products, isLoading, error } = useGetAllProducts();
 
-  // ✅ Always top-level hook
+
   useEffect(() => {
     if (products) {
       setProducts(products);
@@ -95,7 +95,7 @@ const Allproducts = () => {
     setShowFilter(false);
   }
 
-  // ✅ Safe conditional return (no hooks here!)
+
   if (isLoading) return <Loading />;
   if (error)
     return (
@@ -150,7 +150,7 @@ const Allproducts = () => {
                 <span>{range.label}</span>
               </div>
             ))}
-            <div className="rainbow relative z-0 overflow-hidden p-0.5 flex items-center justify-center rounded-full hover:scale-105 transition duration-300 active:scale-100">
+            <div className="rainbow w-24 relative z-0 overflow-hidden p-0.5 flex items-center justify-center rounded-full hover:scale-105 transition duration-300 mx-auto active:scale-100">
               <button
                 onClick={handleFilterModel}
                 className="px-8 cursor-pointer text-sm py-3 text-white rounded-full font-medium bg-gray-800"
