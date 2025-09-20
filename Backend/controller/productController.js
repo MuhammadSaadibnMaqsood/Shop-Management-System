@@ -98,10 +98,38 @@ export async function getOwnerProducts(req, res) {
 export async function getSoldProducts(req, res) {
   try {
     const shop = await shopModel.findOne({ shopOwner: req.user._id });
-    const products = await bookingModel.find({ shop: shop._id }).populate("product");
+    const products = await bookingModel
+      .find({ shop: shop._id })
+      .populate("product");
     return res.status(200).json(products);
   } catch (error) {
     console.log("error in get sold products function", error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+}
+// DISLIST ITEM CONTROLLER
+
+export async function disListProduct(req, res) {
+  try {
+    const { id } = req.body;
+
+    if (!id) {
+      return res
+        .status(401)
+        .json({ success: false, message: "Id not available" });
+    }
+
+    const product = await productModel.findByIdAndDelete(id);
+
+    if (!product) {
+      return res.status(404).json({ message: "Item not found" });
+    }
+
+    productModel.save();
+
+    return res.status(200).json({ success: true, message: "Product deleted" });
+  } catch (error) {
+    console.log("error in dislist product function", error);
     return res.status(500).json({ message: "Internal server error" });
   }
 }

@@ -3,6 +3,11 @@ import { motion } from "framer-motion";
 import { X } from "lucide-react";
 
 const ListedItems = ({ ownerProducts }) => {
+
+
+  function handleDislist(id){
+    
+  }
   return (
     <motion.div
       initial={{ opacity: 0 }}
