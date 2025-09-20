@@ -1,12 +1,13 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { X } from "lucide-react";
 
 const ListedItems = ({ ownerProducts }) => {
   return (
     <motion.div
-    initial = {{opacity:0}}
-    animate = {{opacity:1}}
-    transition = {{duration:1}}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
     >
       {" "}
       <div className="text-white pt-10">
@@ -15,12 +16,19 @@ const ListedItems = ({ ownerProducts }) => {
             <thead className="bg-zinc-900 text-gray-300">
               <tr>
                 <th className="px-6 py-3 border-b border-zinc-800">Product</th>
-                <th className="px-6 py-3 hidden sm:block  border-b border-zinc-800">
+                <th className="px-6 py-3 hidden sm:block border-b border-zinc-800">
                   Price
                 </th>
                 <th className="px-6 py-3 border-b border-zinc-800">Stock</th>
-                <th className="px-6 py-3 border-b hidden md:block border-zinc-800">
+
+                {/* Sell column sirf md screens par */}
+                <th className="px-6 py-3 hidden md:table-cell border-b border-zinc-800">
                   Sell
+                </th>
+
+                {/* Dislist hamesha dikhana ho to hidden hatado */}
+                <th className="px-6 py-3 border-b border-zinc-800">
+                  Dislist Product
                 </th>
               </tr>
             </thead>
@@ -33,14 +41,26 @@ const ListedItems = ({ ownerProducts }) => {
                   <td className="px-6 py-4 border-b border-zinc-800 font-medium">
                     {product.productName}
                   </td>
-                  <td className="px-6 py-4 hidden sm:block border-b border-zinc-800 text-green-400">
+                  <td className="px-6 py-4 hidden sm:table-cell border-b border-zinc-800 text-green-400">
                     Rs. {product.price}
                   </td>
                   <td className="px-6 py-4 border-b border-zinc-800">
                     {product.stock || 0}
                   </td>
-                  <td className="px-6 py-4 hidden md:block border-b border-zinc-800 text-blue-400">
-                    {product.sell || 0}
+
+                  {/* Sell column sirf md screens par */}
+                  <td className="px-6 py-4 hidden md:table-cell border-b border-zinc-800 text-blue-400">
+                    {product.totalSell || 0}
+                  </td>
+
+                  {/* Dislist column hamesha visible */}
+                  <td className="px-6 py-4 border-b border-zinc-800 text-red-400">
+                    <button
+                      onClick={() => handleDislist(product._id)}
+                      className="hover:text-red-600 cursor-pointer transition"
+                    >
+                      <X className="w-5 h-5" />
+                    </button>
                   </td>
                 </tr>
               ))}
