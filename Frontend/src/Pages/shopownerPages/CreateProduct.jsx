@@ -66,9 +66,14 @@ const CreateProduct = () => {
       console.log(error.message);
     }
   }
-  if (isPending) return <Loading/>
+  if (isPending) return <Loading />;
   return (
-    <div className="min-h-screen bg-zinc-950 text-white flex flex-col items-center px-6 py-10">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="min-h-screen bg-zinc-950 text-white flex flex-col items-center px-6 py-10"
+    >
       <motion.h1
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -203,7 +208,7 @@ const CreateProduct = () => {
           {isPending ? "Submitting..." : "Submit Product"}
         </button>
       </form>
-    </div>
+    </motion.div>
   );
 };
 

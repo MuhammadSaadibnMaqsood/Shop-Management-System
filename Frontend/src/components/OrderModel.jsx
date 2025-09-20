@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import useOrder from "../hooks/useOrder";
+import Loading from "./Loading";
 // import useOrderModelStore from "../Zustand/OrderModelStore";
 
 const OrderModel = ({ product, img }) => {
@@ -13,7 +14,7 @@ const OrderModel = ({ product, img }) => {
 
   // const { setOrderModel } = useOrderModelStore();
 
-  const { mutate: order, isLoading, error } = useOrder();
+  const { mutate: order, isPending, error } = useOrder();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -21,6 +22,7 @@ const OrderModel = ({ product, img }) => {
     order({ orderData, id: product._id });
   }
 
+  if (isPending) return <Loading/>
   return (
     <div className="text-black bg-white w-[80vw] md:w-[50vw] rounded-xl shadow-lg">
       {/* Product Info */}
@@ -55,20 +57,20 @@ const OrderModel = ({ product, img }) => {
             onChange={(e) =>
               setorderData({ ...orderData, paymentType: e.target.value })
             }
-            className="px-4 py-2 border border-gray-300 rounded-lg w-full md:w-[40%] focus:outline-none focus:ring-2 focus:ring-purple-500"
+            className="px-4 py-2 cursor-pointer border border-gray-300 rounded-lg w-full md:w-[40%] focus:outline-none focus:ring-2 focus:ring-purple-500"
             defaultValue=""
           >
             <option disabled value="">
               Select Payment Method
             </option>
-            <option value="COD">Cash on Delivery</option>
+            <option className="cursor-pointer" value="COD">Cash on Delivery</option>
           </select>
           {/* INPUT FOR QUNATITY  */}
           <input
             onChange={(e) =>
               setorderData({ ...orderData, quantity: e.target.value })
             }
-            className="px-4 py-2 border border-gray-300 rounded-lg w-full md:w-[40%] focus:outline-none focus:ring-2 focus:ring-purple-500"
+            className="px-4 py-2 border cursor-pointer border-gray-300 rounded-lg w-full md:w-[40%] focus:outline-none focus:ring-2 focus:ring-purple-500"
             type="text"
             placeholder="Enter quantity"
           />
@@ -79,10 +81,10 @@ const OrderModel = ({ product, img }) => {
           <div className="rainbow relative z-0 overflow-hidden p-0.5 flex items-center justify-center rounded-full hover:scale-105 transition duration-300 active:scale-100">
             <button
               type="submit"
-              disabled={isLoading}
+              disabled={isPending}
               className="px-8 cursor-pointer text-sm py-3 text-white rounded-full font-medium bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {isLoading ? "Placing Order..." : "Order Now!"}
+              {isPending ? "Placing Order..." : "Order Now!"}
             </button>
           </div>
         </div>

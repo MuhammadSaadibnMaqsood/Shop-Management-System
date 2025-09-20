@@ -29,7 +29,7 @@ const Navbar = ({ role }) => {
         {/* Logo */}
         <div>
           <h1 className="text-2xl font-bold tracking-wider">
-            <Link to="/">My-App</Link>
+            <Link to="/">AURA</Link>
           </h1>
         </div>
 
