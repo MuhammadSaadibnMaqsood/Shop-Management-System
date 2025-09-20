@@ -77,7 +77,7 @@ export const Orders = () => {
                 </p>
                 <p
                   className={`font-medium ${
-                    order.paymentStatus === "Paid"
+                    order.paymentStatus === "COMPLETED"
                       ? "text-green-400"
                       : "text-yellow-400"
                   }`}

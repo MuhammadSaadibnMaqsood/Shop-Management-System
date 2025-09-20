@@ -2,13 +2,16 @@ import React from "react";
 import { motion } from "framer-motion";
 import { X } from "lucide-react";
 import { useDislisrProduct } from "../hooks/useDislisrProduct";
+import Loading from "./Loading";
 
 const ListedItems = ({ ownerProducts }) => {
-  const { mutate: dislistItem } = useDislisrProduct();
+  const { mutate: dislistItem, isPending } = useDislisrProduct();
 
   function handleDislist(id) {
     dislistItem(id);
   }
+
+  if (isPending) return <Loading />;
   return (
     <motion.div
       initial={{ opacity: 0 }}
