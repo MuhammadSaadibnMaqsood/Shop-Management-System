@@ -17,12 +17,17 @@ const RegisterShop = () => {
   }
 
   return (
-    <div className="text-white bg-zinc-950 h-screen w-full ">
-      <div className="flex flex-col items-center justify-center ">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="text-white bg-zinc-950 min-h-screen w-full "
+    >
+      <div className="flex flex-col items-center justify-center">
         <motion.h1
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1.5, delay: 1.5 }}
+          transition={{ duration: 1.5, delay: 1}}
           className="text-center group hover:bg-clip-text hover:text-transparent hover:bg-gradient-to-r from-[#c6005c] to-[#4a00b8] transition-all duration-700 ease-in-out text-5xl sm:text-6xl md:text-7xl AsimovianFont font-bold tracking-widest relative"
         >
           Registor Your Shop
@@ -40,10 +45,10 @@ const RegisterShop = () => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 2, delay: 2.5 }}
-        className="flex p-10 mt-10 items-center  justify-center gap-2"
+        transition={{ duration: 2, delay: 2 }}
+        className="flex p-10 mt-10 pb-10 items-center  justify-center gap-2"
       >
-        <div className="h-[45vh] lg:h-[55vh] w-[90vw] lg:w-[40vw] form-shadow  ">
+        <div className=" w-[90vw] lg:w-[40vw] form-shadow  ">
           <form
             onSubmit={handleSubmit}
             className="flex p-10 relative z-50 flex-col space-y-8 items-center justify-center"
@@ -117,9 +122,10 @@ const RegisterShop = () => {
 
             {/* Description */}
             <div className="flex flex-col relative w-full md:w-1/2">
-              <input
+              <textarea
                 id="description"
-                className="peer cursor-pointer border-b rounded-2xl h-10 p-5 text-white bg-transparent placeholder-transparent focus:outline-none"
+                rows={8}
+                className="peer cursor-pointer border-b rounded-2xl p-5 text-white bg-transparent placeholder-transparent focus:outline-none"
                 placeholder="Description"
                 onChange={(e) =>
                   setShopDetails({
@@ -147,7 +153,7 @@ const RegisterShop = () => {
           </form>
         </div>
       </motion.div>
-    </div>
+    </motion.div>
   );
 };
 

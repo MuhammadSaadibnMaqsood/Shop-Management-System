@@ -47,6 +47,7 @@ const OrderModel = ({ product, img }) => {
             onChange={(e) =>
               setorderData({ ...orderData, address: e.target.value })
             }
+            required
             className="px-4 py-2 border border-gray-300 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-purple-500"
             type="text"
             placeholder="Enter your address"
@@ -57,6 +58,7 @@ const OrderModel = ({ product, img }) => {
             onChange={(e) =>
               setorderData({ ...orderData, paymentType: e.target.value })
             }
+            required
             className="px-4 py-2 cursor-pointer border border-gray-300 rounded-lg w-full md:w-[40%] focus:outline-none focus:ring-2 focus:ring-purple-500"
             defaultValue=""
           >
@@ -70,6 +72,7 @@ const OrderModel = ({ product, img }) => {
             onChange={(e) =>
               setorderData({ ...orderData, quantity: e.target.value })
             }
+            required
             className="px-4 py-2 border cursor-pointer border-gray-300 rounded-lg w-full md:w-[40%] focus:outline-none focus:ring-2 focus:ring-purple-500"
             type="text"
             placeholder="Enter quantity"
