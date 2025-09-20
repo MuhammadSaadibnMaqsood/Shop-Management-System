@@ -38,7 +38,7 @@ function App() {
   const location = useLocation();
   const isSmallScreen = useIsSmallScreen();
 
-  if (isLoading) return <Loading />;
+  if (true) return <Loading />;
 
   return (
     <>
