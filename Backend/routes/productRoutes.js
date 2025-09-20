@@ -2,6 +2,7 @@ import express from "express";
 import { authMiddleware } from "../middleware/authMiddleware.js";
 import {
   createProduct,
+  disListProduct,
   getAllProducts,
   getOwnerProducts,
   getSoldProducts,
@@ -29,5 +30,6 @@ productRouter.post(
 productRouter.get("/allproducts", getAllProducts);
 productRouter.get("/ownerproducts", authMiddleware, getOwnerProducts);
 productRouter.get("/getsoldproducts", authMiddleware, getSoldProducts);
+productRouter.get("/dislistproduct", authMiddleware, disListProduct);
 
 export default productRouter;

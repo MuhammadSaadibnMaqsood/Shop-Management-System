@@ -115,21 +115,19 @@ export async function disListProduct(req, res) {
 
     if (!id) {
       return res
-        .status(401)
+        .status(400)
         .json({ success: false, message: "Id not available" });
     }
 
     const product = await productModel.findByIdAndDelete(id);
 
     if (!product) {
-      return res.status(404).json({ message: "Item not found" });
+      return res.status(404).json({ success: false, message: "Item not found" });
     }
 
-    productModel.save();
-
-    return res.status(200).json({ success: true, message: "Product deleted" });
+    return res.status(200).json({ success: true, message: "Product deleted successfully" });
   } catch (error) {
-    console.log("error in dislist product function", error);
-    return res.status(500).json({ message: "Internal server error" });
+    console.error("Error in dislist product function:", error);
+    return res.status(500).json({ success: false, message: "Internal server error" });
   }
 }
