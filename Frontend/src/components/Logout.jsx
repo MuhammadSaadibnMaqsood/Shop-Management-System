@@ -2,6 +2,7 @@ import { User2Icon } from "lucide-react";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import useLogout from "../hooks/useLogout";
+import Loading from "./Loading";
 
 const Logout = () => {
   const [showDropDown, setshowDropDown] = useState(false);
@@ -10,9 +11,11 @@ const Logout = () => {
     logoutMutation();
   }
 
+  if (isPending) return <Loading />;
+
   return (
     <div className="absolute right-10 -mt-3 text-white">
-      <button onClick={() => setshowDropDown((prev) => !prev)}>
+      <button className="cursor-pointer" onClick={() => setshowDropDown((prev) => !prev)}>
         <User2Icon className="bg-white text-black p-1 rounded-full" />
       </button>
 

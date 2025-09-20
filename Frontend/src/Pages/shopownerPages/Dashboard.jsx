@@ -4,10 +4,10 @@ import { dummyProducts } from "../../../dummyData/Dummy";
 import useGetOwnerProducts from "../../hooks/useGetOwnerProducts";
 import { Link } from "react-router-dom";
 import Tabs from "../../components/Tabs";
+import Loading from "../../components/Loading";
 const Dashboard = () => {
-  const { data: ownerProducts, isLoading, isError } = useGetOwnerProducts();
-
   const [dashBoardData, setdashBoardData] = useState({});
+  const { data: ownerProducts, isLoading, isError } = useGetOwnerProducts();
 
   useEffect(() => {
     if (!ownerProducts) return;
@@ -23,6 +23,7 @@ const Dashboard = () => {
     setdashBoardData({ totalSell, totalProducts });
   }, [ownerProducts]);
 
+  if (isLoading) return <Loading />;
   return (
     <div className="min-h-[90vh] bg-zinc-950 p-10">
       <motion.h1

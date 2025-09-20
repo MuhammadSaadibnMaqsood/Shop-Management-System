@@ -4,7 +4,12 @@ import { motion } from "framer-motion";
 const About = () => {
   return (
     <div>
-      <div className="h-screen w-full relative bg-black text-white flex flex-col xl:flex-row  items-center p-12 xl:p-0 justify-start xl:justify-center">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="h-screen w-full relative bg-black text-white flex flex-col xl:flex-row  items-center p-12 xl:p-0 justify-start xl:justify-center"
+      >
         {/* Image */}
         <motion.img
           initial={{ opacity: 0, y: 100 }}
@@ -39,7 +44,7 @@ const About = () => {
 
         {/* Paragraph */}
         <motion.p
-          initial={{ opacity: 0, x:100  }}
+          initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, delay: 2.5 }}
           className="static pt-20 xl:p-0 xl:absolute top-60 left-30 w-full text-center xl:w-96 text-gray-300 leading-relaxed"
@@ -49,7 +54,7 @@ const About = () => {
           manage shops, products, and orders with ease, ensuring a smooth and
           personalized shopping experience.
         </motion.p>
-      </div>
+      </motion.div>
     </div>
   );
 };

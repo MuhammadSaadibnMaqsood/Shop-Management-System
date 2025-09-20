@@ -1,3 +1,4 @@
+import Loading from "../components/Loading";
 import useGetOrders from "../hooks/useGetOrders";
 import { motion } from "framer-motion";
 
@@ -5,13 +6,7 @@ export const Orders = () => {
   const { data: orders, isLoading, isError } = useGetOrders();
   // console.log(orders);
 
-  if (isLoading) {
-    return (
-      <div className="min-h-[100vh] flex items-center justify-center bg-zinc-950 text-white">
-        <p className="text-lg animate-pulse">Loading Orders...</p>
-      </div>
-    );
-  }
+  if (isLoading) return <Loading />;
 
   if (isError) {
     return (
@@ -22,7 +17,12 @@ export const Orders = () => {
   }
 
   return (
-    <div className="min-h-[100vh] bg-zinc-950 text-white p-6">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="min-h-[100vh] bg-zinc-950 text-white p-6"
+    >
       <div className="pt-3 py-10">
         <motion.h1
           initial={{ opacity: 0 }}
@@ -120,6 +120,6 @@ export const Orders = () => {
           </motion.h1>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 };

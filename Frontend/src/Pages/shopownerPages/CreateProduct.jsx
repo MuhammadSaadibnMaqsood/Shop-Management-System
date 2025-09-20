@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Plus } from "lucide-react";
 import useListProduct from "../../hooks/useListProduct";
 import { toast } from "react-toastify";
+import Loading from "../../components/Loading";
 
 const CreateProduct = () => {
   const [productData, setproductData] = useState({
@@ -16,7 +17,7 @@ const CreateProduct = () => {
     images: [],
   });
 
-  const { mutate: list, isLoading, isError } = useListProduct();
+  const { mutate: list, isPending, isError } = useListProduct();
 
   //  Image change & preview
   function handleImageChange(e, index) {
@@ -47,14 +48,25 @@ const CreateProduct = () => {
         });
 
         list(formData);
-      }else{
-        toast.error("Please enter atleast one product image")
+      } else {
+        toast.error("Please enter atleast one product image");
       }
+
+      setproductData({
+        productName: "",
+        price: "",
+        description: "",
+        category: "",
+        warranty: "",
+        stock: "",
+        brand: "",
+        images: [],
+      });
     } catch (error) {
       console.log(error.message);
     }
   }
-
+  if (isPending) return <Loading/>
   return (
     <div className="min-h-screen bg-zinc-950 text-white flex flex-col items-center px-6 py-10">
       <motion.h1
@@ -183,12 +195,12 @@ const CreateProduct = () => {
         {/* Submit Button */}
         <button
           type="submit"
-          disabled={isLoading}
+          disabled={isPending}
           className="w-full py-3 rounded-xl bg-gradient-to-r 
           from-[#c6005c] to-[#4a00b8] text-white font-bold 
-          hover:opacity-90 transition disabled:opacity-50"
+          hover:opacity-90 cursor-pointer transition disabled:opacity-50"
         >
-          {isLoading ? "Submitting..." : "Submit Product"}
+          {isPending ? "Submitting..." : "Submit Product"}
         </button>
       </form>
     </div>

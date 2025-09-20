@@ -6,19 +6,25 @@ import useGetAllProducts from "../hooks/useGetAllProducts";
 import { dummyProducts } from "../../dummyData/Dummy";
 import { Funnel } from "lucide-react";
 import useProductsStore from "../Zustand/useProducts";
+import Loading from "../components/Loading";
 
 const Allproducts = () => {
   const { setProducts, productsZustand } = useProductsStore();
+
   const [filteredItem, setFilteredItem] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
   const [showFilter, setShowFilter] = useState(false);
   const [filterArray, setFilterArray] = useState([]);
 
+  // API hook
   const { data: products, isLoading, error } = useGetAllProducts();
 
+  // ✅ Always top-level hook
   useEffect(() => {
-    setProducts(products);
-  }, [products]);
+    if (products) {
+      setProducts(products);
+    }
+  }, [products, setProducts]);
 
   const finalProducts =
     productsZustand && productsZustand.length > 0
@@ -31,10 +37,6 @@ const Allproducts = () => {
     products?.filter((p) => p.category?.toLowerCase().includes("bag")) || [];
   const shirts =
     products?.filter((p) => p.category?.toLowerCase().includes("shirt")) || [];
-
-  useEffect(() => {
-    // console.log(shoes);
-  }, [shoes, products, shirts]);
 
   useEffect(() => {
     setFilteredItem(finalProducts);
@@ -93,14 +95,20 @@ const Allproducts = () => {
     setShowFilter(false);
   }
 
-  if (isLoading) return <p className="text-center text-xl">Loading...</p>;
+  // ✅ Safe conditional return (no hooks here!)
+  if (isLoading) return <Loading />;
   if (error)
     return (
       <p className="text-center text-xl text-red-500">Error loading products</p>
     );
 
   return (
-    <div className="bg-zinc-950 text-white relative">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="bg-zinc-950 text-white relative"
+    >
       {/* Search & Filter Row */}
       <div className="flex flex-col md:flex-row items-center justify-between p-6">
         <div className="w-full">
@@ -238,7 +246,7 @@ const Allproducts = () => {
           </div>
         </>
       )}
-    </div>
+    </motion.div>
   );
 };
 

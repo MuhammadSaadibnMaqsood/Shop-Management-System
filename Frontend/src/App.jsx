@@ -4,7 +4,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import useAuthUser from "./hooks/useAuthUser";
 import Navbar from "./components/Navbar";
 import Home from "./Pages/Home";
-import Loading from "./components/loading";
+import Loading from "./components/Loading";
 import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
 import { ToastContainer } from "react-toastify";
@@ -38,7 +38,7 @@ function App() {
   const location = useLocation();
   const isSmallScreen = useIsSmallScreen();
 
-  if (true) return <Loading />;
+  if (isLoading) return <Loading />;
 
   return (
     <>
