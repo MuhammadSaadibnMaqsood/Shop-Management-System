@@ -28,6 +28,13 @@ const Logout = () => {
               </p>
             </button>
           </Link>
+          <Link to="/cart">
+            <button onClick={() => setshowDropDown(false)}>
+              <p className="cursor-pointer hover:bg-gray-700 p-2 mx-5 rounded">
+                Cart
+              </p>
+            </button>
+          </Link>
           <button
             onClick={() => {
               setshowDropDown(false);

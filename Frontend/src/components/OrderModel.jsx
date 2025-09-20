@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import useOrder from "../hooks/useOrder";
 import Loading from "./Loading";
-// import useOrderModelStore from "../Zustand/OrderModelStore";
+import { X } from "lucide-react";
+import useOrderModelStore from "../Zustand/OrderModelStore";
 
 const OrderModel = ({ product, img }) => {
   const [orderData, setorderData] = useState({
@@ -10,9 +11,8 @@ const OrderModel = ({ product, img }) => {
     img: img,
     quantity: null,
   });
-  // console.log("order model: ",product._id);
 
-  // const { setOrderModel } = useOrderModelStore();
+  const { setOrderModel } = useOrderModelStore();
 
   const { mutate: order, isPending, error } = useOrder();
 
@@ -22,10 +22,14 @@ const OrderModel = ({ product, img }) => {
     order({ orderData, id: product._id });
   }
 
-  if (isPending) return <Loading/>
+  if (isPending) return <Loading />;
   return (
     <div className="text-black bg-white w-[80vw] md:w-[50vw] rounded-xl shadow-lg">
-      {/* Product Info */}
+      <div className="flex justify-end pr-4 pt-2">
+        <button onClick={()=> setOrderModel(false)}>
+          <X className="w-5 h-5 cursor-pointer text-black" />
+        </button>
+      </div>
       <div className="flex items-center justify-between w-full rounded-t-xl p-6 border-b border-gray-200">
         <div>
           <h1 className="text-xl font-semibold text-gray-800">
@@ -65,7 +69,9 @@ const OrderModel = ({ product, img }) => {
             <option disabled value="">
               Select Payment Method
             </option>
-            <option className="cursor-pointer" value="COD">Cash on Delivery</option>
+            <option className="cursor-pointer" value="COD">
+              Cash on Delivery
+            </option>
           </select>
           {/* INPUT FOR QUNATITY  */}
           <input

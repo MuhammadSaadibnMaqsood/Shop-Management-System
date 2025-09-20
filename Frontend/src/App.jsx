@@ -18,8 +18,8 @@ import IndividualProduct from "./Pages/IndividualProduct";
 import CreateProduct from "./Pages/shopownerPages/CreateProduct";
 import OwnerLayout from "./components/OwnerLayout";
 import { Orders } from "./Pages/Orders";
+import Cart from "./Pages/Cart";
 
-// 👇 custom hook for screen size check
 function useIsSmallScreen() {
   const [isSmall, setIsSmall] = useState(window.innerWidth < 640);
 
@@ -56,6 +56,7 @@ function App() {
         <Route path="/products/:id" element={<IndividualProduct />} />
         <Route path="/registerShop" element={<RegisterShop />} />
         <Route path="/orders" element={<Orders />} />
+        <Route path="/cart" element={<Cart />} />
 
         {isSmallScreen ? (
           // Small screen routes
