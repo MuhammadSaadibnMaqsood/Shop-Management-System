@@ -1,16 +1,20 @@
+import { useEffect } from "react";
 import FAQ from "../components/FAQ";
 import Hero from "../components/Hero";
 import NewLetter from "../components/NewLetter";
 import Products from "../components/Products";
 import Testimonail from "../components/Testimonail";
-import {motion} from 'framer-motion'
+import { motion } from "framer-motion";
 const Home = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <motion.div
-      initial = {{opacity:0}}
-      animate = {{opacity:1}}
-      transition={{duration:0.5}}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
       >
         <div className=" w-[100%] sticky top-0">
           <Hero />
@@ -30,8 +34,6 @@ const Home = () => {
           <FAQ />
         </div>
       </motion.div>
-
-     
     </>
   );
 };

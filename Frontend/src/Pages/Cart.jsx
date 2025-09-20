@@ -72,7 +72,7 @@ const Cart = () => {
               </p>
               <div className="rainbow w-40 relative z-0 overflow-hidden p-0.5 flex items-center justify-center rounded-full hover:scale-105 transition duration-300 mx-auto active:scale-100">
                 <Link to={`/products/${item._id}`}>
-                  <button className="px-8 py-3 text-sm text-white rounded-full font-medium bg-gray-800">
+                  <button className="px-8 cursor-pointer py-3 text-sm text-white rounded-full font-medium bg-gray-800">
                     See product
                   </button>
                 </Link>

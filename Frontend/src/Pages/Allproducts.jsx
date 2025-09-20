@@ -19,6 +19,9 @@ const Allproducts = () => {
   // API hook
   const { data: products, isLoading, error } = useGetAllProducts();
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     if (products) {
@@ -94,7 +97,6 @@ const Allproducts = () => {
   function handleFilterModel() {
     setShowFilter(false);
   }
-
 
   if (isLoading) return <Loading />;
   if (error)
