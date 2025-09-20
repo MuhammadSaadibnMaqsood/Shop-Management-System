@@ -1,12 +1,13 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { X } from "lucide-react";
+import { useDislisrProduct } from "../hooks/useDislisrProduct";
 
 const ListedItems = ({ ownerProducts }) => {
+  const { mutate: dislistItem } = useDislisrProduct();
 
-
-  function handleDislist(id){
-    
+  function handleDislist(id) {
+    dislistItem(id);
   }
   return (
     <motion.div

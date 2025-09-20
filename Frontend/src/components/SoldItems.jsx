@@ -43,7 +43,7 @@ const SoldItems = () => {
                   className="hover:bg-zinc-800 transition duration-200"
                 >
                   <td className="px-6 py-4 border-b border-zinc-800 font-medium">
-                    {product.product.productName}
+                    {product?.product?.productName || 'Item deleted'}
                   </td>
                   <td
                     className={`${

@@ -149,7 +149,6 @@ export const getOrders = async () => {
 };
 
 // OWNER SOLD ITEMS
-
 export const getSoldItems = async () => {
   try {
     const response = await axiosInstance.get("/product/getsoldproducts");
@@ -162,14 +161,29 @@ export const getSoldItems = async () => {
 };
 
 // CHANGE STATUS
-
 export const changePaymentStatus = async (id) => {
   try {
-    const response = await axiosInstance.post("/booking/paymentstatus",{id:id});
+    const response = await axiosInstance.post("/booking/paymentstatus", {
+      id: id,
+    });
     console.log(response);
 
     if (response.data.success) {
       toast.success("Payment status changed");
+    }
+  } catch (error) {
+    toast.error(error.response?.data?.message || "Something went wrong!");
+    console.log(error);
+  }
+};
+
+//DISLIST PRODUCT
+export const dislist = async (id) => {
+  try {
+    const response = axiosInstance.post("/product/dislistproduct", { id: id });
+
+    if (response?.data?.success) {
+      toast.success("Item dislisted");
     }
   } catch (error) {
     toast.error(error.response?.data?.message || "Something went wrong!");

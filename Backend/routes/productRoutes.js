@@ -30,6 +30,6 @@ productRouter.post(
 productRouter.get("/allproducts", getAllProducts);
 productRouter.get("/ownerproducts", authMiddleware, getOwnerProducts);
 productRouter.get("/getsoldproducts", authMiddleware, getSoldProducts);
-productRouter.get("/dislistproduct", authMiddleware, disListProduct);
+productRouter.post("/dislistproduct", authMiddleware, disListProduct);
 
 export default productRouter;
