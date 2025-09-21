@@ -8,7 +8,7 @@ import MobileNavbar from "./MobileNavbar";
 
 const Navbar = ({ role }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const { mutate: logout } = useLogout();
+ 
 
   const navLinks = [
     { path: "/", label: "Home" },
@@ -23,10 +23,6 @@ const Navbar = ({ role }) => {
   }
   // console.log(role);
 
-  function handleLogout() {
-    logout();
-    setIsOpen(false);
-  }
 
   return (
     <header className="bebasFont bg-black text-white shadow-md sticky top-0 z-40">

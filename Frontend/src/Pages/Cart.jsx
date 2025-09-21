@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import CartStore from "../Zustand/CartStore";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
+import { X } from "lucide-react";
 
 const Cart = () => {
-  const { cartItems } = CartStore();
+  const { cartItems, removeFromCart } = CartStore();
   const [showHeading, setShowHeading] = useState(true);
 
   useEffect(() => {
@@ -52,14 +53,21 @@ const Cart = () => {
               whileTap={{ scale: 0.97 }}
               className="w-80 transition-all duration-700 bg-zinc-800 rounded-2xl p-5 shadow-lg shadow-zinc-900"
             >
-              <div className="w-[80%] h-40 mx-auto pb-5">
+              <div className="w-[80%] h-44 mx-auto pb-5">
+                <div className="flex justify-end mb-2 -mr-9 cursor-pointer">
+                  <button onClick={() => removeFromCart(item._id)}>
+                    <X className="w-5 h-5 cursor-pointer" />
+                  </button>
+                </div>
                 <img
                   className="w-full h-full rounded-2xl object-cover"
                   src={item.images[0]}
                   alt={item.productName}
                 />
               </div>
-              <h1 className="text-lg font-semibold mb-1">{item.productName}</h1>
+              <h1 className="text-lg mt-3 font-semibold mb-1">
+                {item.productName}
+              </h1>
               <h2 className="mb-3">
                 Price: <span className="text-green-500">${item.price}</span>
               </h2>

@@ -110,7 +110,7 @@ const Products = () => {
   };
 
   return (
-    <div ref={sectionRef} className="bg-zinc-950 min-h-screen py-20 px-5">
+    <div ref={sectionRef} className="bg-zinc-950 min-h-screen py-10 px-5">
       <section className="mx-auto">
         <motion.h1
           ref={headingRef}
@@ -136,7 +136,7 @@ const Products = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="max-w-3/4 mx-auto text-center mt-10 text-white text-lg mb-12"
+          className="max-w-3/4 mx-auto text-center mt-10 text-white text-lg mb-6"
         >
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa
           blanditiis ratione possimus praesentium quibusdam quos esse vel
@@ -163,7 +163,7 @@ const Products = () => {
         {/* Carousel */}
         <div className="relative w-full max-w-4xl mx-auto">
           {/* Carousel wrapper */}
-          <div className="relative h-56 overflow-hidden rounded-lg md:h-96">
+          <div className="relative h-56 overflow-hidden rounded-lg md:h-72">
             {products.map((product, index) => (
               <div
                 key={product.id}
