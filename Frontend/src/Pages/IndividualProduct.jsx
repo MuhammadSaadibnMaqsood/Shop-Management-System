@@ -7,10 +7,11 @@ import CartStore from "../Zustand/CartStore";
 import { ShoppingCart } from "lucide-react";
 import { toast } from "react-toastify";
 
-const IndividualProduct = () => {
+const IndividualProduct = ({role}) => {
   const { id } = useParams();
   const { productsZustand } = useProductStore();
   const { addToCart } = CartStore();
+  
 
   const [product, setProduct] = useState(null);
   const [mainImg, setMainImg] = useState(null);
@@ -110,21 +111,25 @@ const IndividualProduct = () => {
 
           <div className=" flex gap-5 items-center justify-center w-full pt-10">
             {/* ORDER BUTTON   */}
-            <div className="rainbow relative z-0 overflow-hidden p-0.5 flex items-center justify-center rounded-full hover:scale-105 transition duration-300 active:scale-100">
+            <div className={`${!role? 'opacity-60':''} rainbow relative z-0 overflow-hidden p-0.5 flex items-center justify-center rounded-full hover:scale-105 transition duration-300 active:scale-100`}>
               <button
+              disabled={!role? true : false}
                 onClick={() => {
+                 
                   setOrderModel(true);
                   scrollTo(0, 0);
+                  
                 }}
-                class="px-8  cursor-pointer text-sm py-3 text-white rounded-full font-medium bg-gray-800"
+                class={`px-8   cursor-pointer text-sm py-3 text-white rounded-full font-medium bg-gray-800`}
               >
                 Order Now!
               </button>
             </div>
 
             {/* ADD TO CART BUTTON  */}
-            <div className="rainbow relative z-0 overflow-hidden p-0.5 flex items-center justify-center rounded-full hover:scale-105 transition duration-300 active:scale-100">
+            <div className={`rainbow ${!role? 'opacity-60':''} relative z-0 overflow-hidden p-0.5 flex items-center justify-center rounded-full hover:scale-105 transition duration-300 active:scale-100`}>
               <button
+              disabled={!role? true : false}
                 onClick={() => {
                   addToCart(product);
                   toast.success("Product Added to cart");

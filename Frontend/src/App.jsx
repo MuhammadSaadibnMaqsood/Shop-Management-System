@@ -23,7 +23,7 @@ import Cart from "./Pages/Cart";
 function useIsSmallScreen() {
   const [isSmall, setIsSmall] = useState(window.innerWidth < 640);
 
- useEffect(() => {
+  useEffect(() => {
     const handleResize = () => setIsSmall(window.innerWidth < 640);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -53,20 +53,32 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/about" element={<About />} />
         <Route path="/products" element={<Allproducts />} />
-        <Route path="/products/:id" element={<IndividualProduct />} />
+        <Route
+          path="/products/:id"
+          element={<IndividualProduct role={role} />}
+        />
         <Route path="/registerShop" element={<RegisterShop />} />
-        <Route path="/orders" element={<Orders />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route path="/orders" element={!role ? <Login /> : <Orders />} />
+        <Route path="/cart" element={!role ? <Login /> : <Cart />} />
 
         {isSmallScreen ? (
           // Small screen routes
           <>
-            <Route path="/owner/dashboard" element={<Dashboard />} />
-            <Route path="/owner/createproduct" element={<CreateProduct />} />
+            <Route
+              path="/owner/dashboard"
+              element={role === "shopowner" ? <Dashboard /> : <RegisterShop />}
+            />
+            <Route
+              path="/owner/createproduct"
+              element={role === "shopowner" ? <CreateProduct /> : <Home />}
+            />
           </>
         ) : (
           // Large screen routes with OwnerLayout
-          <Route path="/owner" element={<OwnerLayout />}>
+          <Route
+            path="/owner"
+            element={role === "shopowner" ? <OwnerLayout /> : <RegisterShop />}
+          >
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="createproduct" element={<CreateProduct />} />
           </Route>
