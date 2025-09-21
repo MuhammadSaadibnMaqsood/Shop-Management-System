@@ -8,16 +8,12 @@ const Cart = () => {
   const [showHeading, setShowHeading] = useState(true);
 
   useEffect(() => {
-    console.log("Cart item:", cartItems);
-
-    // heading 2.5s ke baad gayab ho jaye
     const timer = setTimeout(() => setShowHeading(false), 1000);
     return () => clearTimeout(timer);
   }, [cartItems]);
 
   return (
     <div className="min-h-screen bg-zinc-950 w-full text-white p-5 relative flex flex-col items-center">
-      {/* AnimatePresence se heading smoothly remove hogi */}
       <AnimatePresence>
         {showHeading && (
           <motion.h1

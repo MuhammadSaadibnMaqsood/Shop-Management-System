@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { LogOut, Menu, X } from "lucide-react"; // hamburger icon
-import useLogout from "../hooks/useLogout";
+import { LogOut, Menu, X } from "lucide-react";
+import { motion } from "framer-motion";
 import Logout from "./Logout";
+import useLogout from "../hooks/useLogout";
+import MobileNavbar from "./MobileNavbar";
 
 const Navbar = ({ role }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const { mutate: logout } = useLogout();
 
   const navLinks = [
     { path: "/", label: "Home" },
-    { path: "/about", label: "About" },
     { path: "/products", label: "All Products" },
+    { path: "/about", label: "About" },
   ];
 
   if (role === "shopowner") {
@@ -19,13 +22,15 @@ const Navbar = ({ role }) => {
     navLinks.push({ path: "/registerShop", label: "Add Shop" });
   }
   // console.log(role);
- 
 
-
+  function handleLogout() {
+    logout();
+    setIsOpen(false);
+  }
 
   return (
     <header className="bebasFont bg-black text-white shadow-md sticky top-0 z-40">
-      <nav className="flex justify-between w-full items-center p-4">
+      <nav className="flex justify-between w-full relative items-center p-4">
         {/* Logo */}
         <div>
           <h1 className="text-2xl font-bold tracking-wider">
@@ -71,36 +76,17 @@ const Navbar = ({ role }) => {
         </div>
 
         {/* Mobile Hamburger */}
-        <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
+        <motion.button
+        initial= {{opacity:0}}
+        animate= {{opacity:1}}
+        transition= {{duration:0.5}}
+        className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
+        </motion.button>
       </nav>
 
       {/* Mobile Dropdown */}
-      {isOpen && (
-        <div className="md:hidden bg-indigo-800">
-          <ul className="flex flex-col items-center gap-6 py-4">
-            {navLinks.map((link) => (
-              <li key={link.path}>
-                <NavLink
-                  to={link.path}
-                  onClick={() => setIsOpen(false)}
-                  className="block hover:text-yellow-300 transition"
-                >
-                  {link.label}
-                </NavLink>
-              </li>
-            ))}
-            {role ? null : (
-              <li>
-                <button className="bg-yellow-400 text-black font-semibold py-1 px-5 rounded-2xl hover:bg-yellow-300 transition">
-                  <Link to={"/login"}>Login</Link>
-                </button>
-              </li>
-            )}
-          </ul>
-        </div>
-      )}
+      {isOpen && <MobileNavbar navLinks={navLinks} role = {role}/>}
     </header>
   );
 };
