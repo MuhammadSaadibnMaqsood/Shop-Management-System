@@ -112,8 +112,6 @@ export const login = async (req, res) => {
 
 export const logout = (req, res) => {
   try {
-    console.log("Logout call ae");
-
     res.clearCookie("jwt", {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",

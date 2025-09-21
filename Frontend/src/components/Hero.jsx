@@ -11,10 +11,12 @@ import Texture from "../hooks/Texture";
 
 const Hero = () => {
   return (
-    <div id="hero" className="relative z-20  bg-black h-[90vh] w-full text-white pt-28 md:pt-6">
+    <div
+      id="hero"
+      className="relative z-20  bg-black h-[90vh] w-full text-white pt-28 md:pt-6"
+    >
       {/* Title */}
       <motion.h1
-     
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.5 }}
@@ -37,8 +39,9 @@ const Hero = () => {
         transition={{ delay: 0.5, duration: 1 }}
         className="p-5 mt-5 block md:hidden"
       >
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro
-        blanditiis possimus, doloribus molestiae provident ipsum quae.
+        Welcome to Aura where style meets convenience. Discover handpicked
+        products crafted to match your aura, with seamless shopping and trusted
+        quality at every step.
       </motion.p>
 
       {/* 3D Scene */}
@@ -71,7 +74,7 @@ const Hero = () => {
             />
             <ToneMapping />
           </EffectComposer>
-     </Canvas> 
+        </Canvas>
       </motion.div>
     </div>
   );

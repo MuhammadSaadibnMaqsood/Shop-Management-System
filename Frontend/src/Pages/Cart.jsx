@@ -9,6 +9,10 @@ const Cart = () => {
   const [showHeading, setShowHeading] = useState(true);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     const timer = setTimeout(() => setShowHeading(false), 1000);
     return () => clearTimeout(timer);
   }, [cartItems]);
